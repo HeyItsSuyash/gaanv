@@ -213,8 +213,8 @@ export default function Home() {
       </section>
 
       {/* 2. WOMEN SELF HELP GROUPS (SHG) SPOTLIGHT SECTION */}
-      <section id="women-shg" className="relative py-16 md:py-24 border-b border-mist/60 bg-bone-d/60">
-        <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
+      <section id="women-shg" className="relative py-16 md:py-24 border-b border-mist/60 bg-bone-d/60 overflow-hidden">
+        <div className="absolute inset-0 bg-warli-pattern opacity-[0.14] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-12 max-w-2xl">
             <h2 className="font-serif text-h2 text-ink">
@@ -273,8 +273,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Decorative Folk Border Divider */}
+      <div className="folk-border-divider" aria-hidden="true" />
+
       {/* 3. JUST LANDED / FRESH CRAFTS THIS WEEK */}
-      <section id="just-landed" className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-16 md:px-8 md:py-24">
+      <section id="just-landed" className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-16 md:px-8 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.10] pointer-events-none" />
         <header className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
             <h2 className="font-serif text-h2 text-ink">
@@ -395,9 +399,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Decorative Folk Border Divider */}
+      <div className="folk-border-divider" aria-hidden="true" />
+
       {/* 4. GEOGRAPHICALLY PROTECTED (GI) TREASURES */}
-      <section id="gi-treasures" className="relative border-t border-mist bg-bone-d py-16 md:py-24">
-        <div className="absolute inset-0 bg-mandana-pattern opacity-10 pointer-events-none" />
+      <section id="gi-treasures" className="relative border-t border-mist bg-bone-d py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.14] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-10 max-w-2xl">
             <h2 className="font-serif text-h2 text-ink">
@@ -448,9 +455,12 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Decorative Folk Border Divider */}
+      <div className="folk-border-divider" aria-hidden="true" />
+
       {/* 5. GAON PATRIKA JOURNAL NEWSLETTER */}
-      <section className="relative border-t border-mist bg-bone py-16 md:py-24">
-        <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
+      <section className="relative border-t border-mist bg-bone py-16 md:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-warli-pattern opacity-[0.14] pointer-events-none" />
         <div className="relative mx-auto max-w-[800px] px-5 sm:px-6 text-center">
           <h2 className="font-serif text-h2 text-ink">
             {t("journal.title")}

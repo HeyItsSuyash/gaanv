@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240">
-  <!-- Mandana Traditional Rajasthani Folk Floor Art Motif -->
-  <g fill="none" stroke="#e6c99c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.16">
+  <!-- Mandana Traditional Rajasthani Folk Floor Art Motif with earthy brown strokes -->
+  <g fill="none" stroke="#87683b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.35">
     <!-- Center Mandana Lotus / Ashtadal -->
     <circle cx="120" cy="120" r="14"/>
     <circle cx="120" cy="120" r="28" stroke-dasharray="3 4"/>
@@ -18,10 +18,10 @@
     <path d="M170,120 Q195,135 220,120 Q195,105 170,120 Z"/>
 
     <!-- Corner triangles and dots -->
-    <circle cx="20" cy="20" r="4" fill="#e6c99c"/>
-    <circle cx="220" cy="20" r="4" fill="#e6c99c"/>
-    <circle cx="20" cy="220" r="4" fill="#e6c99c"/>
-    <circle cx="220" cy="220" r="4" fill="#e6c99c"/>
+    <circle cx="20" cy="20" r="4" fill="#87683b"/>
+    <circle cx="220" cy="20" r="4" fill="#87683b"/>
+    <circle cx="20" cy="220" r="4" fill="#87683b"/>
+    <circle cx="220" cy="220" r="4" fill="#87683b"/>
     <path d="M0,0 L40,0 L0,40 Z"/>
     <path d="M240,0 L200,0 L240,40 Z"/>
     <path d="M0,240 L40,240 L0,200 Z"/>

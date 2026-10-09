@@ -78,17 +78,30 @@ h1, h2, h3, h4 {
   color: var(--color-ink);
 }
 
-/* Background Pattern Overlays: Mandana & Warli Art */
+/* Background Pattern Overlays: Mandana & Warli Folk Art */
 .bg-mandana-pattern {
   background-image: url('/patterns/mandana-pattern.svg');
   background-repeat: repeat;
-  background-size: 180px 180px;
+  background-size: 200px 200px;
 }
 
 .bg-warli-pattern {
   background-image: url('/patterns/warli-pattern.svg');
   background-repeat: repeat;
-  background-size: 160px 160px;
+  background-size: 180px 180px;
+}
+
+/* Folk Art Decorative Border Dividers */
+.folk-border-divider {
+  height: 8px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    var(--color-brass) 0,
+    var(--color-brass) 4px,
+    transparent 0,
+    transparent 8px
+  );
+  opacity: 0.35;
 }
 
 /* Semi-transparent dark overlay for high contrast text readability over photography */

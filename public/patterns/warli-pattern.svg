@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
-  <!-- Warli Traditional Folk Art Vector Motif Pattern -->
-  <g fill="none" stroke="#e0cda7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.18">
+  <!-- Warli Traditional Folk Art Vector Motif Pattern with warm earthy strokes -->
+  <g fill="none" stroke="#87683b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.32">
     <!-- Village Circle Dance / Tarpa motif center -->
     <circle cx="100" cy="100" r="18" stroke-dasharray="2 3"/>
     
     <!-- Dancing Figure 1 -->
     <g transform="translate(100, 60)">
-      <circle cx="0" cy="-10" r="4" fill="#e0cda7"/>
-      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#e0cda7"/>
-      <path d="M-8,18 L8,18 L0,8 Z" fill="#e0cda7"/>
+      <circle cx="0" cy="-10" r="4" fill="#87683b"/>
+      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#87683b"/>
+      <path d="M-8,18 L8,18 L0,8 Z" fill="#87683b"/>
       <line x1="-12" y1="2" x2="12" y2="2"/>
       <line x1="-4" y1="18" x2="-8" y2="28"/>
       <line x1="4" y1="18" x2="8" y2="28"/>
@@ -16,9 +16,9 @@
 
     <!-- Dancing Figure 2 -->
     <g transform="translate(140, 100) rotate(90)">
-      <circle cx="0" cy="-10" r="4" fill="#e0cda7"/>
-      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#e0cda7"/>
-      <path d="M-8,18 L8,18 L0,8 Z" fill="#e0cda7"/>
+      <circle cx="0" cy="-10" r="4" fill="#87683b"/>
+      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#87683b"/>
+      <path d="M-8,18 L8,18 L0,8 Z" fill="#87683b"/>
       <line x1="-12" y1="2" x2="12" y2="2"/>
       <line x1="-4" y1="18" x2="-8" y2="28"/>
       <line x1="4" y1="18" x2="8" y2="28"/>
@@ -26,9 +26,9 @@
 
     <!-- Dancing Figure 3 -->
     <g transform="translate(100, 140) rotate(180)">
-      <circle cx="0" cy="-10" r="4" fill="#e0cda7"/>
-      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#e0cda7"/>
-      <path d="M-8,18 L8,18 L0,8 Z" fill="#e0cda7"/>
+      <circle cx="0" cy="-10" r="4" fill="#87683b"/>
+      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#87683b"/>
+      <path d="M-8,18 L8,18 L0,8 Z" fill="#87683b"/>
       <line x1="-12" y1="2" x2="12" y2="2"/>
       <line x1="-4" y1="18" x2="-8" y2="28"/>
       <line x1="4" y1="18" x2="8" y2="28"/>
@@ -36,24 +36,28 @@
 
     <!-- Dancing Figure 4 -->
     <g transform="translate(60, 100) rotate(270)">
-      <circle cx="0" cy="-10" r="4" fill="#e0cda7"/>
-      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#e0cda7"/>
-      <path d="M-8,18 L8,18 L0,8 Z" fill="#e0cda7"/>
+      <circle cx="0" cy="-10" r="4" fill="#87683b"/>
+      <path d="M-8,-2 L8,-2 L0,8 Z" fill="#87683b"/>
+      <path d="M-8,18 L8,18 L0,8 Z" fill="#87683b"/>
       <line x1="-12" y1="2" x2="12" y2="2"/>
       <line x1="-4" y1="18" x2="-8" y2="28"/>
       <line x1="4" y1="18" x2="8" y2="28"/>
     </g>
 
-    <!-- Traditional Tree of Life branches and corner geometric diamonds -->
-    <path d="M10,10 L30,10 L10,30 Z" fill="#e0cda7"/>
-    <path d="M190,10 L170,10 L190,30 Z" fill="#e0cda7"/>
-    <path d="M10,190 L30,190 L10,170 Z" fill="#e0cda7"/>
-    <path d="M190,190 L170,190 L190,170 Z" fill="#e0cda7"/>
-
-    <!-- Geometric border marks -->
-    <line x1="0" y1="0" x2="200" y2="0" stroke-dasharray="4 6"/>
-    <line x1="0" y1="200" x2="200" y2="200" stroke-dasharray="4 6"/>
-    <line x1="0" y1="0" x2="0" y2="200" stroke-dasharray="4 6"/>
-    <line x1="200" y1="0" x2="200" y2="200" stroke-dasharray="4 6"/>
+    <!-- Village tree of life motif -->
+    <g transform="translate(30, 30)">
+      <line x1="0" y1="15" x2="0" y2="-15"/>
+      <line x1="0" y1="-5" x2="-10" y2="-15"/>
+      <line x1="0" y1="-5" x2="10" y2="-15"/>
+      <line x1="0" y1="5" x2="-8" y2="-3"/>
+      <line x1="0" y1="5" x2="8" y2="-3"/>
+    </g>
+    <g transform="translate(170, 170)">
+      <line x1="0" y1="15" x2="0" y2="-15"/>
+      <line x1="0" y1="-5" x2="-10" y2="-15"/>
+      <line x1="0" y1="-5" x2="10" y2="-15"/>
+      <line x1="0" y1="5" x2="-8" y2="-3"/>
+      <line x1="0" y1="5" x2="8" y2="-3"/>
+    </g>
   </g>
 </svg>
