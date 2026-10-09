@@ -31,7 +31,6 @@ export function Footer() {
               {t("footer.desc")}
             </p>
             <div className="mt-4 flex items-center gap-2 text-xs font-mono text-brass">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
               <span>500+ Rural Women SHG Artisans Supported</span>
             </div>
           </div>

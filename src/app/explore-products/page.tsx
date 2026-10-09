@@ -58,10 +58,7 @@ export default function ExploreProductsPage() {
       <section className="relative border-b border-mist bg-bone-d py-12 md:py-16">
         <div className="absolute inset-0 bg-mandana-pattern opacity-10 pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
-          <span className="font-mono text-[12px] uppercase tracking-[2px] text-brass font-semibold">
-            {lang === "hi" ? "महिला समूह हाट" : "Rural Women Collectives"}
-          </span>
-          <h1 className="font-serif text-[32px] sm:text-[40px] md:text-h1 text-ink mt-1">
+          <h1 className="font-serif text-[32px] sm:text-[40px] md:text-h1 text-ink">
             {lang === "hi" ? "समस्त प्रामाणिक ग्रामीण हस्तशिल्प" : "Explore All Rural Treasures"}
           </h1>
           <p className="mt-2 text-[15px] sm:text-[16px] text-stone max-w-2xl leading-relaxed">

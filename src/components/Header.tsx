@@ -82,9 +82,8 @@ export function Header() {
           </Link>
           <Link
             href="/#women-shg"
-            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium flex items-center gap-1.5"
+            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-[#d96b52] inline-block" />
             {t("nav.women_shg")}
           </Link>
           <Link
@@ -191,9 +190,8 @@ export function Header() {
             <Link
               href="/#women-shg"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-[#f7f3ec] hover:text-[#d4af37] py-1 flex items-center gap-2"
+              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
             >
-              <span className="w-2 h-2 rounded-full bg-[#d96b52] inline-block" />
               {t("nav.women_shg")}
             </Link>
             <Link

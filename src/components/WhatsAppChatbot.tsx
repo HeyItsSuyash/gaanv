@@ -91,8 +91,7 @@ export function WhatsAppChatbot() {
             </div>
             <div className="text-left text-xs leading-tight">
               <span className="font-serif font-bold text-ink block">{t("chat.title")}</span>
-              <span className="text-brass text-[10px] flex items-center gap-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
+              <span className="text-brass text-[10px]">
                 {lang === "hi" ? "सखी सहायता" : "Artisan Help"}
               </span>
             </div>
@@ -145,8 +144,7 @@ export function WhatsAppChatbot() {
                   {lang === "hi" ? "सखी" : "Verified Guide"}
                 </span>
               </h3>
-              <p className="text-[12px] text-[#d4af37] flex items-center gap-1.5 mt-0.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
+              <p className="text-[12px] text-[#d4af37] mt-0.5">
                 {t("chat.online")}
               </p>
             </div>

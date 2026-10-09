@@ -134,26 +134,22 @@ export default function Home() {
           {/* Hero Content Overlay */}
           <div className="relative min-h-[560px] sm:h-[620px] md:h-[700px] pointer-events-none z-20 mx-auto flex max-w-[1280px] flex-col justify-end px-5 sm:px-6 pb-12 sm:pb-16 md:px-8 md:pb-20">
             <div className="pointer-events-auto max-w-2xl">
-              <span className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[2px] text-[#e6c99c] mb-3 font-mono">
-                <span className="w-2 h-2 rounded-full bg-[#d96b52] animate-pulse" />
-                {t("hero.tag")}
-              </span>
-              <h1 className="font-serif text-[#ffffff] text-[32px] sm:text-[44px] md:text-[56px] leading-[1.08] tracking-[-1px] font-normal drop-shadow-lg">
+              <h1 className="font-serif text-[#ffffff] text-[34px] sm:text-[46px] md:text-[58px] leading-[1.08] tracking-[-1px] font-normal drop-shadow-md">
                 {HERO_SLIDES[currentSlide].headline}
               </h1>
-              <p className="text-[#f5eedc] mt-4 max-w-xl font-serif text-[16px] sm:text-[18px] md:text-[21px] leading-relaxed drop-shadow">
+              <p className="text-[#f7f3ec] mt-4 max-w-xl font-serif text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed drop-shadow-sm font-light">
                 {HERO_SLIDES[currentSlide].subhead}
               </p>
-              <div className="mt-6 sm:mt-8 flex flex-wrap gap-3">
+              <div className="mt-7 sm:mt-9 flex flex-wrap gap-3.5">
                 <Link
                   href={HERO_SLIDES[currentSlide].ctaHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] border border-[#524132] h-12 sm:h-14 px-7 sm:px-8 text-[15px] sm:text-[16px] shadow-xl"
+                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#f7f3ec] hover:bg-[#ffffff] text-[#241b14] h-12 sm:h-14 px-8 text-[15px] sm:text-[16px] shadow-lg"
                 >
                   {HERO_SLIDES[currentSlide].ctaLabel}
                 </Link>
                 <a
                   href="#women-shg"
-                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-paper/95 hover:bg-paper text-ink border border-mist h-12 sm:h-14 px-6 text-[15px] shadow-md"
+                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-transparent hover:bg-[#f7f3ec]/10 text-[#f7f3ec] border border-[#f7f3ec]/80 h-12 sm:h-14 px-7 text-[15px] shadow-sm backdrop-blur-[2px]"
                 >
                   {t("hero.cta_shg")}
                 </a>
@@ -161,12 +157,12 @@ export default function Home() {
             </div>
 
             {/* Slider Navigation Controls */}
-            <div className="pointer-events-auto mt-6 sm:mt-8 flex flex-wrap items-center gap-3">
+            <div className="pointer-events-auto mt-7 sm:mt-9 flex flex-wrap items-center gap-3">
               <button
                 type="button"
                 onClick={prevSlide}
                 aria-label="Previous slide"
-                className="border border-mist text-ink hover:bg-paper hover:text-brass bg-bone/90 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md"
+                className="border border-[#f7f3ec]/40 text-[#f7f3ec] hover:bg-[#f7f3ec] hover:text-[#241b14] bg-black/40 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md backdrop-blur-sm"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -183,7 +179,7 @@ export default function Home() {
                 type="button"
                 onClick={nextSlide}
                 aria-label="Next slide"
-                className="border border-mist text-ink hover:bg-paper hover:text-brass bg-bone/90 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md"
+                className="border border-[#f7f3ec]/40 text-[#f7f3ec] hover:bg-[#f7f3ec] hover:text-[#241b14] bg-black/40 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md backdrop-blur-sm"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -205,7 +201,7 @@ export default function Home() {
                       onClick={() => setCurrentSlide(i)}
                       aria-label={`Go to slide ${i + 1}`}
                       className={`block h-1.5 rounded-pill transition-all duration-300 ease-[var(--ease-signature)] ${
-                        i === currentSlide ? "bg-brass w-8" : "bg-mist hover:bg-stone w-3"
+                        i === currentSlide ? "bg-[#f7f3ec] w-8" : "bg-[#f7f3ec]/40 hover:bg-[#f7f3ec]/70 w-3"
                       }`}
                     />
                   </li>
@@ -221,9 +217,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-12 max-w-2xl">
-            <p className="text-[12px] font-mono uppercase tracking-[2px] text-brass mb-2 font-semibold">
-              {t("shg.tag")}
-            </p>
             <h2 className="font-serif text-h2 text-ink">
               {t("shg.title")}
             </h2>
@@ -284,9 +277,6 @@ export default function Home() {
       <section id="just-landed" className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-16 md:px-8 md:py-24">
         <header className="mb-10 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-[12px] font-mono text-brass mb-2 uppercase tracking-[2px] font-semibold">
-              {t("landed.tag")}
-            </p>
             <h2 className="font-serif text-h2 text-ink">
               {t("landed.title")}
             </h2>
@@ -410,10 +400,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-mandana-pattern opacity-10 pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-10 max-w-2xl">
-            <span className="font-mono text-[12px] uppercase tracking-[2px] text-brass font-semibold">
-              {t("gi.tag")}
-            </span>
-            <h2 className="font-serif text-h2 text-ink mt-1">
+            <h2 className="font-serif text-h2 text-ink">
               {t("gi.title")}
             </h2>
             <p className="mt-2 text-[15px] text-stone">
@@ -465,10 +452,7 @@ export default function Home() {
       <section className="relative border-t border-mist bg-bone py-16 md:py-24">
         <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
         <div className="relative mx-auto max-w-[800px] px-5 sm:px-6 text-center">
-          <span className="font-mono text-[12px] uppercase tracking-[2px] text-brass font-semibold">
-            {t("journal.tag")}
-          </span>
-          <h2 className="font-serif text-h2 text-ink mt-2">
+          <h2 className="font-serif text-h2 text-ink">
             {t("journal.title")}
           </h2>
           <p className="mt-3 text-[15px] text-stone leading-relaxed max-w-xl mx-auto">
