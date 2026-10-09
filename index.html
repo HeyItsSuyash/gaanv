@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mittilok Gaav (मिट्टीलोक गाँव) — The Realm of Rural Indian Craft & Heritage</title>
+  
+  <!-- Google Fonts: Rozha One, Yatra One, Plus Jakarta Sans, Kalam, Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Noto+Sans+Devanagari:wght@400;500;700&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet">
+  
+  <style>
+    /* CSS Variables matching design.md */
+    :root {
+      --color-canvas-cream: #FAF6EE;
+      --color-surface-parchment: #F3EDE2;
+      --color-surface-sand: #EADBCE;
+      --color-border-clay: #E2D5C3;
+
+      --color-text-charcoal: #241C17;
+      --color-text-muted: #61554C;
+
+      --color-terracotta: #B84A28;
+      --color-terracotta-dark: #8C3418;
+      --color-clay-deep: #5C3A21;
+
+      --color-haldi-gold: #D9822B;
+      --color-haldi-tint: #FBF0DC;
+      --color-neel-indigo: #1D3B53;
+      --color-tamba-brass: #C49A45;
+      --color-tulsi-green: #446A3A;
+
+      --font-display: 'Rozha One', serif;
+      --font-subheading: 'Yatra One', serif;
+      --font-sans: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
+      --font-artisan: 'Kalam', cursive;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--color-canvas-cream);
+      color: var(--color-text-charcoal);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* Announcement Bar */
+    .announcement-bar {
+      background: var(--color-clay-deep);
+      color: var(--color-surface-parchment);
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--color-tamba-brass);
+    }
+    .announcement-bar span {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .lang-toggle button {
+      background: transparent;
+      border: 1px solid var(--color-tamba-brass);
+      color: var(--color-surface-parchment);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+    }
+
+    /* Navigation Header */
+    header {
+      background: var(--color-surface-parchment);
+      border-bottom: 2px solid var(--color-border-clay);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-main {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+    .logo-seal {
+      width: 44px;
+      height: 44px;
+      background: var(--color-terracotta);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      box-shadow: 0 4px 10px rgba(184, 74, 40, 0.3);
+    }
+    .logo-text h1 {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      color: var(--color-terracotta-dark);
+      line-height: 1.1;
+    }
+    .logo-text p {
+      font-size: 0.75rem;
+      color: var(--color-text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .search-box {
+      flex: 0 1 420px;
+      position: relative;
+    }
+    .search-box input {
+      width: 100%;
+      padding: 0.65rem 1rem 0.65rem 2.5rem;
+      background: var(--color-canvas-cream);
+      border: 1.5px solid var(--color-border-clay);
+      border-radius: 24px;
+      font-family: var(--font-sans);
+      color: var(--color-text-charcoal);
+    }
+    .search-box input:focus {
+      outline: none;
+      border-color: var(--color-terracotta);
+    }
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-muted);
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .action-btn {
+      background: transparent;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      color: var(--color-text-charcoal);
+      font-weight: 500;
+      position: relative;
+    }
+    .cart-badge {
+      background: var(--color-haldi-gold);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 0.15rem 0.45rem;
+      border-radius: 10px;
+    }
+
+    /* Warli Ribbon Divider */
+    .warli-ribbon {
+      height: 28px;
+      background-color: var(--color-terracotta-dark);
+      background-image: repeating-linear-gradient(45deg, var(--color-terracotta) 0, var(--color-terracotta) 10px, transparent 0, transparent 20px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-haldi-tint);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+    }
+
+    /* Hero Chaupal Section */
+    .hero {
+      max-width: 1280px;
+      margin: 2rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    .hero-content h2 {
+      font-family: var(--font-display);
+      font-size: 3.2rem;
+      color: var(--color-terracotta-dark);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 2rem;
+    }
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+    }
+    .btn-primary {
+      background: var(--color-terracotta);
+      color: white;
+      padding: 0.85rem 1.8rem;
+      border-radius: 30px;
+      border: 2px solid var(--color-terracotta-dark);
+      font-family: var(--font-sans);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 6px 15px rgba(184, 74, 40, 0.25);
+    }
+    .btn-primary:hover {
+      background: var(--color-terracotta-dark);
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-clay-deep);
+      padding: 0.85rem 1.8rem;
+      border-radius: 30px;
+      border: 2px solid var(--color-border-clay);
+      font-family: var(--font-sans);
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-secondary:hover {
+      border-color: var(--color-terracotta);
+    }
+    .hero-frame {
+      position: relative;
+      background: var(--color-surface-sand);
+      border-radius: 140px 140px 20px 20px;
+      padding: 1.5rem;
+      border: 3px solid var(--color-tamba-brass);
+      box-shadow: 0 12px 30px rgba(36, 28, 23, 0.1);
+    }
+    .hero-img {
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 120px 120px 12px 12px;
+      display: block;
+    }
+    .hero-badge {
+      position: absolute;
+      bottom: -15px;
+      right: 20px;
+      background: var(--color-neel-indigo);
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(29, 59, 83, 0.3);
+    }
+
+    /* Category Guild Showcase */
+    .section-title {
+      text-align: center;
+      margin: 3rem 0 1.5rem;
+    }
+    .section-title h3 {
+      font-family: var(--font-subheading);
+      font-size: 2.2rem;
+      color: var(--color-terracotta-dark);
+    }
+    .section-title p {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+    }
+    .category-grid {
+      max-width: 1280px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+    }
+    .category-card {
+      background: var(--color-surface-parchment);
+      border: 1.5px solid var(--color-border-clay);
+      border-radius: 80px 80px 16px 16px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      text-decoration: none;
+      color: var(--color-text-charcoal);
+      transition: all 0.3s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--color-terracotta);
+      box-shadow: 0 10px 20px rgba(184, 74, 40, 0.12);
+    }
+    .category-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .category-card h4 {
+      font-family: var(--font-sans);
+      font-weight: 700;
+      color: var(--color-clay-deep);
+    }
+    .category-card span {
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Product Grid ("Vastu Patra") */
+    .product-grid {
+      max-width: 1280px;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .product-card {
+      background: white;
+      border: 1.5px solid var(--color-border-clay);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(92, 58, 33, 0.12);
+    }
+    .product-img-wrapper {
+      position: relative;
+      height: 240px;
+      background: var(--color-surface-parchment);
+      overflow: hidden;
+    }
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gi-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--color-neel-indigo);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.3rem 0.7rem;
+      border-radius: 12px;
+    }
+    .product-info {
+      padding: 1.25rem;
+    }
+    .artisan-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
+    }
+    .artisan-tag img {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+    .product-title {
+      font-family: var(--font-sans);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-text-charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    .price {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-terracotta-dark);
+    }
+    .btn-add-cart {
+      background: var(--color-haldi-gold);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+    .btn-add-cart:hover {
+      background: var(--color-terracotta);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-clay-deep);
+      color: var(--color-surface-parchment);
+      padding: 4rem 2rem 2rem;
+      margin-top: 4rem;
+    }
+    .footer-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(226, 213, 195, 0.2);
+    }
+    .footer-col h5 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--color-tamba-brass);
+      margin-bottom: 1rem;
+    }
+    .footer-col p {
+      font-size: 0.9rem;
+      color: var(--color-surface-sand);
+      line-height: 1.6;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col ul li a {
+      color: var(--color-surface-sand);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .footer-col ul li a:hover {
+      color: var(--color-haldi-gold);
+    }
+    .footer-bottom {
+      max-width: 1280px;
+      margin: 2rem auto 0;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--color-surface-sand);
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    <span>✨ Direct from Artisans of Rural India — 100% Organic & Handcrafted Heritage</span>
+    <div class="lang-toggle">
+      <button>हिन्दी / ENG</button>
+    </div>
+  </div>
+
+  <!-- Navigation Header -->
+  <header>
+    <div class="header-main">
+      <a href="#" class="logo">
+        <div class="logo-seal">म</div>
+        <div class="logo-text">
+          <h1>मिट्टीलोक गाँव</h1>
+          <p>Mittilok Gaav</p>
+        </div>
+      </a>
+      
+      <div class="search-box">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search by craft (Molela, Terracotta, Khurja, Blue Pottery)..." />
+      </div>
+
+      <div class="header-actions">
+        <button class="action-btn">🪔 <span>Chaupal</span></button>
+        <button class="action-btn">🛒 <span>Jholi</span> <span class="cart-badge">2</span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Warli Ribbon Motif -->
+  <div class="warli-ribbon">
+    ▲▼▲▼ WARLI ARTISAN GUILD · DIRECT FAIR TRADE · GI CERTIFIED PROVENANCE ▲▼▲▼
+  </div>
+
+  <!-- Hero Chaupal Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Mitti Se Jude,<br>Karigar Ke Sang.</h2>
+      <p>Explore authentic terracotta creations, handloom weaves, and traditional village crafts directly from generational master artisans across rural India.</p>
+      <div class="cta-group">
+        <a href="#haat" class="btn-primary">🏺 Explore Village Haat</a>
+        <a href="#artisans" class="btn-secondary">📜 Meet Artisans</a>
+      </div>
+    </div>
+    
+    <div class="hero-frame">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?auto=format&fit=crop&w=800&q=80" alt="Master Potter shaping clay wheel" />
+      <div class="hero-badge">✓ 72% Proceeds Return to Craft Clusters</div>
+    </div>
+  </section>
+
+  <!-- Category Guild Showcase -->
+  <section class="category-section" id="haat">
+    <div class="section-title">
+      <h3>Explore Craft Guilds (हस्तकला की विधाएं)</h3>
+      <p>Curated collections categorized by traditional raw materials and regional guilds</p>
+    </div>
+
+    <div class="category-grid">
+      <a href="#" class="category-card">
+        <div class="category-icon">🏺</div>
+        <h4>Terracotta & Clay</h4>
+        <span>मृदा कला (Molela & Gorakhpur)</span>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">🧵</div>
+        <h4>Handloom & Khadi</h4>
+        <span>हथकरघा (Maheshwari & Chanderi)</span>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">🪔</div>
+        <h4>Brass & Bell Metal</h4>
+        <span>पीतल व कांस्य (Dokra Craft)</span>
+      </a>
+      <a href="#" class="category-card">
+        <div class="category-icon">🎨</div>
+        <h4>Folk Paintings</h4>
+        <span>लोक चित्रकला (Madhubani & Warli)</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Featured Products ("Vastu Patra") -->
+  <section class="product-section">
+    <div class="section-title">
+      <h3>Handcrafted Treasures (कारीगरी धरोहर)</h3>
+      <p>GI Tag certified heritage creations ready for your home</p>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product 1 -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <span class="gi-badge">GI Certified</span>
+          <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=600&q=80" alt="Molela Terracotta Plaque" />
+        </div>
+        <div class="product-info">
+          <div class="artisan-tag">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=100&q=80" alt="Mohanlal" />
+            <span>By Master Mohanlal · Rajasthan</span>
+          </div>
+          <div class="product-title">Hand-carved Molela Terracotta Wall Plaque</div>
+          <div class="price-row">
+            <span class="price">₹1,450</span>
+            <button class="btn-add-cart">Jholi Mein Dalein</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <span class="gi-badge">GI Certified</span>
+          <img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=600&q=80" alt="Khurja Ceramic Pitcher" />
+        </div>
+        <div class="product-info">
+          <div class="artisan-tag">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Ram Sahay" />
+            <span>By Ram Sahay · Khurja UP</span>
+          </div>
+          <div class="product-title">Authentic Glazed Khurja Clay Water Pitcher</div>
+          <div class="price-row">
+            <span class="price">₹980</span>
+            <button class="btn-add-cart">Jholi Mein Dalein</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <div class="product-img-wrapper">
+          <span class="gi-badge">Natural Dyes</span>
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=600&q=80" alt="Madhubani Painting" />
+        </div>
+        <div class="product-info">
+          <div class="artisan-tag">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="Sita Devi" />
+            <span>By Sita Devi · Mithila Bihar</span>
+          </div>
+          <div class="product-title">Original Handmade Mithila Peacock Painting</div>
+          <div class="price-row">
+            <span class="price">₹2,800</span>
+            <button class="btn-add-cart">Jholi Mein Dalein</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h5>मिट्टीलोक गाँव (Mittilok Gaav)</h5>
+        <p>A digital sanctuary celebrating rural Indian artisans, fair trade heritage, natural materials, and sustainable village crafts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Craft Guilds</h5>
+        <ul>
+          <li><a href="#">Terracotta Pottery</a></li>
+          <li><a href="#">Handloom Fabrics</a></li>
+          <li><a href="#">Dokra Metal Art</a></li>
+          <li><a href="#">Folk Paintings</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Karigar Support</h5>
+        <ul>
+          <li><a href="#">Artisan Registration</a></li>
+          <li><a href="#">Fair Trade Pledge</a></li>
+          <li><a href="#">GI Tag Verification</a></li>
+          <li><a href="#">Impact Reports</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Gaav Newsletter</h5>
+        <p>Receive stories directly from village artisan clusters and seasonal festival haat announcements.</p>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>© 2026 Mittilok Gaav. Rooted in Soil · Crafted with Pride.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
