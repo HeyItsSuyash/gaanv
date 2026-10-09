@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 
 export function LoginModal() {
@@ -41,7 +42,9 @@ export function LoginModal() {
 
           {user ? (
             <div className="text-center py-4">
-              <span className="font-serif text-[42px] text-ink block mb-2">gaanv</span>
+              <div className="relative h-10 w-28 mx-auto mb-2">
+                <Image src="/logo-dark.png" alt="Logo" fill className="object-contain" />
+              </div>
               <h3 className="font-serif text-h3 text-ink mb-2">Welcome Back</h3>
               <p className="text-body-sm text-stone mb-6">
                 Logged in as {user.email || user.phone || user.name}
@@ -57,7 +60,9 @@ export function LoginModal() {
           ) : (
             <div>
               <div className="text-center mb-6">
-                <span className="font-serif text-[42px] text-ink block mb-1">gaanv</span>
+                <div className="relative h-10 w-28 mx-auto mb-1">
+                  <Image src="/logo-dark.png" alt="Logo" fill className="object-contain" />
+                </div>
                 <h3 className="font-serif text-h3 text-ink">Sign In to Your Account</h3>
                 <p className="text-body-sm text-stone mt-1">
                   Access your orders, saved pieces, and artisan updates.

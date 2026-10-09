@@ -91,6 +91,28 @@ h1, h2, h3, h4 {
   background-size: 160px 160px;
 }
 
+/* Semi-transparent dark overlay for high contrast text readability over photography */
+.overlay-black-90 {
+  background-color: rgba(16, 12, 8, 0.88);
+}
+
+.overlay-black-80 {
+  background-color: rgba(16, 12, 8, 0.80);
+}
+
+.overlay-black-60 {
+  background-color: rgba(16, 12, 8, 0.60);
+}
+
+.overlay-hero-gradient {
+  background: linear-gradient(
+    to top,
+    rgba(14, 10, 7, 0.96) 0%,
+    rgba(14, 10, 7, 0.85) 45%,
+    rgba(14, 10, 7, 0.55) 100%
+  );
+}
+
 /* Custom Scrollbar for Cream Aesthetic */
 ::-webkit-scrollbar {
   width: 6px;

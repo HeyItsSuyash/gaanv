@@ -20,8 +20,8 @@ export default function Home() {
       subhead: t("hero.slide1_sub"),
       ctaLabel: t("hero.cta_explore"),
       ctaHref: "#just-landed",
-      mediaUrl: "/shg-women-textiles.jpg",
-      alt: "Indian rural women self-help group artisans weaving on traditional looms",
+      mediaUrl: "/shg-women-proud.jpg",
+      alt: "Rural Indian women self-help group members standing proud together side by side with folded hands",
     },
     {
       id: "slide-2",
@@ -117,16 +117,16 @@ export default function Home() {
                 sizes="100vw"
               />
 
-              {/* 90% TRANSPARENT BLACK OVERLAY FOR UNCOMPROMISED TEXT READABILITY */}
+              {/* REAPPLIED SEMI-TRANSPARENT BLACK OVERLAY FOR HIGH CONTRAST READABILITY */}
               <div
                 aria-hidden="true"
-                className="absolute inset-0 overlay-black-90"
+                className="absolute inset-0 overlay-hero-gradient pointer-events-none"
               />
 
               {/* Subtle Mandana art pattern on overlay */}
               <div 
                 aria-hidden="true"
-                className="absolute inset-0 bg-mandana-pattern opacity-15 mix-blend-overlay"
+                className="absolute inset-0 bg-mandana-pattern opacity-10 mix-blend-overlay pointer-events-none"
               />
             </div>
           ))}

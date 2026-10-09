@@ -17,18 +17,14 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Info */}
           <div className="sm:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-2.5 mb-3">
-              <div className="relative h-10 w-10 rounded-lg overflow-hidden border border-mist shadow-sm bg-black">
+            <Link href="/" className="inline-flex items-center mb-4">
+              <div className="relative h-11 w-32">
                 <Image
-                  src="/logo.png"
-                  alt="गांव - Gaanv Logo"
+                  src="/logo-dark.png"
+                  alt="Logo"
                   fill
-                  className="object-cover"
+                  className="object-contain object-left"
                 />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-[22px] text-ink font-normal leading-none">गांव</span>
-                <span className="font-mono text-[10px] text-brass uppercase tracking-[1.5px] font-medium leading-none mt-1">by mittilok</span>
               </div>
             </Link>
             <p className="text-[14px] text-stone leading-relaxed max-w-md">

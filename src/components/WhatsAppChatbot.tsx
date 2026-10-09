@@ -103,14 +103,14 @@ export function WhatsAppChatbot() {
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Open Gauri WhatsApp artisan sidebar"
-          className="relative group flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-[#25D366]"
+          className="relative group flex items-center justify-center w-14 h-14 rounded-full bg-[#241b14] text-[#f7f3ec] border-2 border-[#d4af37] shadow-2xl hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-[#d4af37]"
         >
           {isOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256">
               <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
             </svg>
           ) : (
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border border-[#d4af37]/60 shadow-md">
               <Image src="/gauri-avatar.jpg" alt="Gauri avatar" fill className="object-cover" />
             </div>
           )}
@@ -132,20 +132,20 @@ export function WhatsAppChatbot() {
         }`}
         aria-label="Artisan Chat Sidebar"
       >
-        {/* Sidebar Header */}
-        <div className="p-4 sm:p-5 bg-bone border-b border-mist flex items-center justify-between">
+        {/* Sidebar Header in Brown & Cream */}
+        <div className="p-4 sm:p-5 bg-[#241b14] text-[#f7f3ec] border-b border-[#382b20] flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brass shadow-md">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#d4af37] shadow-md">
               <Image src="/gauri-avatar.jpg" alt="Gauri avatar" fill className="object-cover" />
             </div>
             <div>
-              <h3 className="font-serif text-[18px] text-ink font-semibold leading-tight flex items-center gap-2">
+              <h3 className="font-serif text-[18px] text-[#f7f3ec] font-semibold leading-tight flex items-center gap-2">
                 {t("chat.title")}
-                <span className="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-600/40 px-2 py-0.5 rounded-pill font-mono">
+                <span className="text-[10px] bg-[#1a130e] text-[#d4af37] border border-[#d4af37]/40 px-2 py-0.5 rounded-pill font-mono">
                   {lang === "hi" ? "सखी" : "Verified Guide"}
                 </span>
               </h3>
-              <p className="text-[12px] text-brass flex items-center gap-1.5 mt-0.5">
+              <p className="text-[12px] text-[#d4af37] flex items-center gap-1.5 mt-0.5">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
                 {t("chat.online")}
               </p>
@@ -155,7 +155,7 @@ export function WhatsAppChatbot() {
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="text-stone hover:text-ink p-2 rounded-lg transition-colors border border-mist/40"
+            className="text-[#a89a88] hover:text-[#f7f3ec] p-2 rounded-lg transition-colors border border-[#382b20]"
             aria-label="Close sidebar chat"
           >
             ✕

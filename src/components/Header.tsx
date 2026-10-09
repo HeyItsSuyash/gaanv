@@ -54,28 +54,20 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Official Gaav Logo Image */}
+          {/* Official Gaav Logo Glyph without box background or text */}
           <Link
             href="/"
-            aria-label="Gaanv by Mittilok home"
-            className="inline-flex items-center gap-2.5 focus-visible:outline-madder py-1"
+            aria-label="Home"
+            className="inline-flex items-center focus-visible:outline-madder py-1"
           >
-            <div className="relative h-10 w-10 sm:h-11 sm:w-11 rounded-lg overflow-hidden border border-[#524132] shadow-sm bg-black">
+            <div className="relative h-10 w-28 sm:h-12 sm:w-32">
               <Image
-                src="/logo.png"
-                alt="गांव - Gaanv Logo"
+                src="/logo-cream.png"
+                alt="Logo"
                 fill
                 priority
-                className="object-cover"
+                className="object-contain object-left"
               />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif text-[20px] sm:text-[22px] font-normal tracking-[-0.5px] text-[#f7f3ec] leading-none">
-                गांव
-              </span>
-              <span className="font-mono text-[10px] text-[#d4af37] uppercase tracking-[1.5px] font-medium leading-none mt-1">
-                by mittilok
-              </span>
             </div>
           </Link>
         </div>

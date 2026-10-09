@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 
 export function CheckoutModal() {
@@ -44,7 +45,9 @@ export function CheckoutModal() {
           </button>
 
           <div className="mb-6 border-b border-mist pb-4">
-            <span className="font-serif text-[36px] text-ink block mb-1">gaanv</span>
+            <div className="relative h-9 w-28 mb-1">
+              <Image src="/logo-dark.png" alt="Logo" fill className="object-contain object-left" />
+            </div>
             <h3 className="font-serif text-h3 text-ink">Secure International Checkout</h3>
             <p className="text-body-sm text-stone mt-1">
               Guaranteed escrow delivery · Direct to maker payout

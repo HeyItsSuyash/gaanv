@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 
 export function BecomeSellerModal() {
@@ -36,8 +37,10 @@ export function BecomeSellerModal() {
           </button>
 
           <div className="mb-6">
-            <span className="font-serif text-[36px] text-ink block mb-1">gaanv</span>
-            <h3 className="font-serif text-h2 text-ink">Sell on gaanv</h3>
+            <div className="relative h-9 w-28 mb-1">
+              <Image src="/logo-dark.png" alt="Logo" fill className="object-contain object-left" />
+            </div>
+            <h3 className="font-serif text-h2 text-ink">Sell on the Platform</h3>
             <p className="text-body-sm text-stone mt-1">
               Join India&#39;s global rural cohort. Every maker verified, every price clear,
               direct payment escrow protection.
