@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -16,9 +17,19 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {/* Brand Info */}
           <div className="sm:col-span-2">
-            <Link href="/" className="inline-flex items-baseline gap-1.5 mb-3">
-              <span className="font-serif text-[28px] text-ink font-normal lowercase">gaanv</span>
-              <span className="font-mono text-[11px] text-brass uppercase tracking-[1.5px] font-medium">by mittilok</span>
+            <Link href="/" className="inline-flex items-center gap-2.5 mb-3">
+              <div className="relative h-10 w-10 rounded-lg overflow-hidden border border-mist shadow-sm bg-black">
+                <Image
+                  src="/logo.png"
+                  alt="गांव - Gaanv Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-serif text-[22px] text-ink font-normal leading-none">गांव</span>
+                <span className="font-mono text-[10px] text-brass uppercase tracking-[1.5px] font-medium leading-none mt-1">by mittilok</span>
+              </div>
             </Link>
             <p className="text-[14px] text-stone leading-relaxed max-w-md">
               {t("footer.desc")}

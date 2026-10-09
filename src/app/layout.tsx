@@ -39,8 +39,12 @@ export const metadata: Metadata = {
     "A dark, rich celebration of India's rural women self-help groups, generational terracotta potters, handlooms, and GI certified heritage crafts.",
   applicationName: "Gaanv by Mittilok",
   icons: {
-    icon: "/icon.svg",
-    apple: "/icon.svg",
+    icon: [
+      { url: "/favicon.png", type: "image/png" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/logo.png",
   },
   openGraph: {
     title: "Gaanv by Mittilok — Rural Women SHG Crafts",

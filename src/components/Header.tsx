@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
@@ -28,8 +29,8 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-colors duration-200 bg-bone border-b ${
-        isScrolled ? "border-mist shadow-xl shadow-black/50" : "border-mist"
+      className={`sticky top-0 z-40 transition-colors duration-200 bg-[#241b14] border-b ${
+        isScrolled ? "border-[#1a130e] shadow-xl shadow-black/30" : "border-[#382b20]"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 md:px-8">
@@ -38,7 +39,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-ink -ms-1 inline-flex h-11 w-11 items-center justify-center md:hidden"
+            className="text-[#f7f3ec] -ms-1 inline-flex h-11 w-11 items-center justify-center md:hidden"
             aria-label="Open menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -53,46 +54,57 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Gaanv by Mittilok Wordmark */}
+          {/* Official Gaav Logo Image */}
           <Link
             href="/"
             aria-label="Gaanv by Mittilok home"
-            className="inline-flex items-baseline gap-1.5 focus-visible:outline-madder"
+            className="inline-flex items-center gap-2.5 focus-visible:outline-madder py-1"
           >
-            <span className="font-serif text-[26px] sm:text-[30px] font-normal tracking-[-0.5px] text-ink lowercase">
-              gaanv
-            </span>
-            <span className="font-mono text-[11px] text-brass uppercase tracking-[1.5px] font-medium">
-              by mittilok
-            </span>
+            <div className="relative h-10 w-10 sm:h-11 sm:w-11 rounded-lg overflow-hidden border border-[#524132] shadow-sm bg-black">
+              <Image
+                src="/logo.png"
+                alt="गांव - Gaanv Logo"
+                fill
+                priority
+                className="object-cover"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className="font-serif text-[20px] sm:text-[22px] font-normal tracking-[-0.5px] text-[#f7f3ec] leading-none">
+                गांव
+              </span>
+              <span className="font-mono text-[10px] text-[#d4af37] uppercase tracking-[1.5px] font-medium leading-none mt-1">
+                by mittilok
+              </span>
+            </div>
           </Link>
         </div>
 
-        {/* Center Editorial Navigation */}
+        {/* Center Editorial Navigation on Brown Navbar */}
         <div className="hidden md:flex items-center gap-6 text-[14px]">
           <Link
             href="/explore-products"
-            className="text-ink-soft hover:text-ink transition-colors font-medium"
+            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.explore")}
           </Link>
           <Link
             href="/#women-shg"
-            className="text-ink-soft hover:text-ink transition-colors font-medium flex items-center gap-1.5"
+            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium flex items-center gap-1.5"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-madder inline-block" />
+            <span className="w-1.5 h-1.5 rounded-full bg-[#d96b52] inline-block" />
             {t("nav.women_shg")}
           </Link>
           <Link
             href="/#gi-treasures"
-            className="text-ink-soft hover:text-ink transition-colors font-medium"
+            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.gi_crafts")}
           </Link>
           <button
             type="button"
             onClick={() => setIsSellerModalOpen(true)}
-            className="text-ink-soft hover:text-ink transition-colors font-medium"
+            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.sell")}
           </button>
@@ -100,23 +112,23 @@ export function Header() {
 
         {/* Right Action Icons & Language Toggle */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Hindi / English Language Switcher Toggle (no emojis) */}
+          {/* Hindi / English Language Switcher Toggle */}
           <button
             type="button"
             onClick={toggleLang}
             aria-label="Toggle language between English and Hindi"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-pill border border-mist bg-paper hover:bg-bone-d text-xs font-medium text-ink transition-all active:scale-95 shadow-sm"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-pill border border-[#524132] bg-[#2e231a] hover:bg-[#382b20] text-xs font-medium text-[#f7f3ec] transition-all active:scale-95 shadow-sm"
           >
-            <span className={lang === "hi" ? "font-bold text-brass" : "text-stone"}>हिन्दी</span>
-            <span className="text-mist">/</span>
-            <span className={lang === "en" ? "font-bold text-brass" : "text-stone"}>EN</span>
+            <span className={lang === "hi" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>हिन्दी</span>
+            <span className="text-[#524132]">/</span>
+            <span className={lang === "en" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>EN</span>
           </button>
 
           {/* Search Trigger */}
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
-            className="text-ink hover:text-brass inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
+            className="text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
             aria-label="Search rural crafts"
           >
             <svg
@@ -134,7 +146,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsLoginOpen(true)}
-            className="text-ink hover:text-brass inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
+            className="text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
             aria-label="Account"
           >
             <svg
@@ -152,7 +164,7 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsCartOpen(true)}
-            className="relative text-ink hover:text-brass inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
+            className="relative text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
             aria-label="View shopping bag"
           >
             <svg
@@ -165,7 +177,7 @@ export function Header() {
               <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"></path>
             </svg>
             {cartCount > 0 && (
-              <span className="absolute top-1 end-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-madder text-[10px] font-bold text-white">
+              <span className="absolute top-1 end-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#9b3d2b] text-[10px] font-bold text-white">
                 {cartCount}
               </span>
             )}
@@ -175,27 +187,27 @@ export function Header() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-mist bg-bone px-6 py-5 shadow-2xl">
+        <div className="md:hidden border-t border-[#382b20] bg-[#241b14] px-6 py-5 shadow-2xl">
           <div className="flex flex-col gap-4 text-[15px] font-medium">
             <Link
               href="/explore-products"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-ink hover:text-brass py-1"
+              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
             >
               {t("nav.explore")}
             </Link>
             <Link
               href="/#women-shg"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-ink hover:text-brass py-1 flex items-center gap-2"
+              className="text-[#f7f3ec] hover:text-[#d4af37] py-1 flex items-center gap-2"
             >
-              <span className="w-2 h-2 rounded-full bg-madder inline-block" />
+              <span className="w-2 h-2 rounded-full bg-[#d96b52] inline-block" />
               {t("nav.women_shg")}
             </Link>
             <Link
               href="/#gi-treasures"
               onClick={() => setMobileMenuOpen(false)}
-              className="text-ink hover:text-brass py-1"
+              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
             >
               {t("nav.gi_crafts")}
             </Link>
@@ -205,7 +217,7 @@ export function Header() {
                 setMobileMenuOpen(false);
                 setIsSellerModalOpen(true);
               }}
-              className="text-left text-ink hover:text-brass py-1"
+              className="text-left text-[#f7f3ec] hover:text-[#d4af37] py-1"
             >
               {t("nav.sell")}
             </button>

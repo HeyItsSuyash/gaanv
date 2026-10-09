@@ -3,32 +3,37 @@
 @tailwind utilities;
 
 :root {
-  /* Refined warm charcoal & earthen dark shades - soft on the eyes, not pitch black */
-  --color-bone: #181512;          /* Rich warm earthen charcoal base */
-  --color-bone-d: #211c17;        /* Subtle warm card ground */
-  --color-paper: #28221b;         /* Container & modal surface */
-  --color-mist: #42382e;          /* Muted crisp border dividers */
-  --color-stone: #b5a795;         /* Subhead & secondary readable text */
+  /* Rich, warm cream theme with earthy terracotta and heritage minerals */
+  --color-bone: #f7f3ec;          /* Luxurious warm cream base surface */
+  --color-bone-d: #eee8dc;        /* Slightly deeper warm cream ground */
+  --color-paper: #ffffff;         /* Pure crisp container & card background */
+  --color-mist: #ddd4c4;          /* Soft earthen dividers */
+  --color-stone: #6e6456;         /* Secondary readable editorial text */
   
   /* Text & Inks */
-  --color-ink: #fbf7ee;           /* Clear warm cream text */
-  --color-ink-soft: #e5dccc;      /* High contrast body text */
+  --color-ink: #1a1510;           /* High contrast deep charcoal-brown headline ink */
+  --color-ink-soft: #2e261f;      /* High contrast rich body text */
+
+  /* Navbar specific rich earthen brown */
+  --color-nav-brown: #241b14;     /* Deep royal earthen brown */
+  --color-nav-brown-d: #1a130e;   /* Dark chocolate border divider */
+  --color-nav-text: #f7f3ec;      /* Warm cream text on brown navbar */
 
   /* Natural Dye & Heritage Minerals */
-  --color-madder: #d96b52;        /* Vibrant terra-cotta red accent */
-  --color-madder-l: #2b1814;      /* Deep dark madder tint */
-  --color-clay-l: #291e17;
-  --color-brass: #d4af37;         /* Antique brass gold */
-  --color-brass-l: #2a2211;
-  --color-sage: #8fa87e;          /* Herbal sage green */
-  --color-sage-l: #1a2416;
-  --color-indigo: #6b8ec9;        /* Royal indigo */
-  --color-indigo-d: #0d1726;
-  --color-indigo-l: #142033;
-  --color-amber: #e6a73c;         /* Marigold amber */
-  --color-amber-l: #2e1e07;
-  --color-brick: #c95147;
-  --color-brick-l: #2b1311;
+  --color-madder: #9b3d2b;        /* Traditional Madder root red */
+  --color-madder-l: #faeae6;      /* Soft Madder wash */
+  --color-clay-l: #f5ece5;
+  --color-brass: #967432;         /* Antique brass gold */
+  --color-brass-l: #f5eedb;
+  --color-sage: #566848;          /* Natural dyed sage */
+  --color-sage-l: #ebf0e6;
+  --color-indigo: #2c4263;        /* Natural indigo */
+  --color-indigo-d: #1b2d45;
+  --color-indigo-l: #e9eef5;
+  --color-amber: #b07019;         /* Marigold amber */
+  --color-amber-l: #faefda;
+  --color-brick: #a13d35;
+  --color-brick-l: #f7e6e4;
 
   /* Micro Radii */
   --radius-xs: 2px;
@@ -69,8 +74,8 @@ h1, h2, h3, h4 {
 }
 
 ::selection {
-  background-color: var(--color-madder);
-  color: #ffffff;
+  background-color: var(--color-madder-l);
+  color: var(--color-ink);
 }
 
 /* Background Pattern Overlays: Mandana & Warli Art */
@@ -86,16 +91,7 @@ h1, h2, h3, h4 {
   background-size: 160px 160px;
 }
 
-/* 90% Transparent Black Overlay for Maximum Readability */
-.overlay-black-90 {
-  background-color: rgba(10, 8, 6, 0.90);
-}
-
-.overlay-black-80 {
-  background-color: rgba(10, 8, 6, 0.80);
-}
-
-/* Custom Scrollbar for Dark Aesthetic */
+/* Custom Scrollbar for Cream Aesthetic */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -123,7 +119,7 @@ h1, h2, h3, h4 {
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
   animation: shimmer 1.5s infinite;
 }
 

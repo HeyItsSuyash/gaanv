@@ -134,26 +134,26 @@ export default function Home() {
           {/* Hero Content Overlay */}
           <div className="relative min-h-[560px] sm:h-[620px] md:h-[700px] pointer-events-none z-20 mx-auto flex max-w-[1280px] flex-col justify-end px-5 sm:px-6 pb-12 sm:pb-16 md:px-8 md:pb-20">
             <div className="pointer-events-auto max-w-2xl">
-              <span className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[2px] text-brass mb-3 font-mono">
-                <span className="w-2 h-2 rounded-full bg-madder animate-pulse" />
+              <span className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[2px] text-[#e6c99c] mb-3 font-mono">
+                <span className="w-2 h-2 rounded-full bg-[#d96b52] animate-pulse" />
                 {t("hero.tag")}
               </span>
-              <h1 className="font-serif text-ink text-[32px] sm:text-[44px] md:text-[56px] leading-[1.08] tracking-[-1px] font-normal drop-shadow-md">
+              <h1 className="font-serif text-[#ffffff] text-[32px] sm:text-[44px] md:text-[56px] leading-[1.08] tracking-[-1px] font-normal drop-shadow-lg">
                 {HERO_SLIDES[currentSlide].headline}
               </h1>
-              <p className="text-ink-soft mt-4 max-w-xl font-serif text-[16px] sm:text-[18px] md:text-[21px] leading-relaxed drop-shadow">
+              <p className="text-[#f5eedc] mt-4 max-w-xl font-serif text-[16px] sm:text-[18px] md:text-[21px] leading-relaxed drop-shadow">
                 {HERO_SLIDES[currentSlide].subhead}
               </p>
               <div className="mt-6 sm:mt-8 flex flex-wrap gap-3">
                 <Link
                   href={HERO_SLIDES[currentSlide].ctaHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-brass hover:bg-[#e6a73c] text-[#14110c] h-12 sm:h-14 px-7 sm:px-8 text-[15px] sm:text-[16px] shadow-lg shadow-black/60"
+                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] border border-[#524132] h-12 sm:h-14 px-7 sm:px-8 text-[15px] sm:text-[16px] shadow-xl"
                 >
                   {HERO_SLIDES[currentSlide].ctaLabel}
                 </Link>
                 <a
                   href="#women-shg"
-                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-paper/90 hover:bg-paper text-ink border border-mist h-12 sm:h-14 px-6 text-[15px]"
+                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-paper/95 hover:bg-paper text-ink border border-mist h-12 sm:h-14 px-6 text-[15px] shadow-md"
                 >
                   {t("hero.cta_shg")}
                 </a>
