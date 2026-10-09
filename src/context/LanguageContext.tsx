@@ -15,7 +15,7 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Nav
     "nav.brand": "gaanv by mittilok",
-    "nav.explore": "Explore Haat",
+    "nav.explore": "Explore Gaanv",
     "nav.women_shg": "Women SHGs",
     "nav.gi_crafts": "GI Heritage",
     "nav.about": "Our Village Roots",
@@ -77,7 +77,7 @@ const translations: Record<Language, Record<string, string>> = {
     "chat.title": "Gauri from Gaanv",
     "chat.subtitle": "Your friendly rural artisan guide",
     "chat.online": "Online • Replies in seconds",
-    "chat.welcome": "Namaste! 🙏 I'm Gauri. How can I help you support our rural women SHG artisans today?",
+    "chat.welcome": "Namaste! I am Gauri. How can I help you support our rural women SHG artisans today?",
     "chat.opt1": "Show authentic GI certified crafts",
     "chat.opt2": "How does Gaanv support women SHGs?",
     "chat.opt3": "Track an international order",
@@ -155,7 +155,7 @@ const translations: Record<Language, Record<string, string>> = {
     "chat.title": "गौरी (गाँव सखी)",
     "chat.subtitle": "आपकी सहयोगी ग्रामीण शिल्प मार्गदर्शक",
     "chat.online": "ऑनलाइन • तुरंत उत्तर",
-    "chat.welcome": "नमस्ते! 🙏 मैं गौरी हूँ। आज हमारे ग्रामीण महिला स्वयं सहायता समूहों के शिल्पों में मैं आपकी क्या मदद कर सकती हूँ?",
+    "chat.welcome": "नमस्ते! मैं गौरी हूँ। आज हमारे ग्रामीण महिला स्वयं सहायता समूहों के शिल्पों में मैं आपकी क्या मदद कर सकती हूँ?",
     "chat.opt1": "जीआई प्रमाणित असली हस्तशिल्प दिखाएँ",
     "chat.opt2": "गाँव महिला समूहों की सहायता कैसे करता है?",
     "chat.opt3": "अंतरराष्ट्रीय ऑर्डर ट्रैक करें",

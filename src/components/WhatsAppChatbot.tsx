@@ -1,24 +1,34 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 
 export function WhatsAppChatbot() {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Array<{ sender: "bot" | "user"; text: string; time: string }>>([
-    {
-      sender: "bot",
-      text: t("chat.welcome"),
-      time: "Just now",
-    },
-  ]);
+  const [messages, setMessages] = useState<Array<{ sender: "bot" | "user"; text: string; time: string }>>([]);
   const [inputVal, setInputVal] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize first welcome message
+  useEffect(() => {
+    setMessages([
+      {
+        sender: "bot",
+        text: t("chat.welcome"),
+        time: "Just now",
+      },
+    ]);
+  }, [lang, t]);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isOpen]);
 
   const handleSend = (textToSend?: string) => {
-    const text = textToSend || inputVal;
-    if (!text.trim()) return;
+    const text = (textToSend || inputVal).trim();
+    if (!text) return;
 
     const newTime = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     const userMsg = { sender: "user" as const, text, time: newTime };
@@ -54,7 +64,7 @@ export function WhatsAppChatbot() {
           time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
         },
       ]);
-    }, 600);
+    }, 450);
   };
 
   const openWhatsAppDirect = () => {
@@ -68,172 +78,177 @@ export function WhatsAppChatbot() {
 
   return (
     <>
-      {/* Floating Trigger Button */}
-      <div className="fixed bottom-5 end-5 z-50 flex items-center gap-3">
+      {/* Floating Trigger Button on bottom-right */}
+      <div className="fixed bottom-6 end-6 z-50 flex items-center gap-3">
         {!isOpen && (
-          <div
+          <button
+            type="button"
             onClick={() => setIsOpen(true)}
-            className="cursor-pointer hidden sm:flex items-center gap-2.5 bg-[#14120e] text-[#f5eedc] border border-[#a88b5c]/40 px-3.5 py-2 rounded-full shadow-2xl animate-fade-in hover:border-[#a88b5c] transition-all"
+            className="cursor-pointer hidden sm:flex items-center gap-2.5 bg-paper text-ink border border-mist px-3.5 py-2 rounded-pill shadow-2xl hover:border-brass transition-all duration-200"
           >
-            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-[#a88b5c]">
+            <div className="relative w-8 h-8 rounded-full overflow-hidden border border-brass">
               <Image src="/gauri-avatar.jpg" alt="Gauri" fill className="object-cover" />
             </div>
             <div className="text-left text-xs leading-tight">
-              <span className="font-serif font-bold text-[#f5eedc] block">{t("chat.title")}</span>
-              <span className="text-[#a88b5c] text-[10px] flex items-center gap-1">
+              <span className="font-serif font-bold text-ink block">{t("chat.title")}</span>
+              <span className="text-brass text-[10px] flex items-center gap-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse inline-block" />
-                {lang === "hi" ? "व्हाट्सएप सहायता" : "Artisan Help"}
+                {lang === "hi" ? "सखी सहायता" : "Artisan Help"}
               </span>
             </div>
-          </div>
+          </button>
         )}
 
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Open WhatsApp artisan chat"
+          aria-label="Open Gauri WhatsApp artisan sidebar"
           className="relative group flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-2xl hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-[#25D366]"
         >
           {isOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256">
               <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
             </svg>
           ) : (
-            <>
-              {/* Avatar circle thumbnail overlapping WhatsApp Icon */}
-              <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
-                <Image src="/gauri-avatar.jpg" alt="Gauri avatar" fill className="object-cover" />
-              </div>
-              <span className="absolute -top-1 -end-1 w-5 h-5 bg-[#25D366] rounded-full border-2 border-[#12100d] flex items-center justify-center text-[10px] text-white font-bold">
-                ✓
-              </span>
-            </>
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
+              <Image src="/gauri-avatar.jpg" alt="Gauri avatar" fill className="object-cover" />
+            </div>
           )}
         </button>
       </div>
 
-      {/* Chat Window */}
+      {/* Dimmed backdrop when sidebar is open */}
       {isOpen && (
-        <div className="fixed bottom-22 end-4 sm:end-6 z-50 w-[92vw] sm:w-[380px] max-w-[420px] rounded-2xl bg-[#14120e] text-[#f5eedc] border border-[#a88b5c]/30 shadow-2xl overflow-hidden flex flex-col font-sans transition-all animate-in fade-in slide-in-from-bottom-5">
-          {/* Header with Warli pattern overlay */}
-          <div className="relative p-4 bg-[#1f1a14] border-b border-[#a88b5c]/20 flex items-center justify-between">
-            <div className="absolute inset-0 bg-warli opacity-10 pointer-events-none" />
-            <div className="relative z-10 flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-full overflow-hidden border-2 border-[#a88b5c] shadow-md">
-                <Image src="/gauri-avatar.jpg" alt="Gauri" fill className="object-cover" />
-              </div>
-              <div>
-                <h4 className="font-serif text-[17px] text-[#f5eedc] font-semibold leading-tight flex items-center gap-2">
-                  {t("chat.title")}
-                  <span className="text-[10px] bg-emerald-900/60 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.5 rounded-full font-sans font-normal">
-                    {lang === "hi" ? "सखी" : "Verified Guide"}
-                  </span>
-                </h4>
-                <p className="text-[12px] text-[#a88b5c] flex items-center gap-1.5 mt-0.5">
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
-                  {t("chat.online")}
-                </p>
-              </div>
-            </div>
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-50 bg-black/60 transition-opacity"
+        />
+      )}
 
-            <button
-              type="button"
-              onClick={() => setIsOpen(false)}
-              className="relative z-10 text-[#a88b5c] hover:text-[#f5eedc] p-1.5 rounded-lg transition-colors"
-              aria-label="Close chat"
-            >
-              ✕
-            </button>
+      {/* Smooth Sliding Sidebar Drawer from right edge */}
+      <aside
+        className={`fixed inset-y-0 end-0 z-50 w-full sm:w-[400px] max-w-full bg-paper border-s border-mist text-ink shadow-2xl flex flex-col font-sans transform transition-transform duration-300 ease-out ${
+          isOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
+        }`}
+        aria-label="Artisan Chat Sidebar"
+      >
+        {/* Sidebar Header */}
+        <div className="p-4 sm:p-5 bg-bone border-b border-mist flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-brass shadow-md">
+              <Image src="/gauri-avatar.jpg" alt="Gauri avatar" fill className="object-cover" />
+            </div>
+            <div>
+              <h3 className="font-serif text-[18px] text-ink font-semibold leading-tight flex items-center gap-2">
+                {t("chat.title")}
+                <span className="text-[10px] bg-emerald-950 text-emerald-300 border border-emerald-600/40 px-2 py-0.5 rounded-pill font-mono">
+                  {lang === "hi" ? "सखी" : "Verified Guide"}
+                </span>
+              </h3>
+              <p className="text-[12px] text-brass flex items-center gap-1.5 mt-0.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse" />
+                {t("chat.online")}
+              </p>
+            </div>
           </div>
 
-          {/* Messages list */}
-          <div className="p-4 flex-1 h-[320px] overflow-y-auto space-y-3 bg-[#0e0c09] relative">
-            <div className="absolute inset-0 bg-mandana opacity-5 pointer-events-none" />
-            {messages.map((msg, i) => (
+          <button
+            type="button"
+            onClick={() => setIsOpen(false)}
+            className="text-stone hover:text-ink p-2 rounded-lg transition-colors border border-mist/40"
+            aria-label="Close sidebar chat"
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Messages Stream */}
+        <div className="p-4 sm:p-5 flex-1 overflow-y-auto space-y-3.5 bg-bone-d">
+          {messages.map((msg, i) => (
+            <div
+              key={i}
+              className={`flex flex-col ${
+                msg.sender === "user" ? "items-end" : "items-start"
+              }`}
+            >
               <div
-                key={i}
-                className={`relative z-10 flex flex-col ${
-                  msg.sender === "user" ? "items-end" : "items-start"
+                className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] leading-relaxed shadow-sm ${
+                  msg.sender === "user"
+                    ? "bg-madder text-white rounded-br-none"
+                    : "bg-paper text-ink border border-mist rounded-bl-none"
                 }`}
               >
-                <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[13px] leading-relaxed ${
-                    msg.sender === "user"
-                      ? "bg-[#8b4a3c] text-[#ffffff] rounded-br-none"
-                      : "bg-[#1c1813] text-[#f5eedc] border border-[#a88b5c]/25 rounded-bl-none shadow"
-                  }`}
-                >
-                  {msg.text}
-                </div>
-                <span className="text-[10px] text-[#7a7268] mt-1 px-1">{msg.time}</span>
+                {msg.text}
               </div>
-            ))}
-
-            {/* Quick action buttons */}
-            <div className="relative z-10 pt-2 flex flex-col gap-1.5">
-              <button
-                type="button"
-                onClick={() => handleSend(t("chat.opt1"))}
-                className="text-left text-[12px] bg-[#1a1611] hover:bg-[#252018] text-[#e0cda7] border border-[#a88b5c]/30 rounded-xl px-3 py-1.5 transition-colors"
-              >
-                ✨ {t("chat.opt1")}
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend(t("chat.opt2"))}
-                className="text-left text-[12px] bg-[#1a1611] hover:bg-[#252018] text-[#e0cda7] border border-[#a88b5c]/30 rounded-xl px-3 py-1.5 transition-colors"
-              >
-                🤝 {t("chat.opt2")}
-              </button>
-              <button
-                type="button"
-                onClick={() => handleSend(t("chat.opt3"))}
-                className="text-left text-[12px] bg-[#1a1611] hover:bg-[#252018] text-[#e0cda7] border border-[#a88b5c]/30 rounded-xl px-3 py-1.5 transition-colors"
-              >
-                📦 {t("chat.opt3")}
-              </button>
+              <span className="text-[10px] text-stone mt-1 px-1">{msg.time}</span>
             </div>
-          </div>
+          ))}
+          <div ref={messagesEndRef} />
 
-          {/* WhatsApp Direct Action Button */}
-          <div className="px-4 py-2 bg-[#17130e] border-t border-[#a88b5c]/20">
+          {/* Quick Guidance Prompt Buttons (No emojis) */}
+          <div className="pt-2 flex flex-col gap-2">
             <button
               type="button"
-              onClick={openWhatsAppDirect}
-              className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[13px] font-medium py-2 rounded-xl transition-all shadow-md active:scale-98"
+              onClick={() => handleSend(t("chat.opt1"))}
+              className="text-left text-xs bg-paper hover:bg-bone text-ink border border-mist hover:border-brass/50 rounded-xl px-3.5 py-2 transition-colors"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
-                <path d="M187.58,144.84l-25-12a16.14,16.14,0,0,0-17.72,3.13l-8.68,8.69a94.84,94.84,0,0,1-40.82-40.82l8.69-8.68a16.15,16.15,0,0,0,3.13-17.72l-12-25A16.16,16.16,0,0,0,79.8,42a48,48,0,0,0-47.56,51.8,175.7,175.7,0,0,0,129.9,130A48,48,0,0,0,214,176.2,16.16,16.16,0,0,0,187.58,144.84Z"/>
-              </svg>
-              {t("chat.whatsapp_btn")}
+              • {t("chat.opt1")}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSend(t("chat.opt2"))}
+              className="text-left text-xs bg-paper hover:bg-bone text-ink border border-mist hover:border-brass/50 rounded-xl px-3.5 py-2 transition-colors"
+            >
+              • {t("chat.opt2")}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSend(t("chat.opt3"))}
+              className="text-left text-xs bg-paper hover:bg-bone text-ink border border-mist hover:border-brass/50 rounded-xl px-3.5 py-2 transition-colors"
+            >
+              • {t("chat.opt3")}
             </button>
           </div>
-
-          {/* Chat Input */}
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSend();
-            }}
-            className="p-3 bg-[#130f0a] border-t border-[#a88b5c]/20 flex items-center gap-2"
-          >
-            <input
-              type="text"
-              value={inputVal}
-              onChange={(e) => setInputVal(e.target.value)}
-              placeholder={t("chat.input_placeholder")}
-              className="flex-1 bg-[#1d1913] text-[#f5eedc] text-[13px] rounded-lg px-3 py-2 border border-[#a88b5c]/30 focus:border-[#a88b5c] focus:outline-none placeholder-[#7a7268]"
-            />
-            <button
-              type="submit"
-              disabled={!inputVal.trim()}
-              className="bg-[#8b4a3c] disabled:opacity-40 hover:bg-[#a8423a] text-white rounded-lg px-3.5 py-2 text-xs font-medium transition-colors"
-            >
-              {t("chat.send")}
-            </button>
-          </form>
         </div>
-      )}
+
+        {/* WhatsApp Direct Action Hand-off */}
+        <div className="p-4 bg-bone border-t border-mist">
+          <button
+            type="button"
+            onClick={openWhatsAppDirect}
+            className="w-full flex items-center justify-center gap-2.5 bg-[#25D366] hover:bg-[#20ba59] text-white text-[14px] font-medium py-2.5 rounded-button transition-all shadow-md active:scale-98"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+              <path d="M187.58,144.84l-25-12a16.14,16.14,0,0,0-17.72,3.13l-8.68,8.69a94.84,94.84,0,0,1-40.82-40.82l8.69-8.68a16.15,16.15,0,0,0,3.13-17.72l-12-25A16.16,16.16,0,0,0,79.8,42a48,48,0,0,0-47.56,51.8,175.7,175.7,0,0,0,129.9,130A48,48,0,0,0,214,176.2,16.16,16.16,0,0,0,187.58,144.84Z"/>
+            </svg>
+            {t("chat.whatsapp_btn")}
+          </button>
+        </div>
+
+        {/* Sidebar Input Form */}
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSend();
+          }}
+          className="p-3.5 bg-paper border-t border-mist flex items-center gap-2"
+        >
+          <input
+            type="text"
+            value={inputVal}
+            onChange={(e) => setInputVal(e.target.value)}
+            placeholder={t("chat.input_placeholder")}
+            className="flex-1 bg-bone-d text-ink text-[13px] rounded-input px-3.5 py-2.5 border border-mist focus:border-brass focus:outline-none placeholder-stone"
+          />
+          <button
+            type="submit"
+            disabled={!inputVal.trim()}
+            className="bg-brass hover:bg-amber text-[#14110c] disabled:opacity-40 rounded-button px-4 py-2.5 text-xs font-semibold transition-colors"
+          >
+            {t("chat.send")}
+          </button>
+        </form>
+      </aside>
     </>
   );
 }

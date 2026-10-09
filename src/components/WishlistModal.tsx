@@ -23,7 +23,7 @@ export function WishlistModal() {
         <div className="relative w-full max-w-xl transform overflow-hidden rounded-card bg-paper border border-mist p-6 md:p-8 text-left shadow-2xl transition-all">
           <div className="flex items-center justify-between mb-6 border-b border-mist pb-4">
             <div>
-              <span className="font-serif text-[32px] text-ink block mb-0.5">haat</span>
+              <span className="font-serif text-[32px] text-ink block mb-0.5">gaanv</span>
               <h3 className="font-serif text-h3 text-ink">Saved Pieces ({savedProducts.length})</h3>
             </div>
             <button

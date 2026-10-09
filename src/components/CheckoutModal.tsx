@@ -44,7 +44,7 @@ export function CheckoutModal() {
           </button>
 
           <div className="mb-6 border-b border-mist pb-4">
-            <span className="font-serif text-[36px] text-ink block mb-1">haat</span>
+            <span className="font-serif text-[36px] text-ink block mb-1">gaanv</span>
             <h3 className="font-serif text-h3 text-ink">Secure International Checkout</h3>
             <p className="text-body-sm text-stone mt-1">
               Guaranteed escrow delivery · Direct to maker payout
@@ -68,7 +68,7 @@ export function CheckoutModal() {
                 }}
                 className="bg-ink text-paper hover:bg-ink-soft rounded-button px-6 py-2.5 text-body-sm font-medium transition-colors"
               >
-                Back to the haat
+                Back to the Gaon
               </button>
             </div>
           ) : (

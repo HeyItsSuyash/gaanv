@@ -28,8 +28,8 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-colors duration-200 bg-bone/95 backdrop-none border-b ${
-        isScrolled ? "border-mist shadow-lg shadow-black/40" : "border-mist/40"
+      className={`sticky top-0 z-40 transition-colors duration-200 bg-bone border-b ${
+        isScrolled ? "border-mist shadow-xl shadow-black/50" : "border-mist"
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 md:px-8">
@@ -100,14 +100,13 @@ export function Header() {
 
         {/* Right Action Icons & Language Toggle */}
         <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Hindi / English Language Switcher Toggle */}
+          {/* Hindi / English Language Switcher Toggle (no emojis) */}
           <button
             type="button"
             onClick={toggleLang}
             aria-label="Toggle language between English and Hindi"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-pill border border-mist bg-paper hover:bg-bone-d text-xs font-medium text-ink transition-all active:scale-95 shadow-sm"
           >
-            <span className="text-[13px]">🌐</span>
             <span className={lang === "hi" ? "font-bold text-brass" : "text-stone"}>हिन्दी</span>
             <span className="text-mist">/</span>
             <span className={lang === "en" ? "font-bold text-brass" : "text-stone"}>EN</span>

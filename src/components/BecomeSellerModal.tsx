@@ -36,10 +36,10 @@ export function BecomeSellerModal() {
           </button>
 
           <div className="mb-6">
-            <span className="font-serif text-[36px] text-ink block mb-1">haat</span>
-            <h3 className="font-serif text-h2 text-ink">Sell on haat</h3>
+            <span className="font-serif text-[36px] text-ink block mb-1">gaanv</span>
+            <h3 className="font-serif text-h2 text-ink">Sell on gaanv</h3>
             <p className="text-body-sm text-stone mt-1">
-              Join India&#39;s global export cohort. Every seller verified, every price clear,
+              Join India&#39;s global rural cohort. Every maker verified, every price clear,
               direct payment escrow protection.
             </p>
           </div>

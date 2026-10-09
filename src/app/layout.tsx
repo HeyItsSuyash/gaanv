@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gaanv by Mittilok — Rural Women SHG Crafts",
     description: "Authentic Indian village handicrafts by women self help groups.",
-    url: "https://haat.ganges.world",
+    url: "https://gaanv.mittilok.in",
     siteName: "Gaanv by Mittilok",
     type: "website",
   },

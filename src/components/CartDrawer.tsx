@@ -49,7 +49,7 @@ export function CartDrawer() {
           <div className="flex-1 overflow-y-auto p-6">
             {cart.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-center py-12">
-                <span className="font-serif text-[48px] text-stone/40 mb-2">haat</span>
+                <span className="font-serif text-[48px] text-stone/40 mb-2">gaanv</span>
                 <p className="font-serif text-h4 text-ink mb-1">Your bag is empty</p>
                 <p className="text-body-sm text-stone max-w-xs mb-6">
                   Explore one-of-a-kind treasures handcrafted by verified artisans across India.

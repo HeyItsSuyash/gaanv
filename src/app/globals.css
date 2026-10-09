@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  /* Dark shade palette rooted in deep earthen tones & Indian soil */
-  --color-bone: #0f0d0a;          /* Deepest earthen night */
-  --color-bone-d: #18140f;        /* Rich dark terracotta ground */
-  --color-paper: #1c1813;         /* Card & modal container surface */
-  --color-mist: #383025;          /* Subtle border dividers */
-  --color-stone: #a89a88;         /* Subhead & secondary readable text */
+  /* Refined warm charcoal & earthen dark shades - soft on the eyes, not pitch black */
+  --color-bone: #181512;          /* Rich warm earthen charcoal base */
+  --color-bone-d: #211c17;        /* Subtle warm card ground */
+  --color-paper: #28221b;         /* Container & modal surface */
+  --color-mist: #42382e;          /* Muted crisp border dividers */
+  --color-stone: #b5a795;         /* Subhead & secondary readable text */
   
   /* Text & Inks */
-  --color-ink: #f7f2e7;           /* High contrast warm cream headline text */
-  --color-ink-soft: #ddd3c3;      /* High contrast primary body text */
+  --color-ink: #fbf7ee;           /* Clear warm cream text */
+  --color-ink-soft: #e5dccc;      /* High contrast body text */
 
   /* Natural Dye & Heritage Minerals */
   --color-madder: #d96b52;        /* Vibrant terra-cotta red accent */

@@ -41,7 +41,7 @@ export function LoginModal() {
 
           {user ? (
             <div className="text-center py-4">
-              <span className="font-serif text-[42px] text-ink block mb-2">haat</span>
+              <span className="font-serif text-[42px] text-ink block mb-2">gaanv</span>
               <h3 className="font-serif text-h3 text-ink mb-2">Welcome Back</h3>
               <p className="text-body-sm text-stone mb-6">
                 Logged in as {user.email || user.phone || user.name}
@@ -57,7 +57,7 @@ export function LoginModal() {
           ) : (
             <div>
               <div className="text-center mb-6">
-                <span className="font-serif text-[42px] text-ink block mb-1">haat</span>
+                <span className="font-serif text-[42px] text-ink block mb-1">gaanv</span>
                 <h3 className="font-serif text-h3 text-ink">Sign In to Your Account</h3>
                 <p className="text-body-sm text-stone mt-1">
                   Access your orders, saved pieces, and artisan updates.
@@ -66,7 +66,7 @@ export function LoginModal() {
 
               {submitted ? (
                 <div className="text-center py-6 text-sage font-medium text-body-sm">
-                  ✓ Successfully signed in. Welcome to haat.
+                  ✓ Successfully signed in. Welcome to gaanv.
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -96,7 +96,7 @@ export function LoginModal() {
                   </button>
 
                   <p className="text-center text-[12px] text-stone mt-2">
-                    By continuing, you agree to haat&apos;s Terms of Service and Privacy Policy.
+                    By continuing, you agree to gaanv&apos;s Terms of Service and Privacy Policy.
                   </p>
                 </form>
               )}

@@ -50,7 +50,7 @@ export function ProductQuickViewModal() {
                 <div className="mb-2 flex flex-wrap items-center gap-1.5">
                   <span className="inline-flex items-center gap-1 border-sage bg-sage-l text-sage border rounded-pill font-sans font-semibold tracking-[0.3px] px-2 py-0.5 text-[10px]">
                     <span aria-hidden="true" className="leading-none">✓</span>
-                    haat verified
+                    gaanv verified
                   </span>
                   <span className="inline-flex items-center gap-1.5 border-brass bg-brass-l text-brass border-[1.5px] rounded-xs font-serif font-medium uppercase tracking-[1.5px] px-2 py-0.5 text-[10px]">
                     <span aria-hidden="true" className="text-[0.7em] leading-none">◆</span>
