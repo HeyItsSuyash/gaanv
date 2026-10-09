@@ -9,71 +9,86 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
+        bone: {
+          DEFAULT: "var(--color-bone)",
+          d: "var(--color-bone-d)",
         },
-        secondary: {
-          DEFAULT: "var(--secondary)",
-          foreground: "var(--secondary-foreground)",
+        paper: "var(--color-paper)",
+        mist: "var(--color-mist)",
+        stone: "var(--color-stone)",
+        ink: {
+          DEFAULT: "var(--color-ink)",
+          soft: "var(--color-ink-soft)",
         },
-        accent: {
-          DEFAULT: "var(--accent)",
-          foreground: "var(--accent-foreground)",
+        madder: {
+          DEFAULT: "var(--color-madder)",
+          l: "var(--color-madder-l)",
         },
-        muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
+        clay: {
+          l: "var(--color-clay-l)",
         },
-        card: {
-          DEFAULT: "var(--card)",
-          foreground: "var(--card-foreground)",
+        brass: {
+          DEFAULT: "var(--color-brass)",
+          l: "var(--color-brass-l)",
         },
-        border: "var(--border)",
-        input: "var(--input)",
-        ring: "var(--ring)",
-        gold: "var(--gold)",
+        sage: {
+          DEFAULT: "var(--color-sage)",
+          l: "var(--color-sage-l)",
+        },
+        indigo: {
+          DEFAULT: "var(--color-indigo)",
+          d: "var(--color-indigo-d)",
+          l: "var(--color-indigo-l)",
+        },
+        amber: {
+          DEFAULT: "var(--color-amber)",
+          l: "var(--color-amber-l)",
+        },
+        brick: {
+          DEFAULT: "var(--color-brick)",
+          l: "var(--color-brick-l)",
+        },
       },
       fontFamily: {
-        sans: ["var(--font-dm-sans)", "sans-serif"],
-        serif: ["var(--font-fraunces)", "serif"],
-        devanagari: ["var(--font-devanagari)", "serif"],
+        sans: ["var(--font-inter)", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+        serif: ["var(--font-fraunces)", "Georgia", "Times New Roman", "serif"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+      },
+      borderRadius: {
+        xs: "var(--radius-xs)",
+        button: "var(--radius-button)",
+        input: "var(--radius-input)",
+        card: "var(--radius-card)",
+        pill: "var(--radius-pill)",
+      },
+      transitionTimingFunction: {
+        signature: "var(--ease-signature)",
       },
       fontSize: {
-        "hero-xl": ["clamp(2.5rem, 5.5vw, 4.25rem)", { lineHeight: "1.08" }],
-        "section-heading": ["clamp(1.85rem, 3.5vw, 2.75rem)", { lineHeight: "1.2" }],
-      },
-      boxShadow: {
-        earth: "0 4px 16px rgba(37, 35, 33, 0.08)",
-        "earth-sm": "0 2px 8px rgba(37, 35, 33, 0.06)",
-        "earth-lg": "0 16px 40px rgba(37, 35, 33, 0.12)",
-        "earth-xl": "0 24px 60px rgba(37, 35, 33, 0.15)",
-        terracotta: "0 8px 24px rgba(166, 93, 59, 0.35)",
+        hero: ["88px", { lineHeight: "0.95", letterSpacing: "-3px" }],
+        display: ["clamp(36px, 5vw + 1rem, 64px)", { lineHeight: "1.05", letterSpacing: "-1.5px" }],
+        h1: ["46px", { lineHeight: "1.1", letterSpacing: "-1px" }],
+        h2: ["34px", { lineHeight: "1.2", letterSpacing: "-0.5px" }],
+        h3: ["24px", { lineHeight: "1.3", letterSpacing: "-0.3px" }],
+        h4: ["17px", { lineHeight: "1.3", letterSpacing: "-0.1px" }],
+        "body-lg": ["18px", { lineHeight: "1.7" }],
+        body: ["16px", { lineHeight: "1.65" }],
+        "body-sm": ["14px", { lineHeight: "1.6" }],
+        caption: ["13px", { lineHeight: "1.5" }],
+        label: ["11px", { lineHeight: "1.4", letterSpacing: "2px" }],
+        price: ["44px", { lineHeight: "1", letterSpacing: "-1px" }],
       },
       animation: {
-        "fade-up": "fadeUp 0.6s ease-out forwards",
-        float: "float 4s ease-in-out infinite",
-        "float-badge": "floatBadge 5s ease-in-out infinite",
-        "float-slow": "floatSlow 3s ease-in-out infinite",
+        "marquee-scroll": "marquee-scroll 30s linear infinite",
+        shimmer: "shimmer 1.5s infinite",
       },
       keyframes: {
-        fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(20px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
+        "marquee-scroll": {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
-        float: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-8px)" },
-        },
-        floatBadge: {
-          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
-          "50%": { transform: "translateY(-6px) rotate(-1deg)" },
-        },
-        floatSlow: {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-4px)" },
+        shimmer: {
+          "100%": { transform: "translateX(100%)" },
         },
       },
     },

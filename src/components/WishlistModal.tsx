@@ -2,149 +2,97 @@
 
 import React from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { X, Heart, ShoppingBag, Trash2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { initialProducts } from "@/data/products";
 
-export const WishlistModal: React.FC = () => {
-  const {
-    isWishlistOpen,
-    setIsWishlistOpen,
-    wishlist,
-    toggleWishlist,
-    addToCart,
-    setQuickViewProduct,
-  } = useCart();
+export function WishlistModal() {
+  const { isWishlistOpen, setIsWishlistOpen, wishlist, toggleWishlist, addToCart } = useCart();
 
   if (!isWishlistOpen) return null;
 
-  const wishlistProducts = initialProducts.filter((p) => wishlist.includes(p.id));
+  const savedProducts = initialProducts.filter((p) => wishlist.includes(p.id));
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
-      {/* Backdrop */}
+    <div className="fixed inset-0 z-50 overflow-y-auto font-sans">
       <div
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity"
+        className="fixed inset-0 bg-ink/60 transition-opacity"
         onClick={() => setIsWishlistOpen(false)}
       />
 
-      <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-background shadow-earth-xl flex flex-col border-l border-border">
-          {/* Header */}
-          <div className="p-5 border-b border-border flex items-center justify-between bg-card">
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary">
-                <Heart size={18} className="fill-primary" />
-              </div>
-              <div>
-                <h3 className="font-serif font-bold text-secondary text-lg">Your Wishlist</h3>
-                <p className="text-xs text-muted-foreground">
-                  {wishlist.length} {wishlist.length === 1 ? "saved craft" : "saved crafts"}
-                </p>
-              </div>
+      <div className="flex min-h-full items-center justify-center p-4">
+        <div className="relative w-full max-w-xl transform overflow-hidden rounded-card bg-paper border border-mist p-6 md:p-8 text-left shadow-2xl transition-all">
+          <div className="flex items-center justify-between mb-6 border-b border-mist pb-4">
+            <div>
+              <span className="font-serif text-[32px] text-ink block mb-0.5">haat</span>
+              <h3 className="font-serif text-h3 text-ink">Saved Pieces ({savedProducts.length})</h3>
             </div>
             <button
+              type="button"
               onClick={() => setIsWishlistOpen(false)}
-              className="p-2 rounded-xl hover:bg-muted/50 transition-all text-muted-foreground hover:text-foreground cursor-pointer"
-              aria-label="Close wishlist"
+              className="text-stone hover:text-ink rounded-input p-2 transition-colors"
             >
-              <X size={20} />
+              ✕
             </button>
           </div>
 
-          {/* List */}
-          <div className="flex-1 overflow-y-auto p-5 space-y-4">
-            {wishlistProducts.length === 0 ? (
-              <div className="h-full flex flex-col items-center justify-center text-center p-6 space-y-4">
-                <div className="w-20 h-20 rounded-full bg-muted/60 flex items-center justify-center text-3xl">
-                  💖
-                </div>
-                <div>
-                  <h4 className="font-serif font-semibold text-secondary text-lg mb-1">
-                    Your wishlist is empty
-                  </h4>
-                  <p className="text-sm text-muted-foreground max-w-xs">
-                    Save your favorite handwoven dupattas, pottery, and gifts as you browse the Gaon.
-                  </p>
-                </div>
-                <Link
-                  href="/explore-products"
-                  onClick={() => setIsWishlistOpen(false)}
-                  className="btn-primary text-sm py-2.5 px-6"
-                >
-                  Explore Products
-                </Link>
-              </div>
-            ) : (
-              wishlistProducts.map((product) => (
-                <div
-                  key={product.id}
-                  className="flex gap-4 p-3 rounded-2xl bg-card border border-border shadow-earth-sm hover:border-primary/40 transition-colors"
-                >
-                  <div
-                    onClick={() => {
-                      setIsWishlistOpen(false);
-                      setQuickViewProduct(product);
-                    }}
-                    className="relative w-20 h-24 rounded-xl overflow-hidden flex-shrink-0 bg-muted/30 cursor-pointer"
-                  >
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      fill
-                      className="object-cover"
-                      sizes="80px"
-                    />
+          {savedProducts.length === 0 ? (
+            <div className="text-center py-10">
+              <p className="font-serif text-h4 text-stone mb-2">No saved pieces yet</p>
+              <p className="text-body-sm text-stone max-w-xs mx-auto mb-6">
+                Click the heart icon on any product to curate your personal collection of Indian artisanal pieces.
+              </p>
+              <button
+                type="button"
+                onClick={() => setIsWishlistOpen(false)}
+                className="bg-ink text-paper hover:bg-ink-soft rounded-button px-6 py-2.5 text-body-sm font-medium transition-colors"
+              >
+                Discover Pieces
+              </button>
+            </div>
+          ) : (
+            <ul className="divide-y divide-mist max-h-[60vh] overflow-y-auto">
+              {savedProducts.map((product) => (
+                <li key={product.id} className="py-4 flex gap-4 items-center">
+                  <div className="relative h-16 w-14 flex-shrink-0 rounded-input border border-mist bg-bone-d overflow-hidden">
+                    <Image src={product.image} alt={product.name} fill className="object-contain" />
                   </div>
-
-                  <div className="flex-1 flex flex-col justify-between min-w-0">
-                    <div>
-                      <div className="flex items-start justify-between gap-2">
-                        <h5
-                          onClick={() => {
-                            setIsWishlistOpen(false);
-                            setQuickViewProduct(product);
-                          }}
-                          className="font-serif font-medium text-secondary text-sm leading-snug line-clamp-1 cursor-pointer hover:text-primary transition-colors"
-                        >
-                          {product.name}
-                        </h5>
-                        <button
-                          onClick={() => toggleWishlist(product.id)}
-                          className="text-muted-foreground hover:text-red-600 transition-colors cursor-pointer"
-                          title="Remove from wishlist"
-                        >
-                          <Trash2 size={14} />
-                        </button>
-                      </div>
-                      <p className="text-[11px] text-muted-foreground mt-0.5">
-                        {product.seller} · {product.location}
-                      </p>
-                    </div>
-
-                    <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/50">
-                      <span className="font-semibold text-secondary text-sm">
-                        ₹{product.price.toLocaleString("en-IN")}
-                      </span>
-                      <button
-                        onClick={() => {
-                          addToCart(product);
-                          toggleWishlist(product.id);
-                        }}
-                        className="px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-semibold hover:bg-secondary transition-colors flex items-center gap-1 cursor-pointer"
-                      >
-                        <ShoppingBag size={12} />
-                        <span>Move to Cart</span>
-                      </button>
-                    </div>
+                  <div className="flex-1">
+                    <h4 className="font-serif text-[15px] font-medium text-ink line-clamp-1">
+                      {product.name}
+                    </h4>
+                    <p className="text-[11px] text-stone uppercase tracking-[1px]">
+                      {product.seller} · {product.location}
+                    </p>
+                    <p className="font-serif text-[15px] text-ink tabular-nums mt-1">
+                      ${(product.price / 82).toFixed(2)}
+                    </p>
                   </div>
-                </div>
-              ))
-            )}
-          </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        addToCart(product, 1);
+                        toggleWishlist(product.id);
+                      }}
+                      className="bg-ink text-paper hover:bg-ink-soft rounded-button px-3 py-1.5 text-xs font-medium transition-colors"
+                    >
+                      Move to Bag
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => toggleWishlist(product.id)}
+                      className="text-stone hover:text-madder p-1.5"
+                      aria-label="Remove"
+                    >
+                      ×
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
   );
-};
+}

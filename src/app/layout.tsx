@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces, Noto_Serif_Devanagari } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
+import { LanguageProvider } from "@/context/LanguageContext";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -11,10 +12,11 @@ import { LoginModal } from "@/components/LoginModal";
 import { BecomeSellerModal } from "@/components/BecomeSellerModal";
 import { ProductQuickViewModal } from "@/components/ProductQuickViewModal";
 import { CheckoutModal } from "@/components/CheckoutModal";
+import { WhatsAppChatbot } from "@/components/WhatsAppChatbot";
 
-const dmSans = DM_Sans({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -22,35 +24,29 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
-const devanagari = Noto_Serif_Devanagari({
-  subsets: ["devanagari"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-devanagari",
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "MittiLok Gaon — Gaon ki kala, duniya ka bazaar",
+  title: "Gaanv by Mittilok — Women Self Help Group Rural Marketplace",
   description:
-    "MittiLok Gaon is India's women-first digital marketplace connecting rural artisans and SHG entrepreneurs with customers across India and the world.",
-  keywords: [
-    "MittiLok Gaon",
-    "Handmade in India",
-    "Rural Artisans",
-    "Women Entrepreneurs",
-    "Chikankari",
-    "Terracotta",
-    "Assam Bamboo",
-    "Indian Handicrafts",
-    "SHG Marketplace",
-  ],
+    "A dark, rich celebration of India's rural women self-help groups, generational terracotta potters, handlooms, and GI certified heritage crafts.",
+  applicationName: "Gaanv by Mittilok",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
-    title: "MittiLok Gaon — Gaon ki kala, duniya ka bazaar",
-    description: "Discover handmade products from women-led enterprises across India.",
-    url: "https://mittilokgaon-th3720.public.builtwithrocket.new",
-    siteName: "MittiLok Gaon",
+    title: "Gaanv by Mittilok — Rural Women SHG Crafts",
+    description: "Authentic Indian village handicrafts by women self help groups.",
+    url: "https://haat.ganges.world",
+    siteName: "Gaanv by Mittilok",
     type: "website",
   },
 };
@@ -63,23 +59,32 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${fraunces.variable} ${devanagari.variable}`}
+      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="bg-background text-foreground min-h-screen flex flex-col antialiased selection:bg-primary/20 selection:text-secondary">
-        <CartProvider>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
+      <body className="bg-bone text-ink font-sans flex min-h-full flex-col overflow-x-clip relative">
+        {/* Subtle Warli Art Pattern Overlay across the entire site background */}
+        <div 
+          className="fixed inset-0 bg-warli-pattern pointer-events-none opacity-20 z-0" 
+          aria-hidden="true" 
+        />
 
-          {/* Interactive Drawers & Modals */}
-          <CartDrawer />
-          <CheckoutModal />
-          <WishlistModal />
-          <SearchModal />
-          <LoginModal />
-          <BecomeSellerModal />
-          <ProductQuickViewModal />
-        </CartProvider>
+        <LanguageProvider>
+          <CartProvider>
+            <Header />
+            <main id="main-content" className="flex-1 relative z-10">{children}</main>
+            <Footer />
+
+            {/* Interactive Drawers, Modals & WhatsApp Chatbot */}
+            <WhatsAppChatbot />
+            <CartDrawer />
+            <CheckoutModal />
+            <WishlistModal />
+            <SearchModal />
+            <LoginModal />
+            <BecomeSellerModal />
+            <ProductQuickViewModal />
+          </CartProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

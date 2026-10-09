@@ -1,152 +1,127 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { X, Search, ArrowRight, Sparkles } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { initialProducts } from "@/data/products";
 
-export const SearchModal: React.FC = () => {
+export function SearchModal() {
   const { isSearchOpen, setIsSearchOpen, setQuickViewProduct } = useCart();
   const [query, setQuery] = useState("");
 
-  useEffect(() => {
-    if (isSearchOpen) {
-      setQuery("");
-    }
-  }, [isSearchOpen]);
-
   if (!isSearchOpen) return null;
 
-  const popularTags = ["Chikankari", "Terracotta", "Bamboo Basket", "Madhubani", "Dupatta", "Gift Hamper"];
-
-  const filteredProducts = query.trim()
+  const filtered = query.trim()
     ? initialProducts.filter(
         (p) =>
           p.name.toLowerCase().includes(query.toLowerCase()) ||
           p.seller.toLowerCase().includes(query.toLowerCase()) ||
           p.location.toLowerCase().includes(query.toLowerCase()) ||
-          p.category.toLowerCase().includes(query.toLowerCase()) ||
-          p.tags.some((t) => t.toLowerCase().includes(query.toLowerCase()))
+          p.category.toLowerCase().includes(query.toLowerCase())
       )
     : [];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 bg-black/50 backdrop-blur-sm overflow-y-auto">
-      <div className="bg-card w-full max-w-2xl rounded-3xl border border-border shadow-earth-xl overflow-hidden relative animate-fade-up">
-        {/* Top bar */}
-        <div className="p-4 md:p-6 border-b border-border flex items-center gap-3">
-          <Search size={22} className="text-primary flex-shrink-0" />
-          <input
-            type="text"
-            autoFocus
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search by craft, artisan name, state (e.g. Lucknow, Terracotta)..."
-            className="flex-1 bg-transparent text-base md:text-lg text-secondary placeholder:text-muted-foreground outline-none"
-          />
-          {query && (
-            <button
-              onClick={() => setQuery("")}
-              className="text-xs text-muted-foreground hover:text-foreground px-2 py-1 rounded bg-muted/50 cursor-pointer"
+    <div className="fixed inset-0 z-50 overflow-y-auto font-sans">
+      <div
+        className="fixed inset-0 bg-ink/60 transition-opacity"
+        onClick={() => setIsSearchOpen(false)}
+      />
+
+      <div className="flex min-h-full items-start justify-center pt-16 px-4 pb-20">
+        <div className="relative w-full max-w-2xl transform overflow-hidden rounded-card bg-paper border border-mist text-left shadow-2xl transition-all">
+          {/* Search Header */}
+          <div className="flex items-center px-6 py-4 border-b border-mist bg-bone">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              viewBox="0 0 256 256"
+              className="text-stone me-3"
             >
-              Clear
+              <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
+            </svg>
+            <input
+              type="text"
+              autoFocus
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search pieces, makers, GI crafts, locations..."
+              className="w-full bg-transparent text-ink placeholder:text-stone text-[16px] outline-none font-sans"
+            />
+            <button
+              onClick={() => setIsSearchOpen(false)}
+              className="text-stone hover:text-ink text-sm font-medium ml-2 px-2 py-1 rounded-input"
+            >
+              Esc
             </button>
-          )}
-          <button
-            onClick={() => setIsSearchOpen(false)}
-            className="p-2 rounded-xl hover:bg-muted text-muted-foreground hover:text-foreground transition-all cursor-pointer"
-            aria-label="Close search"
-          >
-            <X size={20} />
-          </button>
-        </div>
+          </div>
 
-        {/* Content Body */}
-        <div className="p-6 max-h-[60vh] overflow-y-auto space-y-6">
-          {/* Quick tags */}
-          {!query && (
-            <div className="space-y-3">
-              <span className="text-xs uppercase tracking-wider text-muted-foreground font-semibold flex items-center gap-1.5">
-                <Sparkles size={14} className="text-primary" />
-                Popular Searches in the Gaon
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {popularTags.map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setQuery(tag)}
-                    className="px-3 py-1.5 rounded-full text-xs font-medium bg-muted/40 hover:bg-primary hover:text-white transition-all cursor-pointer border border-border/60"
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Results */}
-          {query.trim() && (
-            <div className="space-y-4">
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>
-                  Found {filteredProducts.length} matching craft{filteredProducts.length === 1 ? "" : "s"}
-                </span>
-                <Link
-                  href={`/explore-products?search=${encodeURIComponent(query)}`}
-                  onClick={() => setIsSearchOpen(false)}
-                  className="text-primary hover:underline flex items-center gap-1 font-semibold"
-                >
-                  <span>View all in catalog</span>
-                  <ArrowRight size={12} />
-                </Link>
-              </div>
-
-              {filteredProducts.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
-                  <p className="font-serif text-secondary text-base mb-1">No items found matching &quot;{query}&quot;</p>
-                  <p className="text-xs">Try searching for &quot;Chikankari&quot;, &quot;Terracotta&quot;, or &quot;Bamboo&quot;</p>
+          {/* Results Area */}
+          <div className="p-6 max-h-[60vh] overflow-y-auto">
+            {query.trim() === "" ? (
+              <div>
+                <p className="text-label text-stone mb-3 uppercase tracking-[2px]">
+                  Popular Collections
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Chikankari", "Khurja Pottery", "Patola Saree", "Blue Pottery", "Brass & Dokra"].map(
+                    (tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => setQuery(tag)}
+                        className="border border-mist hover:border-ink bg-bone-d/40 rounded-pill px-3 py-1 text-xs text-stone hover:text-ink transition-colors"
+                      >
+                        {tag}
+                      </button>
+                    )
+                  )}
                 </div>
-              ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {filteredProducts.map((product) => (
-                    <div
-                      key={product.id}
+              </div>
+            ) : filtered.length === 0 ? (
+              <p className="text-center text-stone py-8 text-body-sm font-serif">
+                No matching pieces found for &ldquo;{query}&rdquo;
+              </p>
+            ) : (
+              <ul className="divide-y divide-mist">
+                {filtered.map((product) => (
+                  <li key={product.id}>
+                    <button
+                      type="button"
                       onClick={() => {
-                        setIsSearchOpen(false);
                         setQuickViewProduct(product);
+                        setIsSearchOpen(false);
                       }}
-                      className="flex items-center gap-3 p-2.5 rounded-2xl border border-border bg-background hover:border-primary/50 transition-all cursor-pointer group"
+                      className="w-full py-3 flex items-center gap-4 hover:bg-bone-d/30 px-2 rounded-card text-left transition-colors"
                     >
-                      <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-muted/40 flex-shrink-0">
+                      <div className="relative h-14 w-12 rounded-input bg-bone-d border border-mist overflow-hidden flex-shrink-0">
                         <Image
                           src={product.image}
                           alt={product.name}
                           fill
-                          className="object-cover group-hover:scale-105 transition-transform"
-                          sizes="64px"
+                          className="object-contain"
                         />
                       </div>
-                      <div className="min-w-0 flex-1">
-                        <h5 className="font-serif font-medium text-secondary text-sm line-clamp-1 group-hover:text-primary transition-colors">
+                      <div className="flex-1">
+                        <h4 className="font-serif text-[15px] font-medium text-ink">
                           {product.name}
-                        </h5>
-                        <p className="text-[11px] text-muted-foreground">
+                        </h4>
+                        <p className="text-[12px] text-stone">
                           {product.seller} · {product.location}
                         </p>
-                        <p className="font-semibold text-secondary text-xs mt-1">
-                          ₹{product.price.toLocaleString("en-IN")}
-                        </p>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
+                      <span className="font-serif text-[15px] tabular-nums text-ink">
+                        ${(product.price / 82).toFixed(2)}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}

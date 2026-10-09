@@ -1,652 +1,247 @@
 "use client";
 
-import React, { useState, useMemo, useEffect, Suspense } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import {
-  Search,
-  Filter,
-  X,
-  Heart,
-  Eye,
-  Check,
-  MapPin,
-  Sparkles,
-  SlidersHorizontal,
-  RotateCcw,
-} from "lucide-react";
-import { initialProducts, Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import { useLanguage } from "@/context/LanguageContext";
+import { initialProducts } from "@/data/products";
+import { initialCategories } from "@/data/categories";
 
-const categories = [
-  "All",
-  "Handicrafts",
-  "Textiles",
-  "Décor",
-  "Rural Lifestyle",
-  "Gifts",
-  "Food",
-];
+export default function ExploreProductsPage() {
+  const { addToCart, toggleWishlist, isInWishlist, setQuickViewProduct } = useCart();
+  const { t, lang } = useLanguage();
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
+  const [selectedState, setSelectedState] = useState<string>("All");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortBy, setSortBy] = useState<string>("featured");
 
-const sortOptions = [
-  { value: "newest", label: "Newest First" },
-  { value: "price-low", label: "Price: Low to High" },
-  { value: "price-high", label: "Price: High to Low" },
-  { value: "popular", label: "Most Popular" },
-];
+  const categories = ["All", ...initialCategories.map((c) => c.name)];
+  const states = [
+    "All",
+    "Uttar Pradesh",
+    "Odisha",
+    "Rajasthan",
+    "Madhya Pradesh",
+    "Assam",
+    "Bihar",
+    "Karnataka",
+  ];
 
-const stateOptions = [
-  "All States",
-  "Uttar Pradesh",
-  "Rajasthan",
-  "Assam",
-  "West Bengal",
-  "Bihar",
-  "Gujarat",
-];
-
-const storyPills = [
-  { label: "🌸 Made by Women", tag: "women" },
-  { label: "🪔 Handmade in India", tag: "handmade" },
-  { label: "✨ Festive Favourites", tag: "festive" },
-  { label: "🎁 Gifts with Meaning", tag: "gifts" },
-];
-
-function ExploreContent() {
-  const searchParams = useSearchParams();
-  const initialCategory = searchParams.get("category") || "All";
-  const initialSearch = searchParams.get("search") || "";
-
-  const [searchQuery, setSearchQuery] = useState(initialSearch);
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-  const [selectedState, setSelectedState] = useState("All States");
-  const [sortBy, setSortBy] = useState("newest");
-  const [selectedTag, setSelectedTag] = useState<string | null>(null);
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, 5000]);
-  const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
-  const [addedIds, setAddedIds] = useState<Record<string, boolean>>({});
-
-  const { addToCart, isInWishlist, toggleWishlist, setQuickViewProduct } = useCart();
-
-  useEffect(() => {
-    if (searchParams.get("category")) {
-      setSelectedCategory(searchParams.get("category")!);
-    }
-    if (searchParams.get("search")) {
-      setSearchQuery(searchParams.get("search")!);
-    }
-  }, [searchParams]);
-
-  const handleAddToCart = (product: Product) => {
-    addToCart(product);
-    setAddedIds((prev) => ({ ...prev, [product.id]: true }));
-    setTimeout(() => {
-      setAddedIds((prev) => ({ ...prev, [product.id]: false }));
-    }, 1800);
-  };
-
-  const handleClearFilters = () => {
-    setSearchQuery("");
-    setSelectedCategory("All");
-    setSelectedState("All States");
-    setSelectedTag(null);
-    setPriceRange([0, 5000]);
-    setSortBy("newest");
-  };
-
-  // Filter products
-  const filteredProducts = useMemo(() => {
-    let list = [...initialProducts];
-
-    // Category
-    if (selectedCategory !== "All") {
-      list = list.filter(
-        (p) => p.category.toLowerCase() === selectedCategory.toLowerCase()
-      );
-    }
-
-    // State
-    if (selectedState !== "All States") {
-      list = list.filter(
-        (p) => p.state.toLowerCase() === selectedState.toLowerCase()
-      );
-    }
-
-    // Story tag
-    if (selectedTag) {
-      list = list.filter((p) => p.tags.includes(selectedTag));
-    }
-
-    // Price range
-    list = list.filter(
-      (p) => p.price >= priceRange[0] && p.price <= priceRange[1]
-    );
-
-    // Search query
-    if (searchQuery.trim()) {
-      const q = searchQuery.toLowerCase();
-      list = list.filter(
-        (p) =>
-          p.name.toLowerCase().includes(q) ||
-          p.seller.toLowerCase().includes(q) ||
-          p.location.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          p.tags.some((t) => t.toLowerCase().includes(q))
-      );
-    }
-
-    // Sort
-    if (sortBy === "price-low") {
-      list.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "price-high") {
-      list.sort((a, b) => b.price - a.price);
-    } else if (sortBy === "popular") {
-      list.sort((a, b) => b.reviewsCount - a.reviewsCount);
-    } else {
-      list.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0));
-    }
-
-    return list;
-  }, [selectedCategory, selectedState, selectedTag, priceRange, searchQuery, sortBy]);
-
-  const activeFiltersCount =
-    (selectedCategory !== "All" ? 1 : 0) +
-    (selectedState !== "All States" ? 1 : 0) +
-    (selectedTag ? 1 : 0) +
-    (priceRange[0] > 0 || priceRange[1] < 5000 ? 1 : 0) +
-    (searchQuery ? 1 : 0);
+  const filteredProducts = initialProducts
+    .filter((p) => {
+      const matchCat =
+        selectedCategory === "All" ||
+        p.category.toLowerCase().includes(selectedCategory.toLowerCase());
+      const matchState =
+        selectedState === "All" ||
+        p.state.toLowerCase().includes(selectedState.toLowerCase());
+      const matchQuery =
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.location.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchCat && matchState && matchQuery;
+    })
+    .sort((a, b) => {
+      if (sortBy === "price-low") return a.price - b.price;
+      if (sortBy === "price-high") return b.price - a.price;
+      if (sortBy === "rating") return b.rating - a.rating;
+      return 0;
+    });
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* 1. Header Banner */}
-      <section className="pt-28 pb-10 md:pt-36 md:pb-14 bg-muted/30 border-b border-border">
-        <div className="section-container">
-          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
-            <Link href="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <span>/</span>
-            <span className="text-secondary font-medium">Explore All Products</span>
-          </div>
+    <div className="min-h-screen bg-bone text-ink relative">
+      {/* Background Warli folk pattern */}
+      <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
 
-          <h1 className="font-serif text-3xl md:text-5xl font-bold text-secondary mb-2">
-            Explore the Gaon
+      {/* Header Banner */}
+      <section className="relative border-b border-mist bg-bone-d py-12 md:py-16">
+        <div className="absolute inset-0 bg-mandana-pattern opacity-10 pointer-events-none" />
+        <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
+          <span className="font-mono text-[12px] uppercase tracking-[2px] text-brass font-semibold">
+            {lang === "hi" ? "महिला समूह हाट" : "Rural Women Collectives"}
+          </span>
+          <h1 className="font-serif text-[32px] sm:text-[40px] md:text-h1 text-ink mt-1">
+            {lang === "hi" ? "समस्त प्रामाणिक ग्रामीण हस्तशिल्प" : "Explore All Rural Treasures"}
           </h1>
-          <p className="text-muted-foreground text-sm md:text-base max-w-xl">
-            Handmade products, local stories and women-led enterprises — all in one place.
+          <p className="mt-2 text-[15px] sm:text-[16px] text-stone max-w-2xl leading-relaxed">
+            {lang === "hi"
+              ? "भारत के गाँवों से सीधे आपके घर तक। हर उत्पाद जीआई प्रमाणित और महिला स्वयं सहायता समूहों द्वारा तैयार।"
+              : "Direct from the chaupals of India. Certified authentic geographical indications and women SHG creations."}
           </p>
         </div>
       </section>
 
-      {/* 2. Shop by Story Filter Bar */}
-      <section className="py-4 border-b border-border bg-background sticky top-20 z-20 backdrop-blur-md bg-background/90">
-        <div className="section-container">
-          <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
-            <span className="text-xs font-semibold text-secondary whitespace-nowrap mr-1">
-              Shop by Story:
-            </span>
-            {storyPills.map((pill) => {
-              const active = selectedTag === pill.tag;
+      {/* Main Content Area */}
+      <main className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-8 md:px-8 md:py-12">
+        {/* Controls / Filter Bar */}
+        <div className="mb-8 flex flex-col gap-4 rounded-card bg-paper border border-mist p-4 sm:p-5 shadow-lg">
+          <div className="flex flex-col sm:flex-row items-center gap-3">
+            {/* Search Input */}
+            <div className="relative w-full sm:flex-1">
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={t("nav.search_placeholder")}
+                className="w-full h-11 rounded-input bg-bone-d border border-mist px-4 text-ink text-[14px] placeholder-stone focus:outline-none focus:border-brass"
+              />
+            </div>
+
+            {/* Sort Dropdown */}
+            <div className="w-full sm:w-auto flex items-center gap-2">
+              <span className="text-xs text-stone whitespace-nowrap">Sort:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="h-11 w-full sm:w-auto rounded-input bg-bone-d border border-mist px-3 text-ink text-xs focus:outline-none focus:border-brass"
+              >
+                <option value="featured">Featured</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+              </select>
+            </div>
+          </div>
+
+          {/* Category Chips */}
+          <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none text-xs">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                type="button"
+                onClick={() => setSelectedCategory(cat)}
+                className={`whitespace-nowrap px-3.5 py-1.5 rounded-pill border transition-all ${
+                  selectedCategory === cat
+                    ? "bg-brass text-[#14110c] font-semibold border-brass"
+                    : "bg-bone-d text-ink-soft border-mist hover:border-brass/40"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Results Count */}
+        <div className="mb-6 flex items-center justify-between text-xs text-stone">
+          <span>
+            {lang === "hi"
+              ? `${filteredProducts.length} उत्पाद मिले`
+              : `Showing ${filteredProducts.length} authentic pieces`}
+          </span>
+          <span className="text-brass font-mono">100% Traceable Roots</span>
+        </div>
+
+        {/* Products Grid */}
+        {filteredProducts.length === 0 ? (
+          <div className="text-center py-20 rounded-card bg-paper border border-mist">
+            <p className="font-serif text-h3 text-stone mb-2">No pieces found</p>
+            <p className="text-xs text-stone">Try clearing your search or category filters.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+            {filteredProducts.map((product) => {
+              const isFav = isInWishlist(product.id);
               return (
-                <button
-                  key={pill.tag}
-                  onClick={() => setSelectedTag(active ? null : pill.tag)}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all cursor-pointer border ${
-                    active
-                      ? "bg-primary text-white border-primary shadow-sm"
-                      : "bg-card text-secondary border-border hover:border-primary/50"
-                  }`}
+                <div
+                  key={product.id}
+                  className="group relative flex flex-col rounded-card bg-paper border border-mist p-3 sm:p-4 shadow-lg hover:border-brass/50 transition-all duration-200"
                 >
-                  {pill.label}
-                </button>
+                  {/* Visual Area */}
+                  <div className="relative aspect-square w-full overflow-hidden rounded-input bg-bone-d mb-3 sm:mb-4">
+                    <button
+                      type="button"
+                      onClick={() => setQuickViewProduct(product)}
+                      className="relative block h-full w-full cursor-zoom-in"
+                      aria-label={`Quick view ${product.name}`}
+                    >
+                      <Image
+                        src={product.image}
+                        alt={product.alt || product.name}
+                        fill
+                        className="object-contain transition-transform duration-500 group-hover:scale-105"
+                        sizes="(min-width: 1024px) 25vw, 50vw"
+                      />
+                    </button>
+
+                    {/* Badges */}
+                    <div className="absolute start-2 top-2 flex flex-col gap-1">
+                      {(product.tags.includes("gi") || product.isBestseller) && (
+                        <span className="bg-[#12100d]/90 text-brass border border-brass/40 text-[10px] font-mono px-2 py-0.5 rounded-xs font-semibold">
+                          GI Tag
+                        </span>
+                      )}
+                      <span className="bg-madder/90 text-white text-[9px] font-sans px-1.5 py-0.5 rounded-xs font-medium">
+                        SHG Maker
+                      </span>
+                    </div>
+
+                    {/* Wishlist Button */}
+                    <button
+                      type="button"
+                      onClick={() => toggleWishlist(product.id)}
+                      aria-label="Save for later"
+                      className="bg-paper hover:bg-bone text-ink shadow-md border border-mist absolute end-2 top-2 inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-pill transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="16"
+                        height="16"
+                        fill={isFav ? "var(--color-madder)" : "none"}
+                        stroke={isFav ? "var(--color-madder)" : "currentColor"}
+                        strokeWidth="16"
+                        viewBox="0 0 256 256"
+                      >
+                        <path d="M178,42c-21,0-39.26,9.47-50,25.34C117.26,51.47,99,42,78,42a60.07,60.07,0,0,0-60,60c0,29.2,18.2,59.59,54.1,90.31a334.68,334.68,0,0,0,53.06,37,6,6,0,0,0,5.68,0,334.68,334.68,0,0,0,53.06-37C219.8,161.59,238,131.2,238,102A60.07,60.07,0,0,0,178,42Z"></path>
+                      </svg>
+                    </button>
+
+                    {/* Add to Bag */}
+                    <button
+                      type="button"
+                      onClick={() => addToCart(product, 1)}
+                      aria-label="Add to bag"
+                      className="bg-paper text-ink hover:bg-brass hover:text-[#12100d] shadow-md border border-mist absolute end-2 bottom-2 inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-pill transition-colors"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="18"
+                        fill="currentColor"
+                        viewBox="0 0 256 256"
+                      >
+                        <path d="M228,128a12,12,0,0,1-12,12H140v76a12,12,0,0,1-24,0V140H40a12,12,0,0,1,0-24h76V40a12,12,0,0,1,24,0v76h76A12,12,0,0,1,228,128Z"></path>
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Details */}
+                  <div className="flex flex-col flex-1 justify-between">
+                    <div>
+                      <p className="font-mono text-[11px] uppercase tracking-wide text-stone">
+                        {product.location}
+                      </p>
+                      <h3 className="font-serif text-[16px] sm:text-[17px] text-ink font-normal mt-0.5 line-clamp-1 group-hover:text-brass transition-colors">
+                        {product.name}
+                      </h3>
+                    </div>
+
+                    <div className="mt-3 flex items-baseline justify-between border-t border-mist/40 pt-2.5">
+                      <span className="font-mono text-[14px] sm:text-[15px] font-semibold text-ink">
+                        ₹{product.price}
+                      </span>
+                      <span className="text-[11px] text-stone">
+                        ${(product.price / 82).toFixed(1)} USD
+                      </span>
+                    </div>
+                  </div>
+                </div>
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* 3. Catalog & Filters Grid */}
-      <section className="py-10 md:py-14" aria-label="Product catalog">
-        <div className="section-container">
-          {/* Top Controls Bar */}
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-            {/* Search Input */}
-            <div className="relative flex-1 max-w-md">
-              <Search
-                size={16}
-                className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground"
-              />
-              <input
-                type="text"
-                placeholder="Search products, artisans, states..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="input-earth w-full pl-9 pr-8 text-sm"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground cursor-pointer"
-                >
-                  <X size={14} />
-                </button>
-              )}
-            </div>
-
-            {/* Sort & Mobile Filter Toggle */}
-            <div className="flex items-center gap-3 justify-between md:justify-end">
-              <button
-                onClick={() => setIsMobileFiltersOpen(true)}
-                className="md:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card text-sm font-semibold text-secondary shadow-sm cursor-pointer"
-              >
-                <SlidersHorizontal size={16} />
-                <span>Filters {activeFiltersCount > 0 ? `(${activeFiltersCount})` : ""}</span>
-              </button>
-
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-muted-foreground whitespace-nowrap hidden sm:inline">
-                  Sort by:
-                </span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="input-earth text-sm py-2 px-3 bg-card font-medium"
-                >
-                  {sortOptions.map((opt) => (
-                    <option key={opt.value} value={opt.value}>
-                      {opt.label}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Desktop Filters Sidebar */}
-            <aside className="hidden md:block space-y-6">
-              <div className="flex items-center justify-between pb-3 border-b border-border">
-                <h2 className="font-serif font-bold text-secondary text-lg flex items-center gap-2">
-                  <Filter size={18} />
-                  <span>Filters</span>
-                </h2>
-                {activeFiltersCount > 0 && (
-                  <button
-                    onClick={handleClearFilters}
-                    className="text-xs text-primary hover:underline flex items-center gap-1 cursor-pointer font-semibold"
-                  >
-                    <RotateCcw size={12} />
-                    <span>Reset All</span>
-                  </button>
-                )}
-              </div>
-
-              {/* Category Filter */}
-              <div className="space-y-3">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-secondary">
-                  Category
-                </h3>
-                <div className="space-y-1">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setSelectedCategory(cat)}
-                      className={`w-full text-left px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer flex items-center justify-between ${
-                        selectedCategory === cat
-                          ? "bg-primary text-white font-semibold"
-                          : "text-muted-foreground hover:bg-muted/50 hover:text-secondary"
-                      }`}
-                    >
-                      <span>{cat}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Location Filter */}
-              <div className="space-y-3 pt-3 border-t border-border">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-secondary">
-                  Location
-                </h3>
-                <div className="space-y-1">
-                  {stateOptions.map((st) => (
-                    <button
-                      key={st}
-                      onClick={() => setSelectedState(st)}
-                      className={`w-full text-left px-3 py-1.5 rounded-xl text-xs font-medium transition-colors cursor-pointer flex items-center justify-between ${
-                        selectedState === st
-                          ? "bg-primary text-white font-semibold"
-                          : "text-muted-foreground hover:bg-muted/50 hover:text-secondary"
-                      }`}
-                    >
-                      <span>{st}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price Range Filter */}
-              <div className="space-y-3 pt-3 border-t border-border">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xs font-bold uppercase tracking-wider text-secondary">
-                    Price Range
-                  </h3>
-                  <span className="text-xs font-semibold text-primary">
-                    ₹{priceRange[0]} - ₹{priceRange[1]}
-                  </span>
-                </div>
-
-                <input
-                  type="range"
-                  min="0"
-                  max="5000"
-                  step="100"
-                  value={priceRange[1]}
-                  onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                  className="w-full accent-primary cursor-pointer"
-                />
-
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {[
-                    { label: "Under ₹500", range: [0, 500] },
-                    { label: "₹500–1000", range: [500, 1000] },
-                    { label: "₹1000–2000", range: [1000, 2000] },
-                    { label: "Above ₹2000", range: [2000, 5000] },
-                  ].map((bracket) => (
-                    <button
-                      key={bracket.label}
-                      onClick={() => setPriceRange(bracket.range as [number, number])}
-                      className="text-[11px] px-2.5 py-1 rounded-lg border border-border bg-card hover:border-primary/50 text-muted-foreground hover:text-secondary cursor-pointer"
-                    >
-                      {bracket.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </aside>
-
-            {/* Main Products Grid */}
-            <main className="md:col-span-3 space-y-6">
-              {/* Results count indicator */}
-              <div className="flex items-center justify-between text-xs text-muted-foreground pb-2">
-                <span>
-                  Showing <strong className="text-secondary">{filteredProducts.length}</strong> authentic handcrafted items
-                </span>
-                {activeFiltersCount > 0 && (
-                  <span className="text-primary font-medium">
-                    {activeFiltersCount} active filter{activeFiltersCount === 1 ? "" : "s"}
-                  </span>
-                )}
-              </div>
-
-              {/* Products list */}
-              {filteredProducts.length === 0 ? (
-                <div className="py-16 text-center space-y-4 bg-card rounded-3xl border border-border p-8 shadow-earth-sm">
-                  <div className="w-16 h-16 rounded-full bg-muted/60 flex items-center justify-center text-3xl mx-auto">
-                    🔍
-                  </div>
-                  <div>
-                    <h3 className="font-serif font-bold text-secondary text-xl">
-                      No products found
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-1 max-w-sm mx-auto">
-                      We couldn&apos;t find any crafts matching your exact criteria. Try resetting filters or exploring another category.
-                    </p>
-                  </div>
-                  <button
-                    onClick={handleClearFilters}
-                    className="btn-primary text-xs py-2.5 px-6 cursor-pointer"
-                  >
-                    Reset All Filters
-                  </button>
-                </div>
-              ) : (
-                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-                  {filteredProducts.map((product) => {
-                    const discountPercent = product.originalPrice
-                      ? Math.round(
-                          ((product.originalPrice - product.price) / product.originalPrice) * 100
-                        )
-                      : 0;
-                    const isSaved = isInWishlist(product.id);
-                    const isAdded = addedIds[product.id];
-
-                    return (
-                      <div
-                        key={product.id}
-                        className="product-card flex flex-col"
-                      >
-                        {/* Image */}
-                        <div className="relative overflow-hidden aspect-[4/5] bg-muted/20">
-                          <Image
-                            src={product.image}
-                            alt={product.alt}
-                            fill
-                            className="object-cover product-image-zoom"
-                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                          />
-
-                          {/* Badges */}
-                          <div className="absolute top-3 left-3 flex flex-col gap-1.5">
-                            {product.isNew && (
-                              <span className="px-2.5 py-1 bg-accent text-white text-xs font-semibold rounded-full shadow-sm">
-                                New
-                              </span>
-                            )}
-                            {product.isBestseller && (
-                              <span className="px-2.5 py-1 bg-gold text-white text-xs font-semibold rounded-full shadow-sm">
-                                Bestseller
-                              </span>
-                            )}
-                            {discountPercent > 0 && (
-                              <span className="px-2.5 py-1 bg-primary text-white text-xs font-semibold rounded-full shadow-sm">
-                                -{discountPercent}%
-                              </span>
-                            )}
-                          </div>
-
-                          {/* Wishlist toggle */}
-                          <button
-                            onClick={() => toggleWishlist(product.id)}
-                            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-earth transition-all hover:scale-110 cursor-pointer"
-                            aria-label={isSaved ? "Remove from wishlist" : "Add to wishlist"}
-                          >
-                            <Heart
-                              size={15}
-                              className={isSaved ? "fill-primary text-primary" : "text-muted-foreground"}
-                            />
-                          </button>
-
-                          {/* Category */}
-                          <div className="absolute bottom-3 left-3">
-                            <span className="badge-handmade text-xs">{product.category}</span>
-                          </div>
-                        </div>
-
-                        {/* Card Info */}
-                        <div className="p-4 flex flex-col flex-1">
-                          <div className="flex-1">
-                            <h3 className="font-serif font-semibold text-secondary text-base leading-snug mb-1.5 line-clamp-2">
-                              {product.name}
-                            </h3>
-                            <div className="flex items-center gap-1.5 mb-3">
-                              <MapPin size={12} className="text-muted-foreground flex-shrink-0" />
-                              <span className="text-xs text-muted-foreground truncate">
-                                {product.seller} · {product.location}
-                              </span>
-                            </div>
-                          </div>
-
-                          {/* Price */}
-                          <div className="flex items-baseline gap-2 mb-3">
-                            <span className="font-semibold text-secondary text-lg">
-                              ₹{product.price.toLocaleString("en-IN")}
-                            </span>
-                            {product.originalPrice && (
-                              <span className="text-muted-foreground text-sm line-through">
-                                ₹{product.originalPrice.toLocaleString("en-IN")}
-                              </span>
-                            )}
-                          </div>
-
-                          {/* Actions */}
-                          <div className="flex gap-2">
-                            <button
-                              onClick={() => handleAddToCart(product)}
-                              className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all cursor-pointer flex items-center justify-center gap-1.5 ${
-                                isAdded
-                                  ? "bg-accent text-white"
-                                  : "bg-primary text-primary-foreground hover:bg-secondary"
-                              }`}
-                            >
-                              {isAdded ? (
-                                <>
-                                  <Check size={14} />
-                                  <span>✓ Added</span>
-                                </>
-                              ) : (
-                                <span>Add to Cart</span>
-                              )}
-                            </button>
-
-                            <button
-                              onClick={() => setQuickViewProduct(product)}
-                              className="w-10 h-10 rounded-xl border border-border flex items-center justify-center hover:border-primary hover:text-primary transition-all flex-shrink-0 bg-background cursor-pointer"
-                              aria-label="View product"
-                              title="Quick View"
-                            >
-                              <Eye size={16} />
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </main>
-          </div>
-        </div>
-      </section>
-
-      {/* Mobile Filters Drawer */}
-      {isMobileFiltersOpen && (
-        <div className="fixed inset-0 z-50 overflow-hidden md:hidden">
-          <div
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-            onClick={() => setIsMobileFiltersOpen(false)}
-          />
-          <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div className="w-screen max-w-xs bg-background shadow-earth-xl flex flex-col p-6 space-y-6 overflow-y-auto">
-              <div className="flex items-center justify-between pb-3 border-b border-border">
-                <h3 className="font-serif font-bold text-secondary text-lg">Filters</h3>
-                <button
-                  onClick={() => setIsMobileFiltersOpen(false)}
-                  className="p-1 rounded-lg hover:bg-muted cursor-pointer"
-                >
-                  <X size={20} />
-                </button>
-              </div>
-
-              {/* Categories */}
-              <div className="space-y-2">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">
-                  Category
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {categories.map((cat) => (
-                    <button
-                      key={cat}
-                      onClick={() => setSelectedCategory(cat)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-medium cursor-pointer border ${
-                        selectedCategory === cat
-                          ? "bg-primary text-white border-primary"
-                          : "bg-card border-border text-secondary"
-                      }`}
-                    >
-                      {cat}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Locations */}
-              <div className="space-y-2 pt-2 border-t border-border">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">
-                  Location
-                </h4>
-                <div className="flex flex-wrap gap-1.5">
-                  {stateOptions.map((st) => (
-                    <button
-                      key={st}
-                      onClick={() => setSelectedState(st)}
-                      className={`px-3 py-1.5 rounded-xl text-xs font-medium cursor-pointer border ${
-                        selectedState === st
-                          ? "bg-primary text-white border-primary"
-                          : "bg-card border-border text-secondary"
-                      }`}
-                    >
-                      {st}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Price */}
-              <div className="space-y-2 pt-2 border-t border-border">
-                <div className="flex items-center justify-between">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-secondary">
-                    Max Price
-                  </h4>
-                  <span className="text-xs font-bold text-primary">₹{priceRange[1]}</span>
-                </div>
-                <input
-                  type="range"
-                  min="0"
-                  max="5000"
-                  step="100"
-                  value={priceRange[1]}
-                  onChange={(e) => setPriceRange([priceRange[0], Number(e.target.value)])}
-                  className="w-full accent-primary"
-                />
-              </div>
-
-              <div className="pt-4 flex gap-2">
-                <button
-                  onClick={handleClearFilters}
-                  className="flex-1 py-2.5 rounded-xl border border-border text-xs font-semibold text-secondary hover:bg-muted"
-                >
-                  Reset
-                </button>
-                <button
-                  onClick={() => setIsMobileFiltersOpen(false)}
-                  className="flex-1 py-2.5 rounded-xl bg-primary text-white text-xs font-semibold hover:bg-secondary"
-                >
-                  Apply Filters
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+        )}
+      </main>
     </div>
-  );
-}
-
-export default function ExplorePage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center space-y-2">
-            <span className="text-3xl animate-bounce">🪔</span>
-            <p className="font-serif text-secondary">Loading the Gaon...</p>
-          </div>
-        </div>
-      }
-    >
-      <ExploreContent />
-    </Suspense>
   );
 }
