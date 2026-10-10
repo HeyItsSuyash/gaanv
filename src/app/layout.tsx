@@ -19,6 +19,7 @@ import { BecomeSellerModal } from "@/components/BecomeSellerModal";
 import { ProductQuickViewModal } from "@/components/ProductQuickViewModal";
 import { CheckoutModal } from "@/components/CheckoutModal";
 import { WhatsAppChatbot } from "@/components/WhatsAppChatbot";
+import { PageLoader } from "@/components/PageLoader";
 import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
@@ -100,6 +101,7 @@ export default function RootLayout({
             <Footer />
 
             {/* Interactive Drawers, Modals & WhatsApp Chatbot */}
+            <PageLoader />
             <WhatsAppChatbot />
             <CartDrawer />
             <CheckoutModal />

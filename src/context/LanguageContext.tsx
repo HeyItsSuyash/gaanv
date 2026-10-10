@@ -18,7 +18,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.explore": "Explore Gaanv",
     "nav.women_shg": "Women SHGs",
     "nav.gi_crafts": "GI Heritage",
-    "nav.team": "Hamari Team",
+    "nav.team": "My Team",
     "nav.about": "Our Village Roots",
     "nav.sell": "Sell with Us",
     "nav.search_placeholder": "Search handcrafted clay, dokra, handlooms...",

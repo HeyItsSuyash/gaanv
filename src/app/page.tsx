@@ -637,30 +637,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH (FULL WIDTH) */}
-      <section className="relative py-16 md:py-24 bg-[#241b14] text-[#f7f3ec] overflow-hidden">
+      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH (SEAMLESS FULL HEIGHT CONTAINER) */}
+      <section className="relative py-14 md:py-20 bg-[#241b14] text-[#f7f3ec] overflow-hidden">
         <div className="absolute inset-0 bg-mandana-pattern opacity-[0.08] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
-          <div className="flex flex-col md:flex-row gap-8 md:gap-14 items-center">
-            {/* Founder Passport Size Photo with Clean Framing */}
-            <div className="flex flex-col items-center text-center flex-shrink-0">
-              <div className="relative w-36 h-48 sm:w-40 sm:h-52 rounded-md overflow-hidden border-4 border-[#3d2e22] shadow-2xl bg-[#1a130e]">
-                <Image
-                  src="/gauri-avatar.jpg"
-                  alt="XYZ - Founder"
-                  fill
-                  className="object-cover object-top"
-                />
-
-              </div>
-              <div className="mt-3 bg-white text-[#1a1510] px-4 py-1.5 rounded-sm shadow-md font-serif font-bold text-[16px] tracking-wide">
-                XYZ
-              </div>
+          {/* Outer Quote Block Card with zero padding between image and quote text */}
+          <div className="rounded-card bg-[#1a130e] border border-[#3d2e22] shadow-2xl overflow-hidden flex flex-col md:flex-row items-stretch">
+            {/* Founder Image: Full height of the quotes container, auto-scaled width without skewing */}
+            <div className="relative w-full md:w-[320px] lg:w-[360px] min-h-[340px] md:min-h-full shrink-0 bg-[#120d09]">
+              <Image
+                src="/founderceo.jpeg"
+                alt="Gaurav Srivastav - Founder and CEO"
+                fill
+                priority
+                className="object-cover object-top"
+              />
             </div>
 
-            {/* Full Width Founder Note */}
-            <div className="flex-1 border-t md:border-t-0 md:border-s border-[#3d2e22] pt-6 md:pt-0 md:ps-10">
-                <div className="flex items-center gap-2 mb-3">
+            {/* Seamless Quote Content Column directly attached without gap */}
+            <div className="flex-1 flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 border-t md:border-t-0 md:border-s border-[#3d2e22]">
+              <div>
+                <div className="flex items-center gap-2 mb-4">
                   <span className="text-[#d4af37] font-mono text-xs uppercase tracking-widest font-semibold">
                     {lang === "hi" ? "संस्थापक का संदेश • उत्तर प्रदेश की ज़मीन से" : "Founder's Testimony • From the Soil of Uttar Pradesh"}
                   </span>
@@ -672,11 +669,26 @@ export default function Home() {
                     ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"
                     : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle — direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
                 </blockquote>
+              </div>
 
-
+              {/* Founder Signoff Below Quote */}
+              <div className="mt-8 pt-6 border-t border-[#3d2e22]/80 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div>
+                  <h4 className="font-serif text-[19px] sm:text-[21px] text-[#f7f3ec] font-semibold tracking-wide">
+                    Gaurav Srivastav
+                  </h4>
+                  <p className="text-[13px] sm:text-[14px] text-[#d4af37] font-sans tracking-wide mt-0.5">
+                    Founder and CEO, Mittilok and Mittilok Gaon
+                  </p>
+                </div>
+                <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a89a8a] bg-[#241b14] px-3 py-1.5 rounded-pill border border-[#3d2e22] w-fit">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]"></span>
+                  <span>Balrampur & Lucknow, UP</span>
+                </div>
               </div>
             </div>
           </div>
+        </div>
       </section>
 
       {/* 7. GAON PATRIKA JOURNAL NEWSLETTER WITH AUTHENTIC RURAL LETTERS BACKGROUND */}

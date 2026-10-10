@@ -168,51 +168,117 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#382b20] bg-[#241b14] px-6 py-5 shadow-2xl">
-          <div className="flex flex-col gap-4 text-[15px] font-medium">
-            <Link
-              href="/explore-products"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
+      {/* Full Page Mobile Dropdown Menu with Rich Animations & Centered Links */}
+      <div
+        className={`fixed inset-0 z-50 bg-[#241b14] text-[#f7f3ec] flex flex-col justify-between transition-all duration-300 md:hidden ${
+          mobileMenuOpen
+            ? "opacity-100 pointer-events-auto translate-y-0"
+            : "opacity-0 pointer-events-none -translate-y-4"
+        }`}
+      >
+        {/* Subtle authentic patterns in background */}
+        <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
+        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.07] pointer-events-none" />
+
+        {/* Mobile Header Bar inside full-screen menu */}
+        <div className="relative z-10 flex h-16 items-center justify-between px-4 sm:px-6 border-b border-[#382b20]">
+          <Link
+            href="/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="inline-flex items-center"
+          >
+            <div className="relative h-10 w-32">
+              <Image
+                src="/gaon-logo.png"
+                alt="Gaanv by Mittilok"
+                fill
+                priority
+                className="object-contain object-left"
+              />
+            </div>
+          </Link>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
+            className="text-[#f7f3ec] hover:text-[#d4af37] p-2 rounded-full border border-[#524132] bg-[#1a130e] transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="22"
+              height="22"
+              fill="currentColor"
+              viewBox="0 0 256 256"
             >
-              {t("nav.explore")}
-            </Link>
-            <Link
-              href="/#women-shg"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
-            >
-              {t("nav.women_shg")}
-            </Link>
-            <Link
-              href="/#gi-treasures"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
-            >
-              {t("nav.gi_crafts")}
-            </Link>
-            <Link
-              href="/team"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
-            >
-              {t("nav.team")}
-            </Link>
-            <button
-              type="button"
-              onClick={() => {
-                setMobileMenuOpen(false);
-                setIsSellerModalOpen(true);
-              }}
-              className="text-left text-[#f7f3ec] hover:text-[#d4af37] py-1"
-            >
-              {t("nav.sell")}
-            </button>
-          </div>
+              <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+            </svg>
+          </button>
         </div>
-      )}
+
+        {/* Centered Navigation Links with staggered animation feel */}
+        <div className="relative z-10 flex flex-col items-center justify-center flex-1 px-6 py-8 text-center space-y-6">
+          <Link
+            href="/explore-products"
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-serif text-[26px] sm:text-[30px] font-normal text-[#f7f3ec] hover:text-[#d4af37] transition-all hover:scale-105 active:scale-95 tracking-wide"
+          >
+            {t("nav.explore")}
+          </Link>
+
+          <Link
+            href="/#women-shg"
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-serif text-[26px] sm:text-[30px] font-normal text-[#f7f3ec] hover:text-[#d4af37] transition-all hover:scale-105 active:scale-95 tracking-wide"
+          >
+            {t("nav.women_shg")}
+          </Link>
+
+          <Link
+            href="/#gi-treasures"
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-serif text-[26px] sm:text-[30px] font-normal text-[#f7f3ec] hover:text-[#d4af37] transition-all hover:scale-105 active:scale-95 tracking-wide"
+          >
+            {t("nav.gi_crafts")}
+          </Link>
+
+          <Link
+            href="/team"
+            onClick={() => setMobileMenuOpen(false)}
+            className="font-serif text-[26px] sm:text-[30px] font-normal text-[#f7f3ec] hover:text-[#d4af37] transition-all hover:scale-105 active:scale-95 tracking-wide"
+          >
+            {t("nav.team")}
+          </Link>
+
+          <div className="w-16 h-px bg-[#3d2e22] my-2" />
+
+          {/* Ghost Style "Sell with us" CTA inside Menu */}
+          <button
+            type="button"
+            onClick={() => {
+              setMobileMenuOpen(false);
+              setIsSellerModalOpen(true);
+            }}
+            className="px-6 py-2.5 rounded-pill border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-[#241b14] text-[15px] font-semibold tracking-wide transition-all active:scale-95 shadow-md"
+          >
+            {t("nav.sell")}
+          </button>
+        </div>
+
+        {/* Bottom Bar: Language & Social / Region */}
+        <div className="relative z-10 p-6 border-t border-[#382b20] flex items-center justify-between text-xs text-[#a89a8a] font-mono">
+          <span>📍 Uttar Pradesh Chaupal</span>
+          <button
+            type="button"
+            onClick={() => {
+              toggleLang();
+            }}
+            className="text-[#d4af37] font-semibold border border-[#524132] px-3 py-1 rounded-pill bg-[#1a130e]"
+          >
+            {lang === "hi" ? "Switch to English" : "हिन्दी में बदलें"}
+          </button>
+        </div>
+      </div>
     </header>
   );
 }
