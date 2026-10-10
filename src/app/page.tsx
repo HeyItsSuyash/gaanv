@@ -20,8 +20,8 @@ export default function Home() {
       subhead: t("hero.slide1_sub"),
       ctaLabel: t("hero.cta_explore"),
       ctaHref: "#just-landed",
-      mediaUrl: "/shg-women-proud.jpg",
-      alt: "Rural Indian women self-help group members standing proud together side by side with folded hands",
+      mediaUrl: "/shg-yogi-fund-transfer.jpg",
+      alt: "UP Women Self-Help Groups (SHG) collective receiving direct financial transfer and recognition",
     },
     {
       id: "slide-2",
@@ -29,8 +29,8 @@ export default function Home() {
       subhead: t("hero.slide2_sub"),
       ctaLabel: t("hero.cta_shg"),
       ctaHref: "#women-shg",
-      mediaUrl: "/shg-women-pottery.jpg",
-      alt: "Women SHG potters shaping terracotta pots together in Rajasthan",
+      mediaUrl: "/shg-nari-shakti-vandan.jpg",
+      alt: "Nari Shakti Vandan Sammelan rural women self-help group members celebrating empowerment",
     },
     {
       id: "slide-3",
@@ -38,8 +38,8 @@ export default function Home() {
       subhead: t("hero.slide3_sub"),
       ctaLabel: t("hero.cta_explore"),
       ctaHref: "#gi-treasures",
-      mediaUrl: "/shg-women-crafts.jpg",
-      alt: "Tribal women artisan collective proudly holding handcrafted dokra brass",
+      mediaUrl: "/shg-vantangia-women-welcome.jpg",
+      alt: "Rural women in Vantangia village and grassroots SHG artisans",
     },
   ];
 
@@ -49,7 +49,7 @@ export default function Home() {
       title: t("shg.card1_title"),
       place: t("shg.card1_place"),
       desc: t("shg.card1_desc"),
-      image: "/shg-women-crafts.jpg",
+      image: "/shg-nari-shakti-vandan.jpg",
       impact: "42 Women • ₹18.4L Payout",
     },
     {
@@ -57,7 +57,7 @@ export default function Home() {
       title: t("shg.card2_title"),
       place: t("shg.card2_place"),
       desc: t("shg.card2_desc"),
-      image: "/shg-women-textiles.jpg",
+      image: "/shg-vantangia-women-welcome.jpg",
       impact: "65 Weavers • Direct Fair Wages",
     },
     {
@@ -65,7 +65,7 @@ export default function Home() {
       title: t("shg.card3_title"),
       place: t("shg.card3_place"),
       desc: t("shg.card3_desc"),
-      image: "/shg-women-pottery.jpg",
+      image: "/shg-yogi-fund-transfer.jpg",
       impact: "28 Potters • Zero Middlemen",
     },
   ];

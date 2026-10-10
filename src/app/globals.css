@@ -48,6 +48,7 @@
 }
 
 html {
+  font-size: 16.5px;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -55,16 +56,16 @@ html {
 }
 
 body {
-  font-family: var(--font-fraunces), var(--font-rozha), Georgia, serif;
+  font-family: var(--font-inter), var(--font-noto-sans-devanagari), system-ui, -apple-system, sans-serif;
   background-color: var(--color-bone);
   color: var(--color-ink);
   -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-fraunces), var(--font-rozha), Georgia, serif;
-  letter-spacing: -0.5px;
-  font-weight: 400;
+  font-family: var(--font-outfit), var(--font-noto-serif-devanagari), system-ui, sans-serif;
+  letter-spacing: -0.3px;
+  font-weight: 500;
 }
 
 /* Devanagari font rendering when language is Hindi */
@@ -76,14 +77,15 @@ html[lang="hi"] body, :lang(hi) body, .lang-hi body {
   font-family: var(--font-noto-sans-devanagari), system-ui, -apple-system, sans-serif !important;
 }
 
-/* Headings in Hindi keep the stylized heritage look (Rozha One / Yatra One) */
+/* Headings in Hindi: Clean, readable, non-cursive Noto Serif Devanagari */
 html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4, html[lang="hi"] h5, html[lang="hi"] h6,
 :lang(hi) h1, :lang(hi) h2, :lang(hi) h3, :lang(hi) h4, :lang(hi) h5, :lang(hi) h6 {
-  font-family: var(--font-rozha), var(--font-yatra), "Noto Serif Devanagari", serif !important;
+  font-family: var(--font-noto-serif-devanagari), var(--font-noto-sans-devanagari), system-ui, serif !important;
   letter-spacing: 0px;
+  font-weight: 600;
 }
 
-/* Regular text elements in Hindi explicitly use clean, simple, non-cursive sans-serif font */
+/* Regular text elements in Hindi explicitly use clean, simple Noto Sans Devanagari */
 html[lang="hi"] p, html[lang="hi"] span, html[lang="hi"] a, html[lang="hi"] li, html[lang="hi"] button, html[lang="hi"] input, html[lang="hi"] textarea, html[lang="hi"] label,
 :lang(hi) p, :lang(hi) span, :lang(hi) a, :lang(hi) li, :lang(hi) button, :lang(hi) input, :lang(hi) textarea, :lang(hi) label {
   font-family: var(--font-noto-sans-devanagari), system-ui, -apple-system, sans-serif !important;
@@ -126,23 +128,23 @@ html[lang="hi"] p, html[lang="hi"] span, html[lang="hi"] a, html[lang="hi"] li, 
   opacity: 0.35;
 }
 
-/* Semi-transparent dark overlay for high contrast text readability over photography */
+/* Semi-transparent dark overlay for high contrast text readability over photography (lightened) */
 .overlay-black-90 {
-  background-color: rgba(16, 12, 8, 0.88);
+  background-color: rgba(16, 12, 8, 0.76);
 }
 
 .overlay-black-80 {
-  background-color: rgba(16, 12, 8, 0.80);
+  background-color: rgba(16, 12, 8, 0.68);
 }
 
 .overlay-black-60 {
-  background-color: rgba(16, 12, 8, 0.60);
+  background-color: rgba(16, 12, 8, 0.48);
 }
 
 .overlay-hero-gradient {
   background: 
-    linear-gradient(to right, rgba(10, 7, 5, 0.75) 0%, rgba(10, 7, 5, 0.50) 50%, rgba(10, 7, 5, 0.22) 100%),
-    linear-gradient(to top, rgba(10, 7, 5, 0.82) 0%, rgba(10, 7, 5, 0.38) 60%, rgba(10, 7, 5, 0.18) 100%);
+    linear-gradient(to right, rgba(10, 7, 5, 0.62) 0%, rgba(10, 7, 5, 0.38) 50%, rgba(10, 7, 5, 0.12) 100%),
+    linear-gradient(to top, rgba(10, 7, 5, 0.70) 0%, rgba(10, 7, 5, 0.28) 60%, rgba(10, 7, 5, 0.10) 100%);
 }
 
 /* Custom Scrollbar for Cream Aesthetic */

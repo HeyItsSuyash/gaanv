@@ -5,7 +5,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
 };
-import { Inter, Fraunces, JetBrains_Mono, Rozha_One, Yatra_One, Noto_Sans_Devanagari } from "next/font/google";
+import { Inter, Outfit, Noto_Serif_Devanagari, Noto_Sans_Devanagari, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -28,24 +28,17 @@ const inter = Inter({
   display: "swap",
 });
 
-const fraunces = Fraunces({
+const outfit = Outfit({
   subsets: ["latin"],
-  variable: "--font-fraunces",
-  display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
-});
-
-const rozhaOne = Rozha_One({
-  subsets: ["devanagari", "latin"],
-  weight: "400",
-  variable: "--font-rozha",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-outfit",
   display: "swap",
 });
 
-const yatraOne = Yatra_One({
+const notoSerifDevanagari = Noto_Serif_Devanagari({
   subsets: ["devanagari", "latin"],
-  weight: "400",
-  variable: "--font-yatra",
+  weight: ["500", "600", "700"],
+  variable: "--font-noto-serif-devanagari",
   display: "swap",
 });
 
@@ -92,7 +85,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${rozhaOne.variable} ${yatraOne.variable} ${notoSansDevanagari.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${outfit.variable} ${notoSerifDevanagari.variable} ${notoSansDevanagari.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="bg-bone text-ink font-sans flex min-h-full flex-col overflow-x-clip relative">
         {/* Subtle Warli Art Pattern Overlay across the entire site background */}
