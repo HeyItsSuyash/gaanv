@@ -67,8 +67,54 @@ export function Footer() {
           </div>
         </div>
 
+        {/* National Initiatives & Heritage Badges (Make in India, ODOP, Viksit Bharat) */}
+        <div className="mt-12 pt-8 border-t border-mist/50">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-paper/80 border border-mist/80 rounded-card p-5 sm:p-6 shadow-sm">
+            <div>
+              <span className="font-mono text-[11px] uppercase tracking-wider text-madder font-semibold block">
+                National Heritage & Self-Reliance Backing
+              </span>
+              <p className="font-serif text-[16px] text-ink mt-0.5 font-medium">
+                Aligned with National Rural Livelihood Mission, ODOP & Make in India
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+              {/* Make in India */}
+              <div className="relative h-12 w-28 sm:h-14 sm:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/mii.png"
+                  alt="Make in India"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+
+              {/* One District One Product (ODOP) */}
+              <div className="relative h-12 w-24 sm:h-14 sm:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/odop-logo.png"
+                  alt="One District One Product (ODOP UP)"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+
+              {/* Viksit Bharat */}
+              <div className="relative h-12 w-24 sm:h-14 sm:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+                <Image
+                  src="/viksit india.avif"
+                  alt="Viksit Bharat"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-mist/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone">
+        <div className="mt-8 pt-6 border-t border-mist/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone">
           <p>{t("footer.rights")}</p>
           <p className="font-mono text-brass/90 text-center sm:text-right">
             {t("footer.shipping")}

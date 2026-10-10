@@ -46,11 +46,11 @@ export const metadata: Metadata = {
   applicationName: "Gaanv by Mittilok",
   icons: {
     icon: [
+      { url: "/gaon-logo.png", type: "image/png" },
       { url: "/favicon.png", type: "image/png" },
-      { url: "/logo.png", type: "image/png" },
     ],
-    shortcut: "/favicon.png",
-    apple: "/logo.png",
+    shortcut: "/gaon-logo.png",
+    apple: "/gaon-logo.png",
   },
   openGraph: {
     title: "Gaanv by Mittilok — Rural Women SHG Crafts",

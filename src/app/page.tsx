@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
@@ -69,6 +69,14 @@ export default function Home() {
       impact: "28 Potters • Zero Middlemen",
     },
   ];
+
+  // Automatic slideshow rotation every 3 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % 3);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
 
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
@@ -207,6 +215,30 @@ export default function Home() {
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* National Initiatives Strip: Make in India, ODOP, Viksit Bharat */}
+      <section className="bg-bone-d border-b border-mist py-4 relative z-20">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 flex flex-wrap items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-madder"></span>
+            <span className="font-mono text-xs uppercase tracking-wider text-ink font-semibold">
+              Proudly Handcrafted in India • Vocal for Local
+            </span>
+          </div>
+
+          <div className="flex items-center gap-6 sm:gap-10">
+            <div className="relative h-9 w-24 sm:h-10 sm:w-28 opacity-90 hover:opacity-100 transition-opacity">
+              <Image src="/mii.png" alt="Make in India" fill className="object-contain" />
+            </div>
+            <div className="relative h-9 w-20 sm:h-10 sm:w-24 opacity-90 hover:opacity-100 transition-opacity">
+              <Image src="/odop-logo.png" alt="One District One Product" fill className="object-contain" />
+            </div>
+            <div className="relative h-9 w-20 sm:h-10 sm:w-24 opacity-90 hover:opacity-100 transition-opacity">
+              <Image src="/viksit india.avif" alt="Viksit Bharat" fill className="object-contain" />
             </div>
           </div>
         </div>
@@ -569,55 +601,64 @@ export default function Home() {
       {/* Decorative Folk Border Divider */}
       <div className="folk-border-divider" aria-hidden="true" />
 
-      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH */}
-      <section className="relative py-16 md:py-24 bg-bone-d/80 border-t border-mist overflow-hidden">
-        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.14] pointer-events-none" />
-        <div className="relative mx-auto max-w-[1080px] px-5 sm:px-6 md:px-8">
-          <div className="rounded-card bg-[#241b14] text-[#f7f3ec] border border-[#382b20] p-7 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden">
-            <div className="absolute -end-10 -bottom-10 w-64 h-64 bg-[#d4af37]/5 rounded-full blur-3xl pointer-events-none" />
-            
-            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center">
-              {/* Founder Avatar & Origin Details */}
-              <div className="flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0">
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-brass shadow-lg bg-[#1a130e]">
-                  <Image
-                    src="/gauri-avatar.jpg"
-                    alt="Founder Gaanv by Mittilok"
-                    fill
-                    className="object-cover"
-                  />
+      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH (FULL WIDTH) */}
+      <section className="relative py-16 md:py-24 bg-[#241b14] text-[#f7f3ec] border-y border-[#382b20] overflow-hidden">
+        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.08] pointer-events-none" />
+        <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-14 items-center">
+            {/* Founder Passport Size Photo with Clean Framing */}
+            <div className="flex flex-col items-center text-center flex-shrink-0">
+              <div className="relative w-36 h-48 sm:w-40 sm:h-52 rounded-md overflow-hidden border-4 border-[#3d2e22] shadow-2xl bg-[#1a130e]">
+                <Image
+                  src="/gauri-avatar.jpg"
+                  alt="XYZ - Founder"
+                  fill
+                  className="object-cover object-top"
+                />
+                <div className="absolute bottom-0 inset-x-0 bg-black/60 py-1 text-[11px] font-mono text-[#d4af37] text-center border-t border-white/10">
+                  Passport ID
                 </div>
-                <h4 className="font-serif text-[20px] text-[#f7f3ec] mt-4 font-normal">
-                  Suyash Srivastava
-                </h4>
-                <p className="text-brass text-xs font-mono">
-                  Founder & Architect, Gaanv by Mittilok
-                </p>
-                <span className="inline-flex items-center gap-1 text-[11px] text-[#a89a88] mt-1 font-mono">
-                  📍 Lucknow, Uttar Pradesh
-                </span>
-                <Link
-                  href="/team"
-                  className="mt-4 text-xs font-mono text-brass underline hover:text-[#f7f3ec] transition-colors"
-                >
-                  {lang === "hi" ? "पूरी टीम से मिलें →" : "Meet The Whole Team →"}
-                </Link>
               </div>
+              <div className="mt-3 bg-white text-[#1a1510] px-4 py-1.5 rounded-sm shadow-md font-serif font-bold text-[16px] tracking-wide">
+                XYZ
+              </div>
+              <p className="text-[#d4af37] text-xs font-mono mt-1">
+                Founder, Gaanv by Mittilok
+              </p>
+              <span className="text-[11px] text-[#a89a88] font-mono mt-0.5">
+                📍 Uttar Pradesh
+              </span>
+              <Link
+                href="/team"
+                className="mt-3 text-xs font-mono text-[#d4af37] hover:underline"
+              >
+                {lang === "hi" ? "पूरी टीम देखें →" : "View Team Cards →"}
+              </Link>
+            </div>
 
-              {/* Founder Note / Testimony */}
-              <div className="flex-1 border-t md:border-t-0 md:border-s border-[#3d2e22] pt-6 md:pt-0 md:ps-8">
-                <span className="text-brass font-mono text-xs uppercase tracking-widest font-semibold block mb-2">
+            {/* Full Width Founder Note */}
+            <div className="flex-1 border-t md:border-t-0 md:border-s border-[#3d2e22] pt-6 md:pt-0 md:ps-10">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="text-[#d4af37] font-mono text-xs uppercase tracking-widest font-semibold">
                   {lang === "hi" ? "संस्थापक का संदेश • उत्तर प्रदेश की ज़मीन से" : "Founder's Testimony • From the Soil of Uttar Pradesh"}
                 </span>
-                <blockquote className="font-serif text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed text-[#f7f3ec] font-light italic">
-                  {lang === "hi"
-                    ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"
-                    : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while urban intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle — direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
-                </blockquote>
-                <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-mono text-[#a89a88]">
+                <span className="h-px flex-1 bg-[#3d2e22]"></span>
+              </div>
+              
+              <blockquote className="font-serif text-[18px] sm:text-[21px] md:text-[23px] leading-relaxed text-[#f7f3ec] font-light italic">
+                {lang === "hi"
+                  ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"
+                  : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle — direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
+              </blockquote>
+
+              <div className="mt-8 pt-6 border-t border-[#3d2e22] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#a89a88]">
+                <div className="flex items-center gap-4">
                   <span>• 100% Open & Traceable</span>
                   <span>• 500+ Rural Women Empowered</span>
                   <span>• Grounded in 75 Districts of UP</span>
+                </div>
+                <div className="text-[#d4af37] font-semibold">
+                  Zero Middlemen Escrow System
                 </div>
               </div>
             </div>

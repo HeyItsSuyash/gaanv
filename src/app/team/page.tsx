@@ -10,22 +10,24 @@ export default function TeamPage() {
 
   const coreTeam = [
     {
-      name: "Suyash Srivastava",
+      name: "XYZ",
       role: lang === "hi" ? "संस्थापक एवं प्रधान वास्तुकार" : "Founder & Lead Architect",
-      location: "Lucknow, Uttar Pradesh",
+      location: "Uttar Pradesh",
+      photo: "/gauri-avatar.jpg",
       bio:
         lang === "hi"
-          ? "अवध की पाटी और ग्रामीण शिल्पों के प्रति समर्पित। तराई बेल्ट (बलरामपुर, श्रावस्ती) और पूर्वांचल के महिला स्वयं सहायता समूहों को तकनीक के माध्यम से सीधे वैश्विक बाज़ार से जोड़ने का विजन।"
-          : "Rooted in Awadh, developing Gaanv by Mittilok to connect UP's Terai belt (Balrampur, Shravasti) and Purvanchal artisan clusters directly with conscious buyers.",
-      badge: "Founder • Product Lead",
+          ? "अवध और तराई बेल्ट (बलरामपुर, श्रावस्ती) के महिला स्वयं सहायता समूहों को तकनीक के माध्यम से सीधे वैश्विक बाज़ार से जोड़ने का विजन।"
+          : "Developing Gaanv by Mittilok to connect UP's Terai belt (Balrampur, Shravasti) and Purvanchal artisan clusters directly with conscious buyers.",
+      badge: "Founder",
     },
     {
       name: "Dr. Ananya Mishra",
       role: lang === "hi" ? "शिल्प शोध व जीआई रजिस्ट्री सलाहकार" : "Craft Heritage & GI Specialist",
       location: "Varanasi, Uttar Pradesh",
+      photo: "/shg-women-textiles.jpg",
       bio:
         lang === "hi"
-          ? "काशी हिंदू विश्वविद्यालय से लोक कला शोधकर्ता। उत्तर प्रदेश के पंजीकृत भौगोलिक संकेतकों (GI Tags) व जनजातीय क्राफ्ट्स की प्रामाणिकता सत्यापन की देखरेख करती हैं।"
+          ? "काशी हिंदू विश्वविद्यालय से लोक कला शोधकर्ता। उत्तर प्रदेश के पंजीकृत भौगोलिक संकेतकों (GI Tags) व जनजातीय क्राफ्ट्स की प्रामाणिकता सत्यापन की देखरेख।"
           : "Folk art researcher from BHU, Varanasi. Oversees GI tag authentication and documentation of indigenous UP crafts.",
       badge: "Artisan Verification",
     },
@@ -33,9 +35,10 @@ export default function TeamPage() {
       name: "Radhika Verma",
       role: lang === "hi" ? "तराई एवं बलरामपुर क्लस्टर प्रमुख" : "Terai & Balrampur Cluster Head",
       location: "Balrampur, Uttar Pradesh",
+      photo: "/shg-women-crafts.jpg",
       bio:
         lang === "hi"
-          ? "बलरामपुर और बहराइच के थारू जनजातीय महिला स्वयं सहायता समूहों के साथ जमीनी स्तर पर काम करती हैं। मूंज क्राफ्ट, प्राकृतिक सिकाई घास और थारू कढ़ाई का समन्वय।"
+          ? "बलरामपुर और बहराइच के थारू जनजातीय महिला स्वयं सहायता समूहों के साथ मूंज क्राफ्ट व थारू कढ़ाई का समन्वय।"
           : "Working at grassroots with Tharu tribal women SHGs across Balrampur and Bahraich. Mobilizing Moonj grass and hand-embroidery clusters.",
       badge: "Grassroots Mobilizer",
     },
@@ -43,11 +46,12 @@ export default function TeamPage() {
       name: "Virendra Singh Rawat",
       role: lang === "hi" ? "कारीगर लॉजिस्टिक्स एवं एस्क्रो सुरक्षा" : "Artisan Logistics & Fair Trade Lead",
       location: "Gorakhpur, Uttar Pradesh",
+      photo: "/shg-women-pottery.jpg",
       bio:
         lang === "hi"
-          ? "गोरखपुर टेराकोटा एवं बुंदेलखंड के धातु शिल्पों की इको-पैकेजिंग, गुणवत्ता नियंत्रण और कारीगरों के खाते में शून्य-बिचौलिया भुगतान की निगरानी।"
+          ? "गोरखपुर टेराकोटा एवं बुंदेलखंड शिल्पों की इको-पैकेजिंग, गुणवत्ता नियंत्रण और शून्य-बिचौलिया भुगतान की निगरानी।"
           : "Manages safe packaging, quality standards, and immediate direct bank payouts from Gorakhpur to all 75 UP districts.",
-      badge: "Fair Payouts & Operations",
+      badge: "Fair Payouts & Ops",
     },
   ];
 
@@ -120,33 +124,47 @@ export default function TeamPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
           {coreTeam.map((member, i) => (
             <div
               key={i}
-              className="rounded-card bg-paper border border-mist p-6 sm:p-8 shadow-lg hover:border-brass/60 transition-all flex flex-col justify-between"
+              className="rounded-card bg-paper border border-mist p-5 shadow-lg hover:border-brass/70 transition-all flex flex-col justify-between"
             >
               <div>
-                <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                  <span className="font-mono text-[11px] text-brass bg-brass-l border border-brass/40 px-2.5 py-0.5 rounded-pill font-semibold">
-                    {member.badge}
-                  </span>
-                  <span className="font-mono text-xs text-stone flex items-center gap-1">
+                {/* Passport size photo with name written in a white box over the photo */}
+                <div className="relative w-full aspect-[3/4] max-w-[200px] mx-auto rounded-md overflow-hidden border-2 border-mist bg-bone shadow-md mb-4 flex items-end justify-center">
+                  <Image
+                    src={member.photo}
+                    alt={member.name}
+                    fill
+                    className="object-cover object-top"
+                  />
+                  {/* Name written in a white box over the passport size picture */}
+                  <div className="relative z-10 w-[90%] mb-2.5 bg-white text-ink border border-mist/80 py-1 px-2 rounded-xs shadow-md text-center">
+                    <h3 className="font-serif text-[15px] sm:text-[16px] font-bold text-ink leading-tight">
+                      {member.name}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Role below */}
+                <div className="text-center mb-3">
+                  <p className="text-madder text-[12px] font-mono font-semibold uppercase tracking-wide">
+                    {member.role}
+                  </p>
+                  <span className="text-[11px] text-stone font-mono block mt-0.5">
                     📍 {member.location}
                   </span>
                 </div>
 
-                <h3 className="font-serif text-[24px] text-ink font-normal">{member.name}</h3>
-                <p className="text-madder text-[13px] font-mono font-medium mt-0.5">{member.role}</p>
-
-                <p className="text-[14px] text-stone leading-relaxed mt-4 font-sans">
+                <p className="text-[13px] text-stone leading-relaxed font-sans text-center">
                   {member.bio}
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-mist/50 flex items-center justify-between text-xs text-stone font-mono">
-                <span>Gaanv by Mittilok</span>
-                <span className="text-brass font-medium">Verified UP Heritage Team</span>
+              <div className="mt-5 pt-3 border-t border-mist/50 flex items-center justify-between text-[11px] text-stone font-mono">
+                <span className="text-brass font-medium">{member.badge}</span>
+                <span>UP Heritage</span>
               </div>
             </div>
           ))}
