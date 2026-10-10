@@ -19,6 +19,7 @@ import { BecomeSellerModal } from "@/components/BecomeSellerModal";
 import { ProductQuickViewModal } from "@/components/ProductQuickViewModal";
 import { CheckoutModal } from "@/components/CheckoutModal";
 import { WhatsAppChatbot } from "@/components/WhatsAppChatbot";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -95,6 +96,7 @@ export default function RootLayout({
             <ProductQuickViewModal />
           </CartProvider>
         </LanguageProvider>
+        <Analytics />
       </body>
     </html>
   );
