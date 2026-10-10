@@ -93,31 +93,33 @@ export default function Home() {
 
   // Handle seamless circular loop jump when reaching clones
   const handleTransitionEnd = () => {
-    if (slideIndex === extendedSlides.length - 1) {
+    if (slideIndex >= extendedSlides.length - 1) {
       setIsTransitioning(false);
       setSlideIndex(1);
-    } else if (slideIndex === 0) {
+    } else if (slideIndex <= 0) {
       setIsTransitioning(false);
       setSlideIndex(HERO_SLIDES.length);
     }
   };
 
-  // Re-enable smooth transition whenever slideIndex changes
+  // Re-enable smooth transition with requestAnimationFrame to prevent blank flicker
   useEffect(() => {
     if (!isTransitioning) {
-      const timer = setTimeout(() => {
-        setIsTransitioning(true);
-      }, 50);
-      return () => clearTimeout(timer);
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setIsTransitioning(true);
+        });
+      });
+      return () => cancelAnimationFrame(raf);
     }
   }, [isTransitioning]);
 
-  // Automatic slideshow rotation forward every 3 seconds in a continuous circular loop (1->2->3->1->2->3...)
+  // Automatic slideshow rotation forward every 3.5 seconds in a continuous circular loop (1->2->3->1->2->3...)
   useEffect(() => {
     const timer = setInterval(() => {
       setIsTransitioning(true);
       setSlideIndex((prev) => prev + 1);
-    }, 3000);
+    }, 3500);
     return () => clearInterval(timer);
   }, []);
 
@@ -155,7 +157,7 @@ export default function Home() {
 
       {/* 1. HERO CAROUSEL: WOMEN SHG ARTISANS FOCUS */}
       <section
-        className="relative overflow-hidden bg-bone-d z-10 h-[calc(100vh-4rem)] min-h-[580px] w-full"
+        className="relative overflow-hidden bg-[#1a130e] z-10 h-[calc(100vh-4rem)] min-h-[580px] w-full"
         aria-label="Women SHG Rural Artistry Carousel"
       >
         {/* Horizontal sliding track with circular looping */}
@@ -163,18 +165,19 @@ export default function Home() {
           onTransitionEnd={handleTransitionEnd}
           className={`flex h-full w-full ${isTransitioning ? "transition-transform duration-700 ease-[var(--ease-signature)]" : ""
             }`}
-          style={{ transform: `translateX(-${slideIndex * 100}%)` }}
+          style={{ transform: `translateX(-${slideIndex * 100}%)`, willChange: "transform" }}
         >
           {extendedSlides.map((slide, idx) => (
             <div
               key={`${slide.id}-${idx}`}
-              className="relative h-full w-full shrink-0 flex-none overflow-hidden"
+              className="relative h-full w-full shrink-0 flex-none overflow-hidden bg-[#241b14]"
             >
               <Image
                 src={slide.mediaUrl}
                 alt={slide.alt}
                 fill
-                priority={idx === 1}
+                priority={true}
+                unoptimized
                 className="object-cover object-center"
                 sizes="100vw"
               />
@@ -277,9 +280,9 @@ export default function Home() {
       <section className="bg-bone-d py-4 relative z-20 border-b border-mist/40">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
           <div className="w-full md:w-auto flex items-center justify-center">
-            <span className="font-mono text-xs uppercase tracking-wider text-ink font-semibold text-center block w-full">
+            <h3 className="font-serif text-[15px] sm:text-[16px] text-ink font-medium text-center">
               Proudly Handcrafted in India
-            </span>
+            </h3>
           </div>
 
           <div className="flex items-center justify-center gap-6 sm:gap-10 w-full md:w-auto">
@@ -537,9 +540,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.12] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-12 max-w-3xl">
-            <span className="inline-flex items-center gap-1.5 border border-[#524132] bg-[#241b14] text-[#d4af37] text-[11px] font-mono px-3 py-1 rounded-pill uppercase tracking-wider mb-3">
-              {lang === "hi" ? "तराई की गौरवशाली विरासत • बलरामपुर, उत्तर प्रदेश" : "Pride of Terai • Balrampur, Uttar Pradesh"}
-            </span>
             <h2 className="font-serif text-h2 text-ink">
               {lang === "hi"
                 ? "उत्तर प्रदेश की थारू जनजातीय शिल्प धरोहर: बलरामपुर एवं सुहेलवा वन क्षेत्र"
@@ -663,13 +663,6 @@ export default function Home() {
             {/* Seamless Quote Content Column directly attached without gap */}
             <div className="relative z-10 flex-1 flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 border-t md:border-t-0 md:border-s border-[#3d2e22]">
               <div>
-                <div className="flex items-center gap-2 mb-4">
-                  <span className="text-[#d4af37] font-mono text-xs uppercase tracking-widest font-semibold">
-                    {lang === "hi" ? "उत्तर प्रदेश की ज़मीन से" : "From the Soil of Uttar Pradesh"}
-                  </span>
-                  <span className="h-px flex-1 bg-[#3d2e22]"></span>
-                </div>
-
                 <blockquote className="font-serif text-[18px] sm:text-[21px] md:text-[23px] leading-relaxed text-[#f7f3ec] font-light italic">
                   {lang === "hi"
                     ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"

@@ -170,3 +170,37 @@ html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4,
     transform: translateX(100%);
   }
 }
+
+/* Platform-wide theme-consistent dropdowns & select buttons */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20width%3D%2716%27%20height%3D%2716%27%20viewBox%3D%270%200%2024%2024%27%20fill%3D%27none%27%20stroke%3D%27%236e6456%27%20stroke-width%3D%272%27%20stroke-linecap%3D%27round%27%20stroke-linejoin%3D%27round%27%3E%3Cpolyline%20points%3D%276%209%2012%2015%2018%209%27%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem 1rem;
+  padding-right: 2.25rem !important;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+select:focus {
+  border-color: var(--color-madder);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-madder);
+}
+
+select option {
+  background-color: var(--color-bone);
+  color: var(--color-ink);
+  padding: 8px 12px;
+}
+
+select option:checked,
+select option:hover {
+  background-color: var(--color-madder-l) !important;
+  color: var(--color-madder) !important;
+}

@@ -12,23 +12,25 @@ export function Footer() {
     <footer className="relative border-t border-mist bg-bone-d text-ink-soft text-[14px]">
       <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-12 md:px-8 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {/* Brand Info (Enlarged logo with Hindi Gaanv emblem to the right) */}
+          {/* Brand Info (Prominent logo with high-contrast, larger Devanagari Gaanv emblem) */}
           <div className="sm:col-span-2">
-            <Link href="/" className="inline-flex items-center gap-3 sm:gap-4 mb-4">
-              <div className="relative h-14 w-44 sm:h-16 sm:w-48">
+            <Link href="/" className="inline-flex items-center gap-4 sm:gap-5 mb-5 group">
+              <div className="relative h-16 w-16 sm:h-20 sm:w-20 shrink-0 transition-transform duration-200 group-hover:scale-105">
                 <Image
-                  src="/gaon-logo.png"
+                  src="/gaon-emblem-clean.png"
                   alt="Gaanv by Mittilok"
                   fill
-                  className="object-contain object-left"
+                  className="object-contain"
+                  unoptimized
                 />
               </div>
-              <div className="relative h-12 w-28 sm:h-14 sm:w-32 border-s border-mist/80 ps-3 sm:ps-4 flex items-center">
+              <div className="relative h-14 w-32 sm:h-16 sm:w-40 border-s-2 border-stone/25 ps-4 sm:ps-5 flex items-center">
                 <Image
-                  src="/logogaanv.png"
+                  src="/logogaanv-dark-crisp.png"
                   alt="गाँव देवनागरी"
                   fill
-                  className="object-contain object-left"
+                  className="object-contain object-left transition-opacity duration-200"
+                  unoptimized
                 />
               </div>
             </Link>
