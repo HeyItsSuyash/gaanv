@@ -156,12 +156,7 @@ export function WhatsAppChatbot() {
               <h3 className="font-serif font-medium text-[16px] text-[#f7f3ec] leading-tight">
                 {lang === "hi" ? "गौरी • गाँव सहायता" : "Gauri • Artisan Help Desk"}
               </h3>
-              <p className="text-[12px] text-[#d4af37] mt-0.5 font-sans flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
-                {isTyping
-                  ? lang === "hi" ? "टाइप कर रही हैं..." : "Typing response..."
-                  : lang === "hi" ? "सक्रिय सहायता" : "Online • Replies in seconds"}
-              </p>
+
             </div>
           </div>
 
@@ -180,9 +175,8 @@ export function WhatsAppChatbot() {
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`flex animate-in fade-in slide-in-from-bottom-1 duration-200 ${
-                msg.sender === "user" ? "justify-end" : "justify-start items-start gap-2.5"
-              }`}
+              className={`flex animate-in fade-in slide-in-from-bottom-1 duration-200 ${msg.sender === "user" ? "justify-end" : "justify-start items-start gap-2.5"
+                }`}
             >
               {msg.sender === "bot" && (
                 <div className="relative w-7 h-7 rounded-full overflow-hidden border border-[#ddd4c4] bg-[#241b14] shrink-0 mt-0.5 shadow-xs">
@@ -197,11 +191,10 @@ export function WhatsAppChatbot() {
               )}
               <div className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"}`}>
                 <div
-                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans ${
-                    msg.sender === "user"
-                      ? "bg-[#241b14] text-[#f7f3ec] rounded-tr-none border border-[#3d2e22]"
-                      : "bg-white text-[#1a1510] border border-[#ddd4c4] rounded-tl-none"
-                  }`}
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans ${msg.sender === "user"
+                    ? "bg-[#241b14] text-[#f7f3ec] rounded-tr-none border border-[#3d2e22]"
+                    : "bg-white text-[#1a1510] border border-[#ddd4c4] rounded-tl-none"
+                    }`}
                 >
                   {msg.text}
                 </div>
@@ -264,16 +257,6 @@ export function WhatsAppChatbot() {
         </div>
 
         {/* WhatsApp Direct Action Button */}
-        <div className="p-3 bg-white border-t border-[#e8dfd3] shrink-0">
-          <button
-            type="button"
-            onClick={openWhatsAppDirect}
-            className="w-full flex items-center justify-center gap-2.5 bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] border border-[#d4af37]/50 text-[14px] font-semibold py-2.5 px-4 rounded-lg transition-all shadow active:scale-98 cursor-pointer"
-          >
-            <MessageCircle className="w-5 h-5 text-[#d4af37] fill-[#241b14] scale-x-[-1] shrink-0" />
-            <span>{t("chat.whatsapp_btn")}</span>
-          </button>
-        </div>
 
         {/* Input Form with clean, crisp styling */}
         <form
