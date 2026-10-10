@@ -124,7 +124,8 @@ export function Header() {
             <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
           <Link
-            href="/team"
+            href="/#team"
+            onClick={(e) => handleNavAnchor(e, "team")}
             className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium tracking-wide"
           >
             {t("nav.team")}
@@ -275,8 +276,8 @@ export function Header() {
           </Link>
 
           <Link
-            href="/team"
-            onClick={() => setMobileMenuOpen(false)}
+            href="/#team"
+            onClick={(e) => handleNavAnchor(e, "team")}
             className="font-serif text-[26px] sm:text-[30px] font-normal text-[#f7f3ec] hover:text-[#d4af37] transition-all hover:scale-105 active:scale-95 tracking-wide"
           >
             {t("nav.team")}

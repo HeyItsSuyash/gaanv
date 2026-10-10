@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { User, Instagram, Facebook, Users2 } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { initialProducts } from "@/data/products";
@@ -651,7 +652,215 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH (SEAMLESS FULL HEIGHT CONTAINER WITH WARLI PATTERNS) */}
+      {/* 6. OUR TEAM SECTION (PLACED DIRECTLY AFTER THARU TRIBE) */}
+      <section id="team" className="relative py-16 md:py-24 bg-bone-d/50 overflow-hidden border-b border-mist/50">
+        <div className="absolute inset-0 bg-warli-pattern opacity-[0.05] pointer-events-none" />
+        <div className="relative mx-auto max-w-[1120px] px-5 sm:px-6 md:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <h2 className="font-serif text-[32px] sm:text-[40px] text-ink font-normal tracking-tight">
+              {lang === "hi" ? "हमारी टीम" : "Our Team"}
+            </h2>
+            <p className="mt-2.5 text-[15px] sm:text-[16px] text-stone leading-relaxed font-serif">
+              {lang === "hi"
+                ? "गाँव बाय मिट्टीलोक के निर्माता, सलाहकार और तकनीकी नेतृत्व"
+                : "The leadership, mentorship, and engineering minds behind Gaanv by Mittilok"}
+            </p>
+          </div>
+
+          {/* 1. Co-Founders */}
+          <div className="mb-16">
+            <h3 className="font-serif text-[22px] sm:text-[24px] text-ink font-normal text-center mb-10 pb-2 border-b border-mist/60 max-w-xs mx-auto">
+              {lang === "hi" ? "सह-संस्थापक" : "Co-Founders"}
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 max-w-3xl mx-auto">
+              {[
+                {
+                  name: "Gaurav Srivastav",
+                  role: lang === "hi" ? "सह-संस्थापक एवं मुख्य कार्यकारी अधिकारी (CEO)" : "Co-Founder & Chief Executive Officer",
+                  photo: "/founderceo.jpg",
+                  points: [
+                    lang === "hi" ? "मिशन व ग्रामीण वाणिज्य रणनीति" : "Mission architecture & rural commerce strategy",
+                    lang === "hi" ? "बलरामपुर एवं तराई क्लस्टर विस्तार" : "Balrampur & Terai artisan network development",
+                  ],
+                },
+                {
+                  name: "Vijay Upadhyay",
+                  role: lang === "hi" ? "सह-संस्थापक एवं मुख्य परिचालन अधिकारी (COO)" : "Co-Founder & Chief Operating Officer",
+                  photo: "/foundercoo.png",
+                  points: [
+                    lang === "hi" ? "ज़मीनी फील्ड लॉजिस्टिक्स व आपूर्ति श्रृंखला" : "Grassroots operations & supply chain integrity",
+                    lang === "hi" ? "कारीगर ऑनबोर्डिंग एवं प्रत्यक्ष भुगतान" : "Artisan collective onboarding & direct payouts",
+                  ],
+                },
+              ].map((person, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center group">
+                  <div className="relative mb-4">
+                    <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                      <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
+                        <Image
+                          src={person.photo}
+                          alt={person.name}
+                          fill
+                          unoptimized
+                          className="object-cover object-top"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                  <h4 className="font-serif text-[20px] font-semibold text-ink leading-tight">
+                    {person.name}
+                  </h4>
+                  <p className="text-[#9b3d2b] text-[13px] font-medium mt-1">
+                    {person.role}
+                  </p>
+                  <ul className="mt-2.5 space-y-1 text-stone text-[13px] font-sans text-center max-w-xs">
+                    {person.points.map((pt, pIdx) => (
+                      <li key={pIdx} className="leading-snug">• {pt}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 2. Technical Mentor */}
+          <div className="mb-16">
+            <h3 className="font-serif text-[22px] sm:text-[24px] text-ink font-normal text-center mb-10 pb-2 border-b border-mist/60 max-w-xs mx-auto">
+              {lang === "hi" ? "तकनीकी सलाहकार" : "Technical Mentor"}
+            </h3>
+
+            <div className="flex justify-center">
+              <div className="flex flex-col items-center text-center group max-w-sm">
+                <div className="relative mb-4">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                    <div className="w-full h-full rounded-full bg-bone-d flex items-center justify-center text-stone">
+                      <User className="w-14 h-14 text-stone/60" />
+                    </div>
+                  </div>
+                </div>
+                <h4 className="font-serif text-[20px] font-semibold text-ink leading-tight">
+                  Archana Nirvalla
+                </h4>
+                <p className="text-[#9b3d2b] text-[13px] font-medium mt-1">
+                  {lang === "hi" ? "तकनीकी सलाहकार एवं मेंटर" : "Technical Mentor"}
+                </p>
+                <ul className="mt-2.5 space-y-1 text-stone text-[13px] font-sans text-center max-w-xs">
+                  <li className="leading-snug">
+                    • {lang === "hi" ? "तकनीकी मार्गदर्शन एवं आर्किटेक्चर समीक्षा" : "System architecture & engineering guidance"}
+                  </li>
+                  <li className="leading-snug">
+                    • {lang === "hi" ? "स्केलेबिलिटी एवं डिजिटल नवाचार" : "Scale strategy & technology mentorship"}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* 3. Technical Heads */}
+          <div className="mb-16">
+            <h3 className="font-serif text-[22px] sm:text-[24px] text-ink font-normal text-center mb-10 pb-2 border-b border-mist/60 max-w-xs mx-auto">
+              {lang === "hi" ? "तकनीकी प्रमुख" : "Technical Heads"}
+            </h3>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 max-w-3xl mx-auto">
+              {[
+                {
+                  name: "Suyash Shukla",
+                  role: lang === "hi" ? "तकनीकी प्रमुख (Technical Head)" : "Technical Head",
+                  points: [
+                    lang === "hi" ? "प्लेटफ़ॉर्म इंजीनियरिंग एवं कोर आर्किटेक्चर" : "Platform engineering & core web architecture",
+                    lang === "hi" ? "सुरक्षा, परफॉर्मेंस व डिजिटल अनुभव" : "System performance, security & user experience",
+                  ],
+                },
+                {
+                  name: "Shailendra Mani Pandey",
+                  role: lang === "hi" ? "तकनीकी प्रमुख (Technical Head)" : "Technical Head",
+                  points: [
+                    lang === "hi" ? "सिस्टम इंफ्रास्ट्रक्चर एवं डेटा पाइपलाइन्स" : "Infrastructure systems & data pipeline design",
+                    lang === "hi" ? "लॉजिस्टिक्स व परिचालन तकनीकी समाधान" : "Operational tooling & logistical integrations",
+                  ],
+                },
+              ].map((person, idx) => (
+                <div key={idx} className="flex flex-col items-center text-center group">
+                  <div className="relative mb-4">
+                    <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                      <div className="w-full h-full rounded-full bg-bone-d flex items-center justify-center text-stone">
+                        <User className="w-14 h-14 text-stone/60" />
+                      </div>
+                    </div>
+                  </div>
+                  <h4 className="font-serif text-[20px] font-semibold text-ink leading-tight">
+                    {person.name}
+                  </h4>
+                  <p className="text-[#9b3d2b] text-[13px] font-medium mt-1">
+                    {person.role}
+                  </p>
+                  <ul className="mt-2.5 space-y-1 text-stone text-[13px] font-sans text-center max-w-xs">
+                    {person.points.map((pt, pIdx) => (
+                      <li key={pIdx} className="leading-snug">• {pt}</li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* 4. Trust & Community Metrics (Counters Design) */}
+          <div className="pt-12 border-t border-mist/80">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <h3 className="font-serif text-[22px] sm:text-[28px] text-ink font-normal leading-relaxed">
+                {lang === "hi"
+                  ? "हमारे मिशन में विश्वास करने वालों का भरोसा"
+                  : "Followed by the trust of the ones who believe in our mission"}
+              </h3>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-12 max-w-3xl mx-auto text-center divide-y sm:divide-y-0 sm:divide-x divide-mist/60">
+              {/* Instagram Metric */}
+              <div className="flex flex-col items-center pt-4 sm:pt-0">
+                <div className="w-11 h-11 rounded-full bg-bone-d flex items-center justify-center text-[#9b3d2b] mb-2.5">
+                  <Instagram className="w-5 h-5" />
+                </div>
+                <span className="font-serif text-[38px] sm:text-[46px] font-semibold text-ink tracking-tight tabular-nums">
+                  80k+
+                </span>
+                <p className="text-stone text-[14px] font-medium mt-0.5">
+                  {lang === "hi" ? "फॉलोअर्स इंस्टाग्राम पर" : "Followers on Instagram"}
+                </p>
+              </div>
+
+              {/* Facebook Metric */}
+              <div className="flex flex-col items-center pt-6 sm:pt-0 sm:ps-6">
+                <div className="w-11 h-11 rounded-full bg-bone-d flex items-center justify-center text-[#2c4263] mb-2.5">
+                  <Facebook className="w-5 h-5" />
+                </div>
+                <span className="font-serif text-[38px] sm:text-[46px] font-semibold text-ink tracking-tight tabular-nums">
+                  80k+
+                </span>
+                <p className="text-stone text-[14px] font-medium mt-0.5">
+                  {lang === "hi" ? "फॉलोअर्स फेसबुक पर" : "Followers on Facebook"}
+                </p>
+              </div>
+
+              {/* Customers Metric */}
+              <div className="flex flex-col items-center pt-6 sm:pt-0 sm:ps-6">
+                <div className="w-11 h-11 rounded-full bg-bone-d flex items-center justify-center text-[#967432] mb-2.5">
+                  <Users2 className="w-5 h-5" />
+                </div>
+                <span className="font-serif text-[38px] sm:text-[46px] font-semibold text-ink tracking-tight tabular-nums">
+                  1000+
+                </span>
+                <p className="text-stone text-[14px] font-medium mt-0.5">
+                  {lang === "hi" ? "संतुष्ट ग्राहक" : "Customers till date"}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH */}
       <section className="relative py-14 md:py-20 bg-[#241b14] text-[#f7f3ec] overflow-hidden">
         {/* Warli art patterns behind the card across the section */}
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.14] pointer-events-none" />
