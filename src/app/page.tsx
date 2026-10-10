@@ -734,8 +734,14 @@ export default function Home() {
               <div className="flex flex-col items-center text-center group max-w-sm">
                 <div className="relative mb-4">
                   <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
-                    <div className="w-full h-full rounded-full bg-bone-d flex items-center justify-center text-stone">
-                      <User className="w-14 h-14 text-stone/60" />
+                    <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
+                      <Image
+                        src="/archanamam.jpeg"
+                        alt="Archana Nirvalla"
+                        fill
+                        unoptimized
+                        className="object-cover object-top"
+                      />
                     </div>
                   </div>
                 </div>
@@ -747,10 +753,10 @@ export default function Home() {
                 </p>
                 <ul className="mt-2.5 space-y-1 text-stone text-[13px] font-sans text-center max-w-xs">
                   <li className="leading-snug">
-                    • {lang === "hi" ? "तकनीकी मार्गदर्शन एवं आर्किटेक्चर समीक्षा" : "System architecture & engineering guidance"}
+                    • {lang === "hi" ? "एमएससी कंप्यूटर साइंस (डिस्टिंक्शन), यूके" : "MSc Computer Science (Distinction), UK"}
                   </li>
                   <li className="leading-snug">
-                    • {lang === "hi" ? "स्केलेबिलिटी एवं डिजिटल नवाचार" : "Scale strategy & technology mentorship"}
+                    • {lang === "hi" ? "महिला उद्यमियों के लिए डिजिटल मार्ग निर्माण" : "Building digital pathways for women entrepreneurs"}
                   </li>
                 </ul>
               </div>

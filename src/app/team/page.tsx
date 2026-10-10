@@ -36,10 +36,10 @@ export default function TeamPage() {
     {
       name: "Archana Nirvalla",
       role: lang === "hi" ? "तकनीकी सलाहकार एवं मेंटर" : "Technical Mentor",
-      photo: null,
+      photo: "/archanamam.jpeg",
       points: [
-        lang === "hi" ? "तकनीकी मार्गदर्शन एवं आर्किटेक्चर समीक्षा" : "System architecture & engineering guidance",
-        lang === "hi" ? "स्केलेबिलिटी एवं डिजिटल नवाचार" : "Scale strategy & technology mentorship",
+        lang === "hi" ? "एमएससी कंप्यूटर साइंस (डिस्टिंक्शन), यूके" : "MSc Computer Science (Distinction), UK",
+        lang === "hi" ? "महिला उद्यमियों के लिए डिजिटल मार्ग निर्माण" : "Building digital pathways for women entrepreneurs",
       ],
     },
   ];
