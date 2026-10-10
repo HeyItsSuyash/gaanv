@@ -26,7 +26,7 @@ export default function TeamPage() {
       name: "Vijay Upadhyay",
       role: lang === "hi" ? "सह-संस्थापक एवं मुख्य परिचालन अधिकारी (COO)" : "Founder & Chief Operating Officer",
       companies: "Mittilok & Mittilok Gaon",
-      photo: null, // User icon placeholder
+      photo: "/foundercoo.png",
       location: "Uttar Pradesh",
       bio:
         lang === "hi"
@@ -107,7 +107,7 @@ export default function TeamPage() {
             {lang === "hi" ? "उत्तर प्रदेश से विकसित • मिट्टी की खुशबू" : "Developed in Uttar Pradesh • Grounded in Soil"}
           </span>
           <h1 className="font-serif text-[34px] sm:text-[44px] md:text-[52px] leading-tight text-ink font-normal">
-            {lang === "hi" ? "माई टीम (My Team)" : "My Team"}
+            {lang === "hi" ? "माई टीम (Our Team)" : "Our Team"}
           </h1>
           <p className="mt-4 text-[16px] sm:text-[17px] text-stone leading-relaxed font-serif">
             {lang === "hi"
@@ -152,6 +152,7 @@ export default function TeamPage() {
                   alt={leadership.ceo.name}
                   fill
                   priority
+                  unoptimized
                   className="object-cover object-top"
                 />
               </div>
@@ -186,12 +187,23 @@ export default function TeamPage() {
                 COO
               </span>
 
-              {/* User Icon Placeholder Container */}
-              <div className="relative w-36 h-48 sm:w-40 sm:h-52 rounded-md overflow-hidden border-2 border-dashed border-mist bg-bone-d/60 shadow-inner mb-4 flex flex-col items-center justify-center text-stone">
-                <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center shadow-sm border border-mist">
-                  <User className="w-10 h-10 text-[#6e6456]" />
-                </div>
-                <span className="text-[11px] font-mono text-stone mt-2">Executive Portrait</span>
+              {/* COO Portrait Frame */}
+              <div className="relative w-36 h-48 sm:w-40 sm:h-52 rounded-md overflow-hidden border-2 border-mist bg-[#120d09] shadow-lg mb-4">
+                {leadership.coo.photo ? (
+                  <Image
+                    src={leadership.coo.photo}
+                    alt={leadership.coo.name}
+                    fill
+                    priority
+                    unoptimized
+                    className="object-cover object-top"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center text-stone">
+                    <User className="w-10 h-10 text-[#6e6456]" />
+                    <span className="text-[11px] font-mono text-stone mt-2">Executive Portrait</span>
+                  </div>
+                )}
               </div>
 
               <h3 className="font-serif text-[22px] sm:text-[24px] font-bold text-ink leading-tight">

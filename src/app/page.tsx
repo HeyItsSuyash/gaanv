@@ -274,15 +274,15 @@ export default function Home() {
       </section>
 
       {/* National Initiatives Strip: Make in India, ODOP, Viksit Bharat */}
-      <section className="bg-bone-d py-4 relative z-20">
-        <div className="mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs uppercase tracking-wider text-ink font-semibold">
+      <section className="bg-bone-d py-4 relative z-20 border-b border-mist/40">
+        <div className="mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center">
+          <div className="w-full md:w-auto flex items-center justify-center">
+            <span className="font-mono text-xs uppercase tracking-wider text-ink font-semibold text-center block w-full">
               Proudly Handcrafted in India
             </span>
           </div>
 
-          <div className="flex items-center gap-6 sm:gap-10">
+          <div className="flex items-center justify-center gap-6 sm:gap-10 w-full md:w-auto">
             <div className="relative h-9 w-24 sm:h-10 sm:w-28 opacity-90 hover:opacity-100 transition-opacity">
               <Image src="/mii.png" alt="Make in India" fill className="object-contain" />
             </div>
@@ -642,15 +642,16 @@ export default function Home() {
         <div className="absolute inset-0 bg-mandana-pattern opacity-[0.08] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           {/* Outer Quote Block Card with zero padding between image and quote text */}
-          <div className="rounded-card bg-[#1a130e] border border-[#3d2e22] shadow-2xl overflow-hidden flex flex-col md:flex-row items-stretch">
-            {/* Founder Image: Full height of the quotes container, auto-scaled width without skewing */}
-            <div className="relative w-full md:w-[320px] lg:w-[360px] min-h-[340px] md:min-h-full shrink-0 bg-[#120d09]">
+          <div className="rounded-card bg-[#1a130e] border border-[#3d2e22] shadow-2xl overflow-hidden flex flex-col md:flex-row items-stretch p-0">
+            {/* Founder Image: Full height of the quotes container, auto-scaled width without skewing, zero padding */}
+            <div className="relative w-full md:w-[320px] lg:w-[360px] min-h-[360px] md:min-h-full shrink-0 bg-[#120d09] p-0 m-0">
               <Image
-                src="/founderceo.jpeg"
+                src="/founderceo.jpg"
                 alt="Gaurav Srivastav - Founder and CEO"
                 fill
                 priority
-                className="object-cover object-top"
+                unoptimized
+                className="object-cover object-top p-0 m-0"
               />
             </div>
 

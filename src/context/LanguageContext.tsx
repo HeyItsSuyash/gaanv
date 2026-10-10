@@ -18,7 +18,7 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.explore": "Explore Gaanv",
     "nav.women_shg": "Women SHGs",
     "nav.gi_crafts": "GI Heritage",
-    "nav.team": "My Team",
+    "nav.team": "Our Team",
     "nav.about": "Our Village Roots",
     "nav.sell": "Sell with Us",
     "nav.search_placeholder": "Search handcrafted clay, dokra, handlooms...",
@@ -174,8 +174,8 @@ const translations: Record<Language, Record<string, string>> = {
 
 const LanguageContext = createContext<LanguageContextType>({
   lang: "en",
-  setLang: () => {},
-  toggleLang: () => {},
+  setLang: () => { },
+  toggleLang: () => { },
   t: (key: string) => key,
 });
 
