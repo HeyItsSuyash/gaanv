@@ -160,7 +160,7 @@ export default function ExploreProductsPage() {
                         src={product.image}
                         alt={product.alt || product.name}
                         fill
-                        className="object-contain transition-transform duration-500 group-hover:scale-105"
+                        className="object-contain"
                         sizes="(min-width: 1024px) 25vw, 50vw"
                       />
                     </button>

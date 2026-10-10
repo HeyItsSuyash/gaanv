@@ -105,16 +105,18 @@ export default function Home() {
 
       {/* 1. HERO CAROUSEL: WOMEN SHG ARTISANS FOCUS */}
       <section
-        className="relative overflow-hidden bg-bone-d z-10"
+        className="relative overflow-hidden bg-bone-d z-10 h-[calc(100vh-4rem)] min-h-[580px] w-full border-b border-mist"
         aria-label="Women SHG Rural Artistry Carousel"
       >
-        <div className="relative h-[560px] sm:h-[620px] md:h-[700px] w-full">
+        {/* Horizontal sliding track */}
+        <div
+          className="flex h-full w-full transition-transform duration-700 ease-[var(--ease-signature)]"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
           {HERO_SLIDES.map((slide, idx) => (
             <div
               key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-700 ease-[var(--ease-signature)] ${
-                idx === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none"
-              }`}
+              className="relative h-full w-full shrink-0 flex-none overflow-hidden"
             >
               <Image
                 src={slide.mediaUrl}
@@ -138,84 +140,84 @@ export default function Home() {
               />
             </div>
           ))}
+        </div>
 
-          {/* Hero Content Overlay */}
-          <div className="relative min-h-[560px] sm:h-[620px] md:h-[700px] pointer-events-none z-20 mx-auto flex max-w-[1280px] flex-col justify-end px-5 sm:px-6 pb-12 sm:pb-16 md:px-8 md:pb-20">
-            <div className="pointer-events-auto max-w-2xl">
-              <h1 className="font-serif text-[#ffffff] text-[34px] sm:text-[46px] md:text-[58px] leading-[1.08] tracking-[-1px] font-normal drop-shadow-md">
-                {HERO_SLIDES[currentSlide].headline}
-              </h1>
-              <p className="text-[#f7f3ec] mt-4 max-w-xl font-serif text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed drop-shadow-sm font-light">
-                {HERO_SLIDES[currentSlide].subhead}
-              </p>
-              <div className="mt-7 sm:mt-9 flex flex-wrap gap-3.5">
-                <Link
-                  href={HERO_SLIDES[currentSlide].ctaHref}
-                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#f7f3ec] hover:bg-[#ffffff] text-[#241b14] h-12 sm:h-14 px-8 text-[15px] sm:text-[16px] shadow-lg"
-                >
-                  {HERO_SLIDES[currentSlide].ctaLabel}
-                </Link>
-                <a
-                  href="#women-shg"
-                  className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-transparent hover:bg-[#f7f3ec]/10 text-[#f7f3ec] border border-[#f7f3ec]/80 h-12 sm:h-14 px-7 text-[15px] shadow-sm backdrop-blur-[2px]"
-                >
-                  {t("hero.cta_shg")}
-                </a>
-              </div>
-            </div>
-
-            {/* Slider Navigation Controls */}
-            <div className="pointer-events-auto mt-7 sm:mt-9 flex flex-wrap items-center gap-3">
-              <button
-                type="button"
-                onClick={prevSlide}
-                aria-label="Previous slide"
-                className="border border-[#f7f3ec]/40 text-[#f7f3ec] hover:bg-[#f7f3ec] hover:text-[#241b14] bg-black/40 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md backdrop-blur-sm"
+        {/* Hero Content Overlay (Fixed on top of slides) */}
+        <div className="absolute inset-0 pointer-events-none z-20 mx-auto flex max-w-[1280px] flex-col justify-end px-5 sm:px-6 pb-12 sm:pb-16 md:px-8 md:pb-20">
+          <div className="pointer-events-auto max-w-2xl">
+            <h1 className="font-serif text-[#ffffff] text-[34px] sm:text-[46px] md:text-[58px] leading-[1.08] tracking-[-1px] font-normal drop-shadow-md">
+              {HERO_SLIDES[currentSlide].headline}
+            </h1>
+            <p className="text-[#f7f3ec] mt-4 max-w-xl font-serif text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed drop-shadow-sm font-light">
+              {HERO_SLIDES[currentSlide].subhead}
+            </p>
+            <div className="mt-7 sm:mt-9 flex flex-wrap gap-3.5">
+              <Link
+                href={HERO_SLIDES[currentSlide].ctaHref}
+                className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#f7f3ec] hover:bg-[#ffffff] text-[#241b14] h-12 sm:h-14 px-8 text-[15px] sm:text-[16px] shadow-lg"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                  aria-hidden="true"
-                >
-                  <path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"></path>
-                </svg>
-              </button>
-              <button
-                type="button"
-                onClick={nextSlide}
-                aria-label="Next slide"
-                className="border border-[#f7f3ec]/40 text-[#f7f3ec] hover:bg-[#f7f3ec] hover:text-[#241b14] bg-black/40 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md backdrop-blur-sm"
+                {HERO_SLIDES[currentSlide].ctaLabel}
+              </Link>
+              <a
+                href="#women-shg"
+                className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-transparent hover:bg-[#f7f3ec]/10 text-[#f7f3ec] border border-[#f7f3ec]/80 h-12 sm:h-14 px-7 text-[15px] shadow-sm backdrop-blur-[2px]"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 256 256"
-                  aria-hidden="true"
-                >
-                  <path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path>
-                </svg>
-              </button>
-
-              <ul className="ms-2 flex items-center gap-2">
-                {HERO_SLIDES.map((_, i) => (
-                  <li key={i}>
-                    <button
-                      type="button"
-                      onClick={() => setCurrentSlide(i)}
-                      aria-label={`Go to slide ${i + 1}`}
-                      className={`block h-1.5 rounded-pill transition-all duration-300 ease-[var(--ease-signature)] ${
-                        i === currentSlide ? "bg-[#f7f3ec] w-8" : "bg-[#f7f3ec]/40 hover:bg-[#f7f3ec]/70 w-3"
-                      }`}
-                    />
-                  </li>
-                ))}
-              </ul>
+                {t("hero.cta_shg")}
+              </a>
             </div>
+          </div>
+
+          {/* Slider Navigation Controls */}
+          <div className="pointer-events-auto mt-7 sm:mt-9 flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={prevSlide}
+              aria-label="Previous slide"
+              className="border border-[#f7f3ec]/40 text-[#f7f3ec] hover:bg-[#f7f3ec] hover:text-[#241b14] bg-black/40 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md backdrop-blur-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+                aria-hidden="true"
+              >
+                <path d="M168.49,199.51a12,12,0,0,1-17,17l-80-80a12,12,0,0,1,0-17l80-80a12,12,0,0,1,17,17L97,128Z"></path>
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={nextSlide}
+              aria-label="Next slide"
+              className="border border-[#f7f3ec]/40 text-[#f7f3ec] hover:bg-[#f7f3ec] hover:text-[#241b14] bg-black/40 inline-flex h-10 w-10 sm:h-11 sm:w-11 touch-manipulation items-center justify-center rounded-pill transition-all active:scale-95 shadow-md backdrop-blur-sm"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 256 256"
+                aria-hidden="true"
+              >
+                <path d="M184.49,136.49l-80,80a12,12,0,0,1-17-17L159,128,87.51,56.49a12,12,0,1,1,17-17l80,80A12,12,0,0,1,184.49,136.49Z"></path>
+              </svg>
+            </button>
+
+            <ul className="ms-2 flex items-center gap-2">
+              {HERO_SLIDES.map((_, i) => (
+                <li key={i}>
+                  <button
+                    type="button"
+                    onClick={() => setCurrentSlide(i)}
+                    aria-label={`Go to slide ${i + 1}`}
+                    className={`block h-1.5 rounded-pill transition-all duration-300 ease-[var(--ease-signature)] ${
+                      i === currentSlide ? "bg-[#f7f3ec] w-8" : "bg-[#f7f3ec]/40 hover:bg-[#f7f3ec]/70 w-3"
+                    }`}
+                  />
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -268,7 +270,7 @@ export default function Home() {
                     src={group.image}
                     alt={group.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-paper via-transparent to-transparent opacity-80" />
                   <span className="absolute top-3 end-3 bg-bone/90 border border-mist/70 text-brass text-[11px] font-mono font-medium px-2.5 py-1 rounded-pill">
@@ -278,10 +280,7 @@ export default function Home() {
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <span className="text-[12px] font-mono uppercase text-madder tracking-wider font-semibold">
-                      {group.place}
-                    </span>
-                    <h3 className="font-serif text-[22px] text-ink mt-1 font-normal group-hover:text-brass transition-colors">
+                    <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
                       {group.title}
                     </h3>
                     <p className="text-[14px] text-ink-soft/90 mt-2.5 leading-relaxed">
@@ -349,7 +348,7 @@ export default function Home() {
                       src={product.image}
                       alt={product.alt || product.name}
                       fill
-                      className="object-contain transition-transform duration-500 group-hover:scale-105"
+                      className="object-contain"
                       sizes="(min-width: 1024px) 25vw, 50vw"
                     />
                   </button>
@@ -458,7 +457,7 @@ export default function Home() {
                     src={cat.image}
                     alt={cat.name}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-paper via-transparent to-transparent opacity-90" />
                 </div>
@@ -513,13 +512,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {/* Card 1: Tharu of Balrampur */}
             <div className="group rounded-card bg-paper border-2 border-brass/40 hover:border-brass p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between relative overflow-hidden">
-              <div className="absolute top-0 end-0 bg-brass text-[#14110c] text-[10px] font-mono font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide">
-                Key Cluster
-              </div>
               <div>
-                <span className="font-mono text-xs uppercase text-madder tracking-wider font-semibold block mb-1">
-                  Balrampur & Shravasti • तराई
-                </span>
                 <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
                   {lang === "hi" ? "थारू जनजाति (Tharu Tribe)" : "Tharu Tribe of Balrampur"}
                 </h3>
@@ -544,9 +537,6 @@ export default function Home() {
             {/* Card 2: Kol & Baiga Tribe */}
             <div className="group rounded-card bg-paper border border-mist hover:border-brass/60 p-6 sm:p-7 shadow-lg transition-all flex flex-col justify-between">
               <div>
-                <span className="font-mono text-xs uppercase text-madder tracking-wider font-semibold block mb-1">
-                  Sonbhadra & Mirzapur • विंध्याचल
-                </span>
                 <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
                   {lang === "hi" ? "कोल एवं बैगा जनजाति (Kol & Baiga)" : "Kol & Baiga Forest Guilds"}
                 </h3>
@@ -571,9 +561,6 @@ export default function Home() {
             {/* Card 3: Sahariya & Gond Tribe */}
             <div className="group rounded-card bg-paper border border-mist hover:border-brass/60 p-6 sm:p-7 shadow-lg transition-all flex flex-col justify-between">
               <div>
-                <span className="font-mono text-xs uppercase text-madder tracking-wider font-semibold block mb-1">
-                  Lalitpur & Bundelkhand • बुंदेलखंड
-                </span>
                 <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
                   {lang === "hi" ? "सहरिया जनजाति (Sahariya Tribe)" : "Sahariya Tribal Weavers"}
                 </h3>
