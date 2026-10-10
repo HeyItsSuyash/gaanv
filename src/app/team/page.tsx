@@ -36,7 +36,7 @@ export default function TeamPage() {
     {
       name: "Archana Narwal",
       role: lang === "hi" ? "तकनीकी सलाहकार एवं मेंटर" : "Technical Mentor",
-      photo: "/archanamam.jpeg",
+      photo: "/archanamam.png",
       points: [
         lang === "hi" ? "एमएससी कंप्यूटर साइंस (डिस्टिंक्शन), यूके" : "MSc Computer Science (Distinction), UK",
         lang === "hi" ? "महिला उद्यमियों के लिए डिजिटल मार्ग निर्माण" : "Building digital pathways for women entrepreneurs",
@@ -157,7 +157,7 @@ export default function TeamPage() {
                           alt={person.name}
                           fill
                           unoptimized
-                          className="object-cover object-[center_20%]"
+                          className="object-cover object-center"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-stone">

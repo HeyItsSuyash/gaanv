@@ -736,11 +736,11 @@ export default function Home() {
                   <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist shadow-sm">
                     <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
                       <Image
-                        src="/archanamam.jpeg"
+                        src="/archanamam.png"
                         alt="Archana Narwal"
                         fill
                         unoptimized
-                        className="object-cover object-[center_20%]"
+                        className="object-cover object-center"
                       />
                     </div>
                   </div>
