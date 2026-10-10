@@ -76,34 +76,39 @@ export function Header() {
         <div className="hidden md:flex items-center gap-6 text-[14px]">
           <Link
             href="/explore-products"
-            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.explore")}
+            <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
           <Link
             href="/#women-shg"
-            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.women_shg")}
+            <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
           <Link
             href="/#gi-treasures"
-            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.gi_crafts")}
+            <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
           <Link
             href="/team"
-            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.team")}
+            <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
           <button
             type="button"
             onClick={() => setIsSellerModalOpen(true)}
-            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.sell")}
+            <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </button>
         </div>
 
