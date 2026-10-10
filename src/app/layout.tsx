@@ -5,7 +5,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
 };
-import { Inter, Fraunces, JetBrains_Mono, Rozha_One, Yatra_One } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono, Rozha_One, Yatra_One, Noto_Sans_Devanagari } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -49,6 +49,13 @@ const yatraOne = Yatra_One({
   display: "swap",
 });
 
+const notoSansDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari", "latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-sans-devanagari",
+  display: "swap",
+});
+
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
@@ -85,7 +92,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${rozhaOne.variable} ${yatraOne.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${rozhaOne.variable} ${yatraOne.variable} ${notoSansDevanagari.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="bg-bone text-ink font-sans flex min-h-full flex-col overflow-x-clip relative">
         {/* Subtle Warli Art Pattern Overlay across the entire site background */}

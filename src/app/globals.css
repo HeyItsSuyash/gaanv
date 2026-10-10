@@ -69,13 +69,24 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Devanagari font rendering when language is Hindi */
 html[lang="hi"], :lang(hi), .lang-hi {
-  font-family: var(--font-rozha), var(--font-yatra), "Noto Serif Devanagari", Georgia, serif !important;
+  font-family: var(--font-noto-sans-devanagari), system-ui, -apple-system, sans-serif !important;
 }
 
-html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4,
-:lang(hi) h1, :lang(hi) h2, :lang(hi) h3, :lang(hi) h4 {
+html[lang="hi"] body, :lang(hi) body, .lang-hi body {
+  font-family: var(--font-noto-sans-devanagari), system-ui, -apple-system, sans-serif !important;
+}
+
+/* Headings in Hindi keep the stylized heritage look (Rozha One / Yatra One) */
+html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4, html[lang="hi"] h5, html[lang="hi"] h6,
+:lang(hi) h1, :lang(hi) h2, :lang(hi) h3, :lang(hi) h4, :lang(hi) h5, :lang(hi) h6 {
   font-family: var(--font-rozha), var(--font-yatra), "Noto Serif Devanagari", serif !important;
   letter-spacing: 0px;
+}
+
+/* Regular text elements in Hindi explicitly use clean, simple, non-cursive sans-serif font */
+html[lang="hi"] p, html[lang="hi"] span, html[lang="hi"] a, html[lang="hi"] li, html[lang="hi"] button, html[lang="hi"] input, html[lang="hi"] textarea, html[lang="hi"] label,
+:lang(hi) p, :lang(hi) span, :lang(hi) a, :lang(hi) li, :lang(hi) button, :lang(hi) input, :lang(hi) textarea, :lang(hi) label {
+  font-family: var(--font-noto-sans-devanagari), system-ui, -apple-system, sans-serif !important;
 }
 
 :focus-visible {
