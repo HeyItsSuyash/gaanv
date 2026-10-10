@@ -54,22 +54,13 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Official Gaav Logos in Navbar */}
+          {/* Official Gaav Brand Logo (Clean, shifted left, enlarged) */}
           <Link
             href="/"
             aria-label="Home"
-            className="inline-flex items-center gap-2 sm:gap-2.5 focus-visible:outline-madder py-1"
+            className="inline-flex items-center focus-visible:outline-madder py-1 -ms-1 sm:-ms-2"
           >
-            <div className="relative h-9 w-9 sm:h-10 sm:w-10 rounded-full overflow-hidden border border-[#524132] bg-[#2e231a] flex-shrink-0 shadow-sm">
-              <Image
-                src="/gaon-logo.png"
-                alt="Gaanv Emblem"
-                fill
-                priority
-                className="object-contain p-0.5"
-              />
-            </div>
-            <div className="relative h-9 w-24 sm:h-11 sm:w-28">
+            <div className="relative h-11 w-32 sm:h-12 sm:w-36">
               <Image
                 src="/logo-cream.png"
                 alt="Gaanv by Mittilok"

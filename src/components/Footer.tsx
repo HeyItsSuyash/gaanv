@@ -10,18 +10,15 @@ export function Footer() {
 
   return (
     <footer className="relative border-t border-mist bg-bone-d text-ink-soft text-[14px]">
-      {/* Background Warli pattern */}
-      <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
-
       <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-12 md:px-8 md:py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
-          {/* Brand Info */}
+          {/* Brand Info (Enlarged logo, without circular frame or pin) */}
           <div className="sm:col-span-2">
             <Link href="/" className="inline-flex items-center mb-4">
-              <div className="relative h-11 w-32">
+              <div className="relative h-14 w-44 sm:h-16 sm:w-48">
                 <Image
                   src="/logo-dark.png"
-                  alt="Logo"
+                  alt="Gaanv by Mittilok"
                   fill
                   className="object-contain object-left"
                 />
@@ -30,13 +27,6 @@ export function Footer() {
             <p className="text-[14px] text-stone leading-relaxed max-w-md">
               {t("footer.desc")}
             </p>
-            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-mono text-brass">
-              <span className="bg-[#241b14] text-[#d4af37] px-2.5 py-1 rounded-pill border border-[#524132]">
-                📍 Developed in Uttar Pradesh
-              </span>
-              <span className="text-stone">•</span>
-              <span>500+ Rural Women SHGs in 75 UP Districts</span>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -67,21 +57,21 @@ export function Footer() {
           </div>
         </div>
 
-        {/* National Initiatives & Heritage Badges (Make in India, ODOP, Viksit Bharat) */}
+        {/* National Initiatives & Heritage Badges (Centered, full color, no grayscale) */}
         <div className="mt-12 pt-8 border-t border-mist/50">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 bg-paper/80 border border-mist/80 rounded-card p-5 sm:p-6 shadow-sm">
+          <div className="flex flex-col items-center justify-center text-center gap-6 bg-paper rounded-card p-6 sm:p-8 shadow-sm border border-mist">
             <div>
-              <span className="font-mono text-[11px] uppercase tracking-wider text-madder font-semibold block">
-                National Heritage & Self-Reliance Backing
+              <span className="font-mono text-xs uppercase tracking-wider text-madder font-semibold block">
+                Vocal For Local • Atmanirbhar Bharat
               </span>
-              <p className="font-serif text-[16px] text-ink mt-0.5 font-medium">
-                Aligned with National Rural Livelihood Mission, ODOP & Make in India
+              <p className="font-serif text-[17px] text-ink mt-1 font-normal">
+                Supported by One District One Product (ODOP) & Make in India
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+            <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
               {/* Make in India */}
-              <div className="relative h-12 w-28 sm:h-14 sm:w-32 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+              <div className="relative h-14 w-32 sm:h-16 sm:w-36 flex items-center justify-center">
                 <Image
                   src="/mii.png"
                   alt="Make in India"
@@ -91,7 +81,7 @@ export function Footer() {
               </div>
 
               {/* One District One Product (ODOP) */}
-              <div className="relative h-12 w-24 sm:h-14 sm:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+              <div className="relative h-14 w-28 sm:h-16 sm:w-32 flex items-center justify-center">
                 <Image
                   src="/odop-logo.png"
                   alt="One District One Product (ODOP UP)"
@@ -101,7 +91,7 @@ export function Footer() {
               </div>
 
               {/* Viksit Bharat */}
-              <div className="relative h-12 w-24 sm:h-14 sm:w-28 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+              <div className="relative h-14 w-28 sm:h-16 sm:w-32 flex items-center justify-center">
                 <Image
                   src="/viksit india.avif"
                   alt="Viksit Bharat"
@@ -113,11 +103,11 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar */}
+        {/* Clean Bottom Bar */}
         <div className="mt-8 pt-6 border-t border-mist/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone">
           <p>{t("footer.rights")}</p>
-          <p className="font-mono text-brass/90 text-center sm:text-right">
-            {t("footer.shipping")}
+          <p className="font-mono text-stone text-center sm:text-right">
+            Handcrafted with dignity across Indian villages
           </p>
         </div>
       </div>

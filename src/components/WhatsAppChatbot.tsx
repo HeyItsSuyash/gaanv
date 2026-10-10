@@ -85,7 +85,7 @@ export function WhatsAppChatbot() {
             type="button"
             onClick={() => setIsOpen(true)}
             className="cursor-pointer group flex items-center gap-2 bg-[#25D366] text-white hover:bg-[#20ba59] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-pill shadow-xl transition-all duration-200 active:scale-95 border border-white/20"
-            aria-label="Chat with Gauri"
+            aria-label="Chat with Gauri on WhatsApp"
           >
             <span className="text-[12px] sm:text-[13px] font-medium tracking-tight">
               {lang === "hi" ? "नमस्ते, मैं गौरी हूँ। क्या सहायता करूँ?" : "Hey its Gauri, how can I help?"}
@@ -97,16 +97,21 @@ export function WhatsAppChatbot() {
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Open WhatsApp conversation"
-          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-2xl hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-[#25D366]"
+          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-2xl hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-[#25D366] overflow-hidden p-1.5 sm:p-2"
         >
           {isOpen ? (
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256">
               <path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/>
             </svg>
           ) : (
-            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 256 256">
-              <path d="M187.58,144.84l-25-12a16.14,16.14,0,0,0-17.72,3.13l-8.68,8.69a94.84,94.84,0,0,1-40.82-40.82l8.69-8.68a16.15,16.15,0,0,0,3.13-17.72l-12-25A16.16,16.16,0,0,0,79.8,42a48,48,0,0,0-47.56,51.8,175.7,175.7,0,0,0,129.9,130A48,48,0,0,0,214,176.2,16.16,16.16,0,0,0,187.58,144.84Z"/>
-            </svg>
+            <div className="relative w-full h-full">
+              <Image
+                src="/whatsapp-icon.png"
+                alt="WhatsApp"
+                fill
+                className="object-contain"
+              />
+            </div>
           )}
         </button>
       </div>
@@ -129,18 +134,20 @@ export function WhatsAppChatbot() {
         {/* Clean, readable Header */}
         <div className="p-4 bg-[#075e54] text-white flex items-center justify-between shadow-md">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white border border-white/20">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256">
-                <path d="M187.58,144.84l-25-12a16.14,16.14,0,0,0-17.72,3.13l-8.68,8.69a94.84,94.84,0,0,1-40.82-40.82l8.69-8.68a16.15,16.15,0,0,0,3.13-17.72l-12-25A16.16,16.16,0,0,0,79.8,42a48,48,0,0,0-47.56,51.8,175.7,175.7,0,0,0,129.9,130A48,48,0,0,0,214,176.2,16.16,16.16,0,0,0,187.58,144.84Z"/>
-              </svg>
+            <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white/10 flex items-center justify-center p-1">
+              <Image
+                src="/whatsapp-icon.png"
+                alt="WhatsApp"
+                fill
+                className="object-contain"
+              />
             </div>
             <div>
               <h3 className="font-sans font-semibold text-[16px] text-white leading-tight">
                 {lang === "hi" ? "गौरी • गाँव सहायता" : "Gauri • Artisan Help Desk"}
               </h3>
-              <p className="text-[12px] text-[#e0f2f1] flex items-center gap-1.5 mt-0.5">
-                <span className="w-2 h-2 rounded-full bg-[#25d366] inline-block"></span>
-                {lang === "hi" ? "ऑनलाइन सहायता" : "Usually replies instantly"}
+              <p className="text-[12px] text-[#e0f2f1] mt-0.5">
+                {lang === "hi" ? "व्हाट्सएप पर सहायता" : "WhatsApp Artisan Support"}
               </p>
             </div>
           </div>
@@ -185,21 +192,21 @@ export function WhatsAppChatbot() {
               onClick={() => handleSend(t("chat.opt1"))}
               className="text-left text-[13px] bg-white hover:bg-[#f7f5f0] text-[#111b21] border border-[#d1d7db] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
             >
-              • {t("chat.opt1")}
+              {t("chat.opt1")}
             </button>
             <button
               type="button"
               onClick={() => handleSend(t("chat.opt2"))}
               className="text-left text-[13px] bg-white hover:bg-[#f7f5f0] text-[#111b21] border border-[#d1d7db] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
             >
-              • {t("chat.opt2")}
+              {t("chat.opt2")}
             </button>
             <button
               type="button"
               onClick={() => handleSend(t("chat.opt3"))}
               className="text-left text-[13px] bg-white hover:bg-[#f7f5f0] text-[#111b21] border border-[#d1d7db] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
             >
-              • {t("chat.opt3")}
+              {t("chat.opt3")}
             </button>
           </div>
         </div>

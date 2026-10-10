@@ -652,10 +652,12 @@ export default function Home() {
               </blockquote>
 
               <div className="mt-8 pt-6 border-t border-[#3d2e22] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#a89a88]">
-                <div className="flex items-center gap-4">
-                  <span>• 100% Open & Traceable</span>
-                  <span>• 500+ Rural Women Empowered</span>
-                  <span>• Grounded in 75 Districts of UP</span>
+                <div className="flex flex-wrap items-center gap-4">
+                  <span>100% Traceable Roots</span>
+                  <span className="text-[#524132]">|</span>
+                  <span>500+ Rural Women Empowered</span>
+                  <span className="text-[#524132]">|</span>
+                  <span>75 Districts of UP</span>
                 </div>
                 <div className="text-[#d4af37] font-semibold">
                   Zero Middlemen Escrow System
@@ -669,14 +671,27 @@ export default function Home() {
       {/* Decorative Folk Border Divider */}
       <div className="folk-border-divider" aria-hidden="true" />
 
-      {/* 7. GAON PATRIKA JOURNAL NEWSLETTER */}
-      <section className="relative border-t border-mist bg-bone py-16 md:py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-warli-pattern opacity-[0.14] pointer-events-none" />
-        <div className="relative mx-auto max-w-[800px] px-5 sm:px-6 text-center">
-          <h2 className="font-serif text-h2 text-ink">
+      {/* 7. GAON PATRIKA JOURNAL NEWSLETTER WITH AUTHENTIC RURAL LETTERS BACKGROUND */}
+      <section className="relative border-t border-mist bg-bone py-20 md:py-28 overflow-hidden">
+        {/* Authentic Rural Letters from India background image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/rural-letters-bg.jpg"
+            alt="Letters from rural India"
+            fill
+            className="object-cover object-center opacity-25"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-bone/95 via-bone/85 to-bone/95" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-[800px] px-5 sm:px-6 text-center">
+          <span className="font-mono text-xs uppercase tracking-widest text-madder font-semibold block mb-2">
+            गाँव पत्रिका • Village Chronicle
+          </span>
+          <h2 className="font-serif text-[32px] sm:text-[40px] text-ink font-normal leading-tight">
             {t("journal.title")}
           </h2>
-          <p className="mt-3 text-[15px] text-stone leading-relaxed max-w-xl mx-auto">
+          <p className="mt-3 text-[16px] text-stone leading-relaxed max-w-xl mx-auto font-serif">
             {t("journal.subtitle")}
           </p>
 
@@ -690,7 +705,7 @@ export default function Home() {
               onChange={(e) => setNewsletterEmail(e.target.value)}
               placeholder={t("journal.placeholder")}
               required
-              className="w-full sm:flex-1 h-12 rounded-input bg-paper border border-mist px-4 text-ink text-[14px] placeholder-stone focus:outline-none focus:border-brass"
+              className="w-full sm:flex-1 h-12 rounded-input bg-paper/90 border border-mist px-4 text-ink text-[14px] placeholder-stone focus:outline-none focus:border-brass shadow-sm"
             />
             <button
               type="submit"
