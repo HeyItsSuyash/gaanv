@@ -79,7 +79,7 @@ export function WhatsAppChatbot() {
   return (
     <>
       {/* Floating Trigger Button on bottom-right */}
-      <div className="fixed bottom-6 end-6 z-50 flex items-center gap-3">
+      <div className="fixed bottom-4 end-4 sm:bottom-6 sm:end-6 z-40 flex items-center gap-2 sm:gap-3">
         {!isOpen && (
           <button
             type="button"
@@ -102,7 +102,7 @@ export function WhatsAppChatbot() {
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Open Gauri WhatsApp artisan sidebar"
-          className="relative group flex items-center justify-center w-14 h-14 rounded-full bg-[#241b14] text-[#f7f3ec] border-2 border-[#d4af37] shadow-2xl hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-[#d4af37]"
+          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] text-[#f7f3ec] border-2 border-[#d4af37] shadow-2xl hover:scale-105 active:scale-95 transition-transform duration-200 focus-visible:outline-2 focus-visible:outline-[#d4af37]"
         >
           {isOpen ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 256 256">

@@ -388,8 +388,8 @@ export default function Home() {
                     <span className="font-mono text-[14px] sm:text-[15px] font-semibold text-ink">
                       ₹{product.price}
                     </span>
-                    <span className="text-[11px] text-stone">
-                      ${(product.price / 82).toFixed(1)} USD
+                    <span className="text-[11px] text-stone font-mono">
+                      Artisan direct
                     </span>
                   </div>
                 </div>
@@ -458,7 +458,177 @@ export default function Home() {
       {/* Decorative Folk Border Divider */}
       <div className="folk-border-divider" aria-hidden="true" />
 
-      {/* 5. GAON PATRIKA JOURNAL NEWSLETTER */}
+      {/* 5. INDIGENOUS TRIBAL ARTISANS OF UTTAR PRADESH SPOTLIGHT */}
+      <section id="up-tribes" className="relative py-16 md:py-24 border-t border-mist bg-bone overflow-hidden">
+        <div className="absolute inset-0 bg-warli-pattern opacity-[0.12] pointer-events-none" />
+        <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
+          <header className="mb-12 max-w-3xl">
+            <span className="inline-flex items-center gap-1.5 border border-[#524132] bg-[#241b14] text-[#d4af37] text-[11px] font-mono px-3 py-1 rounded-pill uppercase tracking-wider mb-3">
+              {lang === "hi" ? "तराई एवं विंध्य की विरासत • उत्तर प्रदेश" : "Roots in Terai & Vindhyas • Uttar Pradesh"}
+            </span>
+            <h2 className="font-serif text-h2 text-ink">
+              {lang === "hi"
+                ? "उत्तर प्रदेश की जनजातीय शिल्प धरोहर: बलरामपुर के थारू और विंध्य के कोल"
+                : "Indigenous Tribal Heritage of UP: Balrampur's Tharu & The Vindhyan Guilds"}
+            </h2>
+            <p className="mt-3 text-[15px] sm:text-[16px] text-stone leading-relaxed">
+              {lang === "hi"
+                ? "उत्तर प्रदेश केवल शहरों का नहीं, बल्कि तराई के घने जंगलों और सोनभद्र की पहाड़ियों में बसी समृद्ध जनजातीय परंपराओं का भी घर है। बलरामपुर और श्रावस्ती के सीमावर्ती जंगलों में रहने वाला 'थारू समाज' अपनी प्रकृति-संरक्षित जीवनशैली और हाथ से गढ़े मूंज-सिकाई शिल्पों के लिए प्रख्यात है।"
+                : "Beyond UP's historic cities lies a pristine tribal legacy stretching from the Terai foothills of Balrampur to the craggy plateaus of Sonbhadra. In Balrampur's Suhelwa forest fringes, the indigenous Tharu women weave wild Moonj grass into sacred household art."}
+            </p>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {/* Card 1: Tharu of Balrampur */}
+            <div className="group rounded-card bg-paper border-2 border-brass/40 hover:border-brass p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 end-0 bg-brass text-[#14110c] text-[10px] font-mono font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wide">
+                Key Cluster
+              </div>
+              <div>
+                <span className="font-mono text-xs uppercase text-madder tracking-wider font-semibold block mb-1">
+                  Balrampur & Shravasti • तराई
+                </span>
+                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
+                  {lang === "hi" ? "थारू जनजाति (Tharu Tribe)" : "Tharu Tribe of Balrampur"}
+                </h3>
+                <p className="text-[14px] text-ink-soft/90 mt-3 leading-relaxed">
+                  {lang === "hi"
+                    ? "बलरामपुर जिले के पचपेड़वा, गैंसड़ी और सुहेलवा वन क्षेत्र के थारू गाँवों में महिलाएँ दलिया, मौनी और मूंज के टोकरे बनाती हैं। साथ ही विवाहों में अपनी बेटियों को दिए जाने वाले थारू कसूती लहंगे व कशीदाकारी में प्राचीन वन-प्रतीकों का प्रयोग होता है।"
+                    : "Living along Balrampur's Suhelwa forest belt (Pachperwa, Gainsari), Tharu matriarchs coil wild Moonj grass using bone awls. Their vivid Kasuti needlework features ancient sacred hornbill, peacock, and river motifs."}
+                </p>
+                <div className="mt-4 bg-bone-d/70 p-3 rounded-input text-xs text-stone space-y-1">
+                  <p><strong className="text-ink">Craft Speciality:</strong> Hand-coiled Moonj & Sikki Baskets, Tribal Kasuti</p>
+                  <p><strong className="text-ink">Natural Colors:</strong> Palash flower yellows, Catechu brown</p>
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-mist/50 flex items-center justify-between text-xs">
+                <span className="font-mono text-stone">180+ Women Co-ops</span>
+                <Link href="/explore-products" className="text-brass font-medium hover:underline">
+                  {lang === "hi" ? "थारू शिल्प देखें →" : "View Tharu Pieces →"}
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 2: Kol & Baiga Tribe */}
+            <div className="group rounded-card bg-paper border border-mist hover:border-brass/60 p-6 sm:p-7 shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <span className="font-mono text-xs uppercase text-madder tracking-wider font-semibold block mb-1">
+                  Sonbhadra & Mirzapur • विंध्याचल
+                </span>
+                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
+                  {lang === "hi" ? "कोल एवं बैगा जनजाति (Kol & Baiga)" : "Kol & Baiga Forest Guilds"}
+                </h3>
+                <p className="text-[14px] text-ink-soft/90 mt-3 leading-relaxed">
+                  {lang === "hi"
+                    ? "सोनभद्र और मीरजापुर की पहाड़ियों में निवास करने वाले कोल और बैगा समुदाय जंगलों से प्राकृतिक लाह (Natural Lac) एकत्र कर शुद्ध लाख की चूड़ियाँ, लकड़ी के खिलौने और हाथ से बुनी दरियाँ तैयार करते हैं।"
+                    : "Dwelling in southern UP's rugged Vindhyan ranges, the Kol and Baiga artisans harvest non-timber forest lac to create vibrant organic lac bangles and hand-knotted natural wool rugs with tribal geometrics."}
+                </p>
+                <div className="mt-4 bg-bone-d/70 p-3 rounded-input text-xs text-stone space-y-1">
+                  <p><strong className="text-ink">Craft Speciality:</strong> Forest Lac Ornaments, Flat-weave Dhurries</p>
+                  <p><strong className="text-ink">Region:</strong> Sonbhadra, Chandauli & Mirzapur</p>
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-mist/50 flex items-center justify-between text-xs">
+                <span className="font-mono text-stone">95+ Artisans</span>
+                <Link href="/explore-products" className="text-brass font-medium hover:underline">
+                  {lang === "hi" ? "विंध्य शिल्प देखें →" : "Explore Cohort →"}
+                </Link>
+              </div>
+            </div>
+
+            {/* Card 3: Sahariya & Gond Tribe */}
+            <div className="group rounded-card bg-paper border border-mist hover:border-brass/60 p-6 sm:p-7 shadow-lg transition-all flex flex-col justify-between">
+              <div>
+                <span className="font-mono text-xs uppercase text-madder tracking-wider font-semibold block mb-1">
+                  Lalitpur & Bundelkhand • बुंदेलखंड
+                </span>
+                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
+                  {lang === "hi" ? "सहरिया जनजाति (Sahariya Tribe)" : "Sahariya Tribal Weavers"}
+                </h3>
+                <p className="text-[14px] text-ink-soft/90 mt-3 leading-relaxed">
+                  {lang === "hi"
+                    ? "ललितपुर और झाँसी के सीमावर्ती जंगलों के सहरिया आदिवासी पत्तों की कला, प्राकृतिक गोंद और हाथ से काते गए खद्दर वस्त्रों के निर्माण में दक्ष हैं। इनका ज्ञान सदियों से वनों के सह-अस्तित्व पर आधारित है।"
+                    : "Native to the dry-deciduous Bundelkhand forests around Lalitpur, Sahariya tribal clusters craft herbal forest fibers and organic rough-spun cotton shawls, upholding sustainable zero-carbon practices."}
+                </p>
+                <div className="mt-4 bg-bone-d/70 p-3 rounded-input text-xs text-stone space-y-1">
+                  <p><strong className="text-ink">Craft Speciality:</strong> Wild Herb Fiber Weaving, Clay Murals</p>
+                  <p><strong className="text-ink">Tradition:</strong> 100% Forest-sourced Raw Materials</p>
+                </div>
+              </div>
+              <div className="mt-6 pt-4 border-t border-mist/50 flex items-center justify-between text-xs">
+                <span className="font-mono text-stone">Bundelkhand Base</span>
+                <Link href="/explore-products" className="text-brass font-medium hover:underline">
+                  {lang === "hi" ? "शिल्प देखें →" : "View Pieces →"}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Decorative Folk Border Divider */}
+      <div className="folk-border-divider" aria-hidden="true" />
+
+      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH */}
+      <section className="relative py-16 md:py-24 bg-bone-d/80 border-t border-mist overflow-hidden">
+        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.14] pointer-events-none" />
+        <div className="relative mx-auto max-w-[1080px] px-5 sm:px-6 md:px-8">
+          <div className="rounded-card bg-[#241b14] text-[#f7f3ec] border border-[#382b20] p-7 sm:p-10 md:p-12 shadow-2xl relative overflow-hidden">
+            <div className="absolute -end-10 -bottom-10 w-64 h-64 bg-[#d4af37]/5 rounded-full blur-3xl pointer-events-none" />
+            
+            <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-center">
+              {/* Founder Avatar & Origin Details */}
+              <div className="flex flex-col items-center md:items-start text-center md:text-left flex-shrink-0">
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-brass shadow-lg bg-[#1a130e]">
+                  <Image
+                    src="/gauri-avatar.jpg"
+                    alt="Founder Gaanv by Mittilok"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h4 className="font-serif text-[20px] text-[#f7f3ec] mt-4 font-normal">
+                  Suyash Srivastava
+                </h4>
+                <p className="text-brass text-xs font-mono">
+                  Founder & Architect, Gaanv by Mittilok
+                </p>
+                <span className="inline-flex items-center gap-1 text-[11px] text-[#a89a88] mt-1 font-mono">
+                  📍 Lucknow, Uttar Pradesh
+                </span>
+                <Link
+                  href="/team"
+                  className="mt-4 text-xs font-mono text-brass underline hover:text-[#f7f3ec] transition-colors"
+                >
+                  {lang === "hi" ? "पूरी टीम से मिलें →" : "Meet The Whole Team →"}
+                </Link>
+              </div>
+
+              {/* Founder Note / Testimony */}
+              <div className="flex-1 border-t md:border-t-0 md:border-s border-[#3d2e22] pt-6 md:pt-0 md:ps-8">
+                <span className="text-brass font-mono text-xs uppercase tracking-widest font-semibold block mb-2">
+                  {lang === "hi" ? "संस्थापक का संदेश • उत्तर प्रदेश की ज़मीन से" : "Founder's Testimony • From the Soil of Uttar Pradesh"}
+                </span>
+                <blockquote className="font-serif text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed text-[#f7f3ec] font-light italic">
+                  {lang === "hi"
+                    ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"
+                    : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while urban intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle — direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
+                </blockquote>
+                <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-mono text-[#a89a88]">
+                  <span>• 100% Open & Traceable</span>
+                  <span>• 500+ Rural Women Empowered</span>
+                  <span>• Grounded in 75 Districts of UP</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Decorative Folk Border Divider */}
+      <div className="folk-border-divider" aria-hidden="true" />
+
+      {/* 7. GAON PATRIKA JOURNAL NEWSLETTER */}
       <section className="relative border-t border-mist bg-bone py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.14] pointer-events-none" />
         <div className="relative mx-auto max-w-[800px] px-5 sm:px-6 text-center">

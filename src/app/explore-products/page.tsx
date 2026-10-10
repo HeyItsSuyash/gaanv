@@ -231,8 +231,8 @@ export default function ExploreProductsPage() {
                       <span className="font-mono text-[14px] sm:text-[15px] font-semibold text-ink">
                         ₹{product.price}
                       </span>
-                      <span className="text-[11px] text-stone">
-                        ${(product.price / 82).toFixed(1)} USD
+                      <span className="text-[11px] text-stone font-mono">
+                        Artisan direct
                       </span>
                     </div>
                   </div>

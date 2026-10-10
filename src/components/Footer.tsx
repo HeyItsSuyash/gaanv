@@ -30,8 +30,12 @@ export function Footer() {
             <p className="text-[14px] text-stone leading-relaxed max-w-md">
               {t("footer.desc")}
             </p>
-            <div className="mt-4 flex items-center gap-2 text-xs font-mono text-brass">
-              <span>500+ Rural Women SHG Artisans Supported</span>
+            <div className="mt-4 flex flex-wrap items-center gap-2 text-xs font-mono text-brass">
+              <span className="bg-[#241b14] text-[#d4af37] px-2.5 py-1 rounded-pill border border-[#524132]">
+                📍 Developed in Uttar Pradesh
+              </span>
+              <span className="text-stone">•</span>
+              <span>500+ Rural Women SHGs in 75 UP Districts</span>
             </div>
           </div>
 
@@ -57,7 +61,7 @@ export function Footer() {
             <ul className="space-y-2 text-xs text-stone">
               <li><a href="#women-shg" className="hover:text-brass transition-colors">Women SHG Collectives</a></li>
               <li><a href="#gi-treasures" className="hover:text-brass transition-colors">GI Registry Protection</a></li>
-              <li><a href="#main-content" className="hover:text-brass transition-colors">Fair Artisan Compensation</a></li>
+              <li><Link href="/team" className="hover:text-brass transition-colors">Team & UP Field Team</Link></li>
               <li><a href="https://wa.me/919876543210" target="_blank" rel="noreferrer" className="hover:text-brass transition-colors">WhatsApp Support</a></li>
             </ul>
           </div>

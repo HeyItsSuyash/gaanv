@@ -65,8 +65,8 @@ export function WishlistModal() {
                     <p className="text-[11px] text-stone uppercase tracking-[1px]">
                       {product.seller} · {product.location}
                     </p>
-                    <p className="font-serif text-[15px] text-ink tabular-nums mt-1">
-                      ${(product.price / 82).toFixed(2)}
+                    <p className="font-serif text-[15px] text-ink tabular-nums mt-1 font-semibold">
+                      ₹{product.price}
                     </p>
                   </div>
                   <div className="flex items-center gap-2">

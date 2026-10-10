@@ -92,6 +92,12 @@ export function Header() {
           >
             {t("nav.gi_crafts")}
           </Link>
+          <Link
+            href="/team"
+            className="text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+          >
+            {t("nav.team")}
+          </Link>
           <button
             type="button"
             onClick={() => setIsSellerModalOpen(true)}
@@ -200,6 +206,13 @@ export function Header() {
               className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
             >
               {t("nav.gi_crafts")}
+            </Link>
+            <Link
+              href="/team"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-[#f7f3ec] hover:text-[#d4af37] py-1"
+            >
+              {t("nav.team")}
             </Link>
             <button
               type="button"

@@ -111,8 +111,8 @@ export function SearchModal() {
                           {product.seller} · {product.location}
                         </p>
                       </div>
-                      <span className="font-serif text-[15px] tabular-nums text-ink">
-                        ${(product.price / 82).toFixed(2)}
+                      <span className="font-serif text-[15px] tabular-nums text-ink font-semibold">
+                        ₹{product.price}
                       </span>
                     </button>
                   </li>

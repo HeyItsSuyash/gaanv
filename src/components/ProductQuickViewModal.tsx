@@ -66,8 +66,8 @@ export function ProductQuickViewModal() {
                   {quickViewProduct.name}
                 </h3>
 
-                <p className="font-serif text-price text-ink mb-4 tabular-nums">
-                  ${(quickViewProduct.price / 82).toFixed(2)}
+                <p className="font-serif text-price text-ink mb-4 tabular-nums font-semibold">
+                  ₹{quickViewProduct.price}
                 </p>
 
                 <p className="text-body-sm text-stone mb-4 leading-relaxed">
