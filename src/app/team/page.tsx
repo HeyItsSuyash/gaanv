@@ -88,7 +88,7 @@ export default function TeamPage() {
       <div className="absolute inset-0 bg-warli-pattern opacity-10 pointer-events-none" />
 
       {/* Header Banner */}
-      <section className="relative border-b border-mist bg-bone-d py-14 md:py-20 overflow-hidden">
+      <section className="relative bg-bone-d py-14 md:py-20 overflow-hidden">
         <div className="absolute inset-0 bg-mandana-pattern opacity-10 pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 text-center max-w-3xl">
           <span className="inline-flex items-center gap-1.5 border border-[#524132] bg-[#241b14] text-[#d4af37] text-[11px] font-mono px-3 py-1 rounded-pill uppercase tracking-wider mb-4">
@@ -171,11 +171,8 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Decorative Folk Border Divider */}
-      <div className="folk-border-divider" aria-hidden="true" />
-
       {/* UP Field Clusters & Grassroots Presence */}
-      <section className="relative py-16 md:py-20 bg-bone-d/60 border-t border-mist overflow-hidden">
+      <section className="relative py-16 md:py-20 bg-bone-d/60 overflow-hidden">
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.12] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <div className="max-w-2xl mb-12">

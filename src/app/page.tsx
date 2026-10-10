@@ -105,7 +105,7 @@ export default function Home() {
 
       {/* 1. HERO CAROUSEL: WOMEN SHG ARTISANS FOCUS */}
       <section
-        className="relative overflow-hidden bg-bone-d z-10 h-[calc(100vh-4rem)] min-h-[580px] w-full border-b border-mist"
+        className="relative overflow-hidden bg-bone-d z-10 h-[calc(100vh-4rem)] min-h-[580px] w-full"
         aria-label="Women SHG Rural Artistry Carousel"
       >
         {/* Horizontal sliding track */}
@@ -223,7 +223,7 @@ export default function Home() {
       </section>
 
       {/* National Initiatives Strip: Make in India, ODOP, Viksit Bharat */}
-      <section className="bg-bone-d border-b border-mist py-4 relative z-20">
+      <section className="bg-bone-d py-4 relative z-20">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-madder"></span>
@@ -247,7 +247,7 @@ export default function Home() {
       </section>
 
       {/* 2. WOMEN SELF HELP GROUPS (SHG) SPOTLIGHT SECTION */}
-      <section id="women-shg" className="relative py-16 md:py-24 border-b border-mist/60 bg-bone-d/60 overflow-hidden">
+      <section id="women-shg" className="relative py-16 md:py-24 bg-bone-d/60 overflow-hidden">
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.14] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-12 max-w-2xl">
@@ -430,11 +430,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative Folk Border Divider */}
-      <div className="folk-border-divider" aria-hidden="true" />
-
       {/* 4. GEOGRAPHICALLY PROTECTED (GI) TREASURES */}
-      <section id="gi-treasures" className="relative border-t border-mist bg-bone-d py-16 md:py-24 overflow-hidden">
+      <section id="gi-treasures" className="relative bg-bone-d py-16 md:py-24 overflow-hidden">
         <div className="absolute inset-0 bg-mandana-pattern opacity-[0.14] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-10 max-w-2xl">
@@ -486,11 +483,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative Folk Border Divider */}
-      <div className="folk-border-divider" aria-hidden="true" />
-
       {/* 5. INDIGENOUS TRIBAL ARTISANS OF UTTAR PRADESH SPOTLIGHT */}
-      <section id="up-tribes" className="relative py-16 md:py-24 border-t border-mist bg-bone overflow-hidden">
+      <section id="up-tribes" className="relative py-16 md:py-24 bg-bone overflow-hidden">
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.12] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-12 max-w-3xl">
@@ -585,11 +579,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative Folk Border Divider */}
-      <div className="folk-border-divider" aria-hidden="true" />
-
       {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH (FULL WIDTH) */}
-      <section className="relative py-16 md:py-24 bg-[#241b14] text-[#f7f3ec] border-y border-[#382b20] overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-[#241b14] text-[#f7f3ec] overflow-hidden">
         <div className="absolute inset-0 bg-mandana-pattern opacity-[0.08] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <div className="flex flex-col md:flex-row gap-8 md:gap-14 items-center">
@@ -655,11 +646,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Decorative Folk Border Divider */}
-      <div className="folk-border-divider" aria-hidden="true" />
-
       {/* 7. GAON PATRIKA JOURNAL NEWSLETTER WITH AUTHENTIC RURAL LETTERS BACKGROUND */}
-      <section className="relative border-t border-mist bg-bone py-20 md:py-28 overflow-hidden">
+      <section className="relative bg-bone py-20 md:py-28 overflow-hidden">
         {/* Authentic Rural Letters from India background image */}
         <div className="absolute inset-0 z-0">
           <Image
