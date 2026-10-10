@@ -78,14 +78,14 @@ export function WhatsAppChatbot() {
 
   return (
     <>
-      {/* Floating Trigger Button on bottom-right with WhatsApp icon and floating bubble */}
+      {/* Floating Trigger Button on bottom-right with earthen brown theme and authentic badge */}
       <div className="fixed bottom-4 end-4 sm:bottom-6 sm:end-6 z-40 flex items-center gap-2.5">
         {!isOpen && (
           <button
             type="button"
             onClick={() => setIsOpen(true)}
-            className="cursor-pointer group flex items-center gap-2 bg-[#25D366] text-white hover:bg-[#20ba59] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-pill shadow-xl transition-all duration-200 active:scale-95 border border-white/20"
-            aria-label="Chat with Gauri on WhatsApp"
+            className="cursor-pointer group flex items-center gap-2 bg-[#241b14] text-[#f7f3ec] hover:bg-[#382b20] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-pill shadow-xl transition-all duration-200 active:scale-95 border border-[#d4af37]/40"
+            aria-label="Chat with Gauri"
           >
             <span className="text-[12px] sm:text-[13px] font-medium tracking-tight">
               {lang === "hi" ? "नमस्ते, मैं गौरी हूँ। क्या सहायता करूँ?" : "Hey its Gauri, how can I help?"}
@@ -96,13 +96,13 @@ export function WhatsAppChatbot() {
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          aria-label="Open WhatsApp conversation"
-          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-2xl active:scale-95 transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-[#25D366] p-1.5 sm:p-2"
+          aria-label="Open artisan conversation"
+          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] shadow-2xl active:scale-95 transition-all duration-200 border-2 border-[#d4af37]/50 focus-visible:outline-2 focus-visible:outline-[#967432] p-1.5 sm:p-2"
         >
           {isOpen ? (
-            <X className="w-6 h-6 text-white" />
+            <X className="w-6 h-6 text-[#f7f3ec]" />
           ) : (
-            <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 text-white fill-white/20" />
+            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-[#f7f3ec] fill-[#d4af37]/20" />
           )}
         </button>
       </div>
@@ -117,23 +117,23 @@ export function WhatsAppChatbot() {
 
       {/* Smooth Sliding Sidebar Drawer from right edge */}
       <aside
-        className={`fixed inset-y-0 end-0 z-50 w-full sm:w-[420px] max-w-full bg-[#fcfaf7] border-s border-mist text-ink shadow-2xl flex flex-col font-sans transform transition-transform duration-300 ease-out ${
+        className={`fixed inset-y-0 end-0 z-50 w-full sm:w-[420px] max-w-full bg-[#fdfbf7] border-s border-[#e8dfd3] text-ink shadow-2xl flex flex-col font-sans transform transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
         }`}
         aria-label="Artisan Help Chat"
       >
-        {/* Clean, readable Header */}
-        <div className="p-4 bg-[#075e54] text-white flex items-center justify-between shadow-md">
+        {/* Theme-consistent Earthen Brown Header */}
+        <div className="p-4 bg-[#241b14] text-[#f7f3ec] border-b border-[#3d2e22] flex items-center justify-between shadow-md">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-              <MessageCircle className="w-6 h-6 text-white fill-white/20" />
+            <div className="w-10 h-10 rounded-full bg-[#382b20] border border-[#d4af37]/40 flex items-center justify-center">
+              <MessageCircle className="w-5 h-5 text-[#d4af37] fill-[#d4af37]/20" />
             </div>
             <div>
-              <h3 className="font-sans font-semibold text-[16px] text-white leading-tight">
+              <h3 className="font-serif font-medium text-[16px] text-[#f7f3ec] leading-tight">
                 {lang === "hi" ? "गौरी • गाँव सहायता" : "Gauri • Artisan Help Desk"}
               </h3>
-              <p className="text-[12px] text-[#e0f2f1] mt-0.5">
-                {lang === "hi" ? "व्हाट्सएप पर सहायता" : "WhatsApp Artisan Support"}
+              <p className="text-[12px] text-[#d4af37] mt-0.5 font-sans">
+                {lang === "hi" ? "कारीगर सहायता मंच" : "Gaanv Artisan Support"}
               </p>
             </div>
           </div>
@@ -141,7 +141,7 @@ export function WhatsAppChatbot() {
           <button
             type="button"
             onClick={() => setIsOpen(false)}
-            className="text-white/80 hover:text-white p-2 rounded-lg transition-colors"
+            className="text-[#f7f3ec]/80 hover:text-[#ffffff] p-2 rounded-lg transition-colors"
             aria-label="Close chat"
           >
             <X className="w-5 h-5" />
@@ -149,7 +149,7 @@ export function WhatsAppChatbot() {
         </div>
 
         {/* Messages Stream with high contrast, legible text */}
-        <div className="p-4 sm:p-5 flex-1 overflow-y-auto space-y-3 bg-[#efeae2]">
+        <div className="p-4 sm:p-5 flex-1 overflow-y-auto space-y-3 bg-[#f7f3ec]">
           {messages.map((msg, i) => (
             <div
               key={i}
@@ -160,13 +160,13 @@ export function WhatsAppChatbot() {
               <div
                 className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans ${
                   msg.sender === "user"
-                    ? "bg-[#075e54] text-white rounded-tr-none"
-                    : "bg-white text-[#111b21] border border-black/5 rounded-tl-none"
+                    ? "bg-[#241b14] text-[#f7f3ec] rounded-tr-none border border-[#3d2e22]"
+                    : "bg-white text-[#1a1510] border border-[#ddd4c4] rounded-tl-none"
                 }`}
               >
                 {msg.text}
               </div>
-              <span className="text-[11px] text-[#667781] mt-1 px-1 font-mono">{msg.time}</span>
+              <span className="text-[11px] text-[#6e6456] mt-1 px-1 font-mono">{msg.time}</span>
             </div>
           ))}
           <div ref={messagesEndRef} />
@@ -176,21 +176,21 @@ export function WhatsAppChatbot() {
             <button
               type="button"
               onClick={() => handleSend(t("chat.opt1"))}
-              className="text-left text-[13px] bg-white hover:bg-[#f7f5f0] text-[#111b21] border border-[#d1d7db] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
+              className="text-left text-[13px] bg-white hover:bg-[#eee8dc] text-[#241b14] border border-[#ddd4c4] hover:border-[#d4af37] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
             >
               {t("chat.opt1")}
             </button>
             <button
               type="button"
               onClick={() => handleSend(t("chat.opt2"))}
-              className="text-left text-[13px] bg-white hover:bg-[#f7f5f0] text-[#111b21] border border-[#d1d7db] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
+              className="text-left text-[13px] bg-white hover:bg-[#eee8dc] text-[#241b14] border border-[#ddd4c4] hover:border-[#d4af37] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
             >
               {t("chat.opt2")}
             </button>
             <button
               type="button"
               onClick={() => handleSend(t("chat.opt3"))}
-              className="text-left text-[13px] bg-white hover:bg-[#f7f5f0] text-[#111b21] border border-[#d1d7db] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
+              className="text-left text-[13px] bg-white hover:bg-[#eee8dc] text-[#241b14] border border-[#ddd4c4] hover:border-[#d4af37] rounded-lg px-3.5 py-2.5 transition-colors shadow-sm font-medium"
             >
               {t("chat.opt3")}
             </button>
@@ -198,13 +198,13 @@ export function WhatsAppChatbot() {
         </div>
 
         {/* WhatsApp Direct Action Button */}
-        <div className="p-3 bg-white border-t border-[#e9edef]">
+        <div className="p-3 bg-white border-t border-[#e8dfd3]">
           <button
             type="button"
             onClick={openWhatsAppDirect}
-            className="w-full flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#20ba59] text-white text-[14px] font-semibold py-2.5 rounded-lg transition-all shadow active:scale-98"
+            className="w-full flex items-center justify-center gap-2 bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] border border-[#d4af37]/40 text-[14px] font-semibold py-2.5 rounded-lg transition-all shadow active:scale-98"
           >
-            <MessageCircle className="w-5 h-5 fill-white/20" />
+            <MessageCircle className="w-5 h-5 text-[#d4af37] fill-[#d4af37]/20" />
             {t("chat.whatsapp_btn")}
           </button>
         </div>
@@ -215,19 +215,19 @@ export function WhatsAppChatbot() {
             e.preventDefault();
             handleSend();
           }}
-          className="p-3 bg-[#f0f2f5] border-t border-[#e9edef] flex items-center gap-2"
+          className="p-3 bg-[#eee8dc] border-t border-[#ddd4c4] flex items-center gap-2"
         >
           <input
             type="text"
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             placeholder={t("chat.input_placeholder")}
-            className="flex-1 bg-white text-[#111b21] text-[14px] rounded-lg px-4 py-2.5 border border-[#d1d7db] focus:border-[#00a884] focus:outline-none placeholder-[#8696a0]"
+            className="flex-1 bg-white text-[#1a1510] text-[14px] rounded-lg px-4 py-2.5 border border-[#ddd4c4] focus:border-[#967432] focus:outline-none placeholder-[#6e6456]"
           />
           <button
             type="submit"
             disabled={!inputVal.trim()}
-            className="bg-[#00a884] hover:bg-[#069374] text-white disabled:opacity-40 rounded-lg px-4 py-2.5 text-xs font-semibold transition-colors"
+            className="bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] border border-[#d4af37]/40 disabled:opacity-40 rounded-lg px-4 py-2.5 text-xs font-semibold transition-colors"
           >
             {t("chat.send")}
           </button>

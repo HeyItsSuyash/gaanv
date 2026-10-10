@@ -639,57 +639,32 @@ export default function Home() {
                   fill
                   className="object-cover object-top"
                 />
-                <div className="absolute bottom-0 inset-x-0 bg-black/60 py-1 text-[11px] font-mono text-[#d4af37] text-center border-t border-white/10">
-                  Passport ID
-                </div>
+
               </div>
               <div className="mt-3 bg-white text-[#1a1510] px-4 py-1.5 rounded-sm shadow-md font-serif font-bold text-[16px] tracking-wide">
                 XYZ
               </div>
-              <p className="text-[#d4af37] text-xs font-mono mt-1">
-                Founder, Gaanv by Mittilok
-              </p>
-              <span className="text-[11px] text-[#a89a88] font-mono mt-0.5">
-                📍 Uttar Pradesh
-              </span>
-              <Link
-                href="/team"
-                className="mt-3 text-xs font-mono text-[#d4af37] hover:underline"
-              >
-                {lang === "hi" ? "पूरी टीम देखें →" : "View Team Cards →"}
-              </Link>
             </div>
 
             {/* Full Width Founder Note */}
             <div className="flex-1 border-t md:border-t-0 md:border-s border-[#3d2e22] pt-6 md:pt-0 md:ps-10">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="text-[#d4af37] font-mono text-xs uppercase tracking-widest font-semibold">
-                  {lang === "hi" ? "संस्थापक का संदेश • उत्तर प्रदेश की ज़मीन से" : "Founder's Testimony • From the Soil of Uttar Pradesh"}
-                </span>
-                <span className="h-px flex-1 bg-[#3d2e22]"></span>
-              </div>
-
-              <blockquote className="font-serif text-[18px] sm:text-[21px] md:text-[23px] leading-relaxed text-[#f7f3ec] font-light italic">
-                {lang === "hi"
-                  ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"
-                  : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle — direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
-              </blockquote>
-
-              <div className="mt-8 pt-6 border-t border-[#3d2e22] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#a89a88]">
-                <div className="flex flex-wrap items-center gap-4">
-                  <span>100% Traceable Roots</span>
-                  <span className="text-[#524132]">|</span>
-                  <span>500+ Rural Women Empowered</span>
-                  <span className="text-[#524132]">|</span>
-                  <span>75 Districts of UP</span>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-[#d4af37] font-mono text-xs uppercase tracking-widest font-semibold">
+                    {lang === "hi" ? "संस्थापक का संदेश • उत्तर प्रदेश की ज़मीन से" : "Founder's Testimony • From the Soil of Uttar Pradesh"}
+                  </span>
+                  <span className="h-px flex-1 bg-[#3d2e22]"></span>
                 </div>
-                <div className="text-[#d4af37] font-semibold">
-                  Zero Middlemen Escrow System
-                </div>
+
+                <blockquote className="font-serif text-[18px] sm:text-[21px] md:text-[23px] leading-relaxed text-[#f7f3ec] font-light italic">
+                  {lang === "hi"
+                    ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"
+                    : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle — direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
+                </blockquote>
+
+
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* 7. GAON PATRIKA JOURNAL NEWSLETTER WITH AUTHENTIC RURAL LETTERS BACKGROUND */}
