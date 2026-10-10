@@ -80,13 +80,16 @@ export default function Home() {
     { ...HERO_SLIDES[0], id: "clone-first" },
   ];
 
-  // Map slideIndex to real slide index (0, 1, 2)
-  const currentSlide =
-    slideIndex === 0
-      ? HERO_SLIDES.length - 1
-      : slideIndex === extendedSlides.length - 1
-        ? 0
-        : slideIndex - 1;
+  // Map slideIndex to safe real slide index (0, 1, 2)
+  const currentSlide = (() => {
+    if (!HERO_SLIDES.length) return 0;
+    const len = HERO_SLIDES.length;
+    // slideIndex: 0 is clone of last slide (index len-1), 1..len are real slides (index 0..len-1), len+1 is clone of first (index 0)
+    const normalized = (slideIndex - 1 + len) % len;
+    return Math.max(0, Math.min(len - 1, normalized));
+  })();
+
+  const activeSlide = HERO_SLIDES[currentSlide] || HERO_SLIDES[0];
 
   // Handle seamless circular loop jump when reaching clones
   const handleTransitionEnd = () => {
@@ -195,17 +198,17 @@ export default function Home() {
         <div className="absolute inset-0 pointer-events-none z-20 mx-auto flex max-w-[1280px] flex-col justify-end px-5 sm:px-6 pb-12 sm:pb-16 md:px-8 md:pb-20">
           <div className="pointer-events-auto max-w-2xl">
             <h1 className="font-serif text-[#ffffff] text-[34px] sm:text-[46px] md:text-[58px] leading-[1.08] tracking-[-1px] font-normal drop-shadow-md">
-              {HERO_SLIDES[currentSlide].headline}
+              {activeSlide?.headline || ""}
             </h1>
             <p className="text-[#f7f3ec] mt-4 max-w-xl font-serif text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed drop-shadow-sm font-light">
-              {HERO_SLIDES[currentSlide].subhead}
+              {activeSlide?.subhead || ""}
             </p>
             <div className="mt-7 sm:mt-9 flex flex-wrap gap-3.5">
               <Link
-                href={HERO_SLIDES[currentSlide].ctaHref}
+                href={activeSlide?.ctaHref || "#just-landed"}
                 className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#f7f3ec] hover:bg-[#ffffff] text-[#241b14] h-12 sm:h-14 px-8 text-[15px] sm:text-[16px] shadow-lg"
               >
-                {HERO_SLIDES[currentSlide].ctaLabel}
+                {activeSlide?.ctaLabel || "Explore"}
               </Link>
               <a
                 href="#women-shg"
@@ -529,95 +532,104 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. INDIGENOUS TRIBAL ARTISANS OF UTTAR PRADESH SPOTLIGHT */}
+      {/* 5. INDIGENOUS THARU TRIBAL ARTISANS OF UTTAR PRADESH SPOTLIGHT */}
       <section id="up-tribes" className="relative py-16 md:py-24 bg-bone overflow-hidden">
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.12] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
           <header className="mb-12 max-w-3xl">
             <span className="inline-flex items-center gap-1.5 border border-[#524132] bg-[#241b14] text-[#d4af37] text-[11px] font-mono px-3 py-1 rounded-pill uppercase tracking-wider mb-3">
-              {lang === "hi" ? "तराई एवं विंध्य की विरासत • उत्तर प्रदेश" : "Roots in Terai & Vindhyas • Uttar Pradesh"}
+              {lang === "hi" ? "तराई की गौरवशाली विरासत • बलरामपुर, उत्तर प्रदेश" : "Pride of Terai • Balrampur, Uttar Pradesh"}
             </span>
             <h2 className="font-serif text-h2 text-ink">
               {lang === "hi"
-                ? "उत्तर प्रदेश की जनजातीय शिल्प धरोहर: बलरामपुर के थारू और विंध्य के कोल"
-                : "Indigenous Tribal Heritage of UP: Balrampur's Tharu & The Vindhyan Guilds"}
+                ? "उत्तर प्रदेश की थारू जनजातीय शिल्प धरोहर: बलरामपुर एवं सुहेलवा वन क्षेत्र"
+                : "Indigenous Heritage: The Tharu Tribe of Balrampur & Suhelwa Forest"}
             </h2>
             <p className="mt-3 text-[15px] sm:text-[16px] text-stone leading-relaxed">
               {lang === "hi"
-                ? "उत्तर प्रदेश केवल शहरों का नहीं, बल्कि तराई के घने जंगलों और सोनभद्र की पहाड़ियों में बसी समृद्ध जनजातीय परंपराओं का भी घर है। बलरामपुर और श्रावस्ती के सीमावर्ती जंगलों में रहने वाला 'थारू समाज' अपनी प्रकृति-संरक्षित जीवनशैली और हाथ से गढ़े मूंज-सिकाई शिल्पों के लिए प्रख्यात है।"
-                : "Beyond UP's historic cities lies a pristine tribal legacy stretching from the Terai foothills of Balrampur to the craggy plateaus of Sonbhadra. In Balrampur's Suhelwa forest fringes, the indigenous Tharu women weave wild Moonj grass into sacred household art."}
+                ? "बलरामपुर जिले के सीमावर्ती सुहेलवा वन क्षेत्र और पचपेड़वा, गैंसड़ी के थारू गाँवों में बसी मातृसत्तात्मक जनजातीय परंपराएँ प्रकृति के पूर्ण संतुलन पर टिकी हैं। यहाँ की थारू महिलाएँ सदियों से जंगली मूंज, कास घास और प्राकृतिक रंगों से अनुपम हस्तशिल्प रचती आई हैं।"
+                : "Nestled along the dense Suhelwa wildlife corridor in Balrampur district (Pachperwa, Gainsari), the indigenous Tharu matriarchal community preserves one of northern India's most ancient nature-positive artisan cultures. Every creation is hand-coiled with wild Moonj grass and dyed with forest flora."}
             </p>
           </header>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {/* Card 1: Tharu of Balrampur */}
-            <div className="group rounded-card bg-paper border-2 border-brass/40 hover:border-brass p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between relative overflow-hidden">
+            {/* Card 1: Wild Moonj & Sikki Baskets */}
+            <div className="group rounded-card bg-paper border-2 border-brass/50 hover:border-brass p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between relative overflow-hidden">
               <div>
-                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
-                  {lang === "hi" ? "थारू जनजाति (Tharu Tribe)" : "Tharu Tribe of Balrampur"}
+                <span className="text-[11px] font-mono uppercase tracking-wider text-brass font-semibold">
+                  {lang === "hi" ? "पारंपरिक घास शिल्प" : "Natural Fiber Guild"}
+                </span>
+                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors mt-1">
+                  {lang === "hi" ? "थारू मूंज व ढाकिया शिल्प (Dhakia & Moonj)" : "Wild Moonj & Dhakia Basketry"}
                 </h3>
                 <p className="text-[14px] text-ink-soft/90 mt-3 leading-relaxed">
                   {lang === "hi"
-                    ? "बलरामपुर जिले के पचपेड़वा, गैंसड़ी और सुहेलवा वन क्षेत्र के थारू गाँवों में महिलाएँ दलिया, मौनी और मूंज के टोकरे बनाती हैं। साथ ही विवाहों में अपनी बेटियों को दिए जाने वाले थारू कसूती लहंगे व कशीदाकारी में प्राचीन वन-प्रतीकों का प्रयोग होता है।"
-                    : "Living along Balrampur's Suhelwa forest belt (Pachperwa, Gainsari), Tharu matriarchs coil wild Moonj grass using bone awls. Their vivid Kasuti needlework features ancient sacred hornbill, peacock, and river motifs."}
+                    ? "सुहेलवा के जंगलों से एकत्र जंगली मूंज और सींक को हाथ की हड्डियों के औजारों (सुतारी) से गूंथकर बनाई जाने वाली ढाकिया टोकरियाँ और पेटारियाँ कई पीढ़ियों तक जस की तस रहती हैं।"
+                    : "Using river-borne wild Moonj grass and ancestral bone awls, Tharu women coil ceremonial storage trunks (Dhakia) and heirloom baskets designed to endure for generations without artificial sealants."}
                 </p>
                 <div className="mt-4 bg-bone-d/70 p-3 rounded-input text-xs text-stone space-y-1">
-                  <p><strong className="text-ink">Craft Speciality:</strong> Hand-coiled Moonj & Sikki Baskets, Tribal Kasuti</p>
-                  <p><strong className="text-ink">Natural Colors:</strong> Palash flower yellows, Catechu brown</p>
+                  <p><strong className="text-ink">Craft Speciality:</strong> Hand-coiled Dhakia, Grain Petaris, Coasters</p>
+                  <p><strong className="text-ink">Harvest Source:</strong> Suhelwa Riverine Grasslands, Balrampur</p>
                 </div>
               </div>
               <div className="mt-6 pt-4 border-t border-mist/50 flex items-center justify-between text-xs">
-                <span className="font-mono text-stone">180+ Women Co-ops</span>
+                <span className="font-mono text-stone">180+ Tharu Women</span>
                 <Link href="/explore-products" className="text-brass font-medium hover:underline">
-                  {lang === "hi" ? "थारू शिल्प देखें →" : "View Tharu Pieces →"}
+                  {lang === "hi" ? "मूंज शिल्प देखें →" : "Explore Moonj →"}
                 </Link>
               </div>
             </div>
 
-            {/* Card 2: Kol & Baiga Tribe */}
-            <div className="group rounded-card bg-paper border border-mist hover:border-brass/60 p-6 sm:p-7 shadow-lg transition-all flex flex-col justify-between">
+            {/* Card 2: Sacred Kasuti Needlework */}
+            <div className="group rounded-card bg-paper border-2 border-brass/50 hover:border-brass p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between relative overflow-hidden">
               <div>
-                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
-                  {lang === "hi" ? "कोल एवं बैगा जनजाति (Kol & Baiga)" : "Kol & Baiga Forest Guilds"}
+                <span className="text-[11px] font-mono uppercase tracking-wider text-brass font-semibold">
+                  {lang === "hi" ? "सुई-धागे की धरोहर" : "Indigenous Textiles"}
+                </span>
+                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors mt-1">
+                  {lang === "hi" ? "थारू कसूती व कशीदाकारी (Tharu Needlework)" : "Sacred Tharu Kasuti Textiles"}
                 </h3>
                 <p className="text-[14px] text-ink-soft/90 mt-3 leading-relaxed">
                   {lang === "hi"
-                    ? "सोनभद्र और मीरजापुर की पहाड़ियों में निवास करने वाले कोल और बैगा समुदाय जंगलों से प्राकृतिक लाह (Natural Lac) एकत्र कर शुद्ध लाख की चूड़ियाँ, लकड़ी के खिलौने और हाथ से बुनी दरियाँ तैयार करते हैं।"
-                    : "Dwelling in southern UP's rugged Vindhyan ranges, the Kol and Baiga artisans harvest non-timber forest lac to create vibrant organic lac bangles and hand-knotted natural wool rugs with tribal geometrics."}
+                    ? "थारू दुल्हन के पारंपरिक लहंगों और आँचल पर की जाने वाली बारीक हाथ की कसीदाकारी में प्राचीन वन-प्रतीक, मोर, मछली, और जीवन-वृक्ष के रूपांकन बिना किसी पूर्व रेखाचित्र के स्मृति से उकेरे जाते हैं।"
+                    : "Woven entirely from oral memory without stencil blueprints, Tharu Kasuti needlecraft adorns handloom cotton with sacred totemic wildlife—hornbills, river fish, and tree-of-life geometries."}
                 </p>
                 <div className="mt-4 bg-bone-d/70 p-3 rounded-input text-xs text-stone space-y-1">
-                  <p><strong className="text-ink">Craft Speciality:</strong> Forest Lac Ornaments, Flat-weave Dhurries</p>
-                  <p><strong className="text-ink">Region:</strong> Sonbhadra, Chandauli & Mirzapur</p>
+                  <p><strong className="text-ink">Craft Speciality:</strong> Kasuti Scarves, Wall Tapestries, Bridal Dupattas</p>
+                  <p><strong className="text-ink">Technique:</strong> Geometric Counted-thread Embroidery</p>
                 </div>
               </div>
               <div className="mt-6 pt-4 border-t border-mist/50 flex items-center justify-between text-xs">
-                <span className="font-mono text-stone">95+ Artisans</span>
+                <span className="font-mono text-stone">65+ Master Weavers</span>
                 <Link href="/explore-products" className="text-brass font-medium hover:underline">
-                  {lang === "hi" ? "विंध्य शिल्प देखें →" : "Explore Cohort →"}
+                  {lang === "hi" ? "कसीदाकारी देखें →" : "View Textiles →"}
                 </Link>
               </div>
             </div>
 
-            {/* Card 3: Sahariya & Gond Tribe */}
-            <div className="group rounded-card bg-paper border border-mist hover:border-brass/60 p-6 sm:p-7 shadow-lg transition-all flex flex-col justify-between">
+            {/* Card 3: Forest-Harvested Natural Dyes */}
+            <div className="group rounded-card bg-paper border-2 border-brass/50 hover:border-brass p-6 sm:p-7 shadow-xl transition-all flex flex-col justify-between relative overflow-hidden">
               <div>
-                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
-                  {lang === "hi" ? "सहरिया जनजाति (Sahariya Tribe)" : "Sahariya Tribal Weavers"}
+                <span className="text-[11px] font-mono uppercase tracking-wider text-brass font-semibold">
+                  {lang === "hi" ? "प्रकृति का रंगमहल" : "Botanical Dyes"}
+                </span>
+                <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors mt-1">
+                  {lang === "hi" ? "पलाश व कत्था वन-रंग (Forest Botanical Dyes)" : "Organic Forest Botanical Dyes"}
                 </h3>
                 <p className="text-[14px] text-ink-soft/90 mt-3 leading-relaxed">
                   {lang === "hi"
-                    ? "ललितपुर और झाँसी के सीमावर्ती जंगलों के सहरिया आदिवासी पत्तों की कला, प्राकृतिक गोंद और हाथ से काते गए खद्दर वस्त्रों के निर्माण में दक्ष हैं। इनका ज्ञान सदियों से वनों के सह-अस्तित्व पर आधारित है।"
-                    : "Native to the dry-deciduous Bundelkhand forests around Lalitpur, Sahariya tribal clusters craft herbal forest fibers and organic rough-spun cotton shawls, upholding sustainable zero-carbon practices."}
+                    ? "पलाश के फूलों से पीला व नारंगी, खैर की लकड़ी से कत्थई और हरड़-बहेड़ा से गहरे भूरे प्राकृतिक रंग तैयार किए जाते हैं। थारू शिल्प में किसी भी प्रकार के रासायनिक या विषाक्त रंगों का प्रयोग वर्जित है।"
+                    : "Flame-of-the-forest (Palash) blossoms yield vibrant saffron-yellows, while Khair wood extract creates earthy terracotta hues. Completely zero-chemical and non-toxic processing rooted in forest wisdom."}
                 </p>
                 <div className="mt-4 bg-bone-d/70 p-3 rounded-input text-xs text-stone space-y-1">
-                  <p><strong className="text-ink">Craft Speciality:</strong> Wild Herb Fiber Weaving, Clay Murals</p>
-                  <p><strong className="text-ink">Tradition:</strong> 100% Forest-sourced Raw Materials</p>
+                  <p><strong className="text-ink">Color Heritage:</strong> Forest Palash, Catechu, Turmeric & Harda</p>
+                  <p><strong className="text-ink">Ecology:</strong> 100% Biodegradable & Chemical-Free</p>
                 </div>
               </div>
               <div className="mt-6 pt-4 border-t border-mist/50 flex items-center justify-between text-xs">
-                <span className="font-mono text-stone">Bundelkhand Base</span>
+                <span className="font-mono text-stone">100% Natural Process</span>
                 <Link href="/explore-products" className="text-brass font-medium hover:underline">
-                  {lang === "hi" ? "शिल्प देखें →" : "View Pieces →"}
+                  {lang === "hi" ? "थारू संग्रह देखें →" : "Explore Cohort →"}
                 </Link>
               </div>
             </div>

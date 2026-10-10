@@ -78,31 +78,35 @@ export function WhatsAppChatbot() {
 
   return (
     <>
-      {/* Floating Trigger Button on bottom-right with earthen brown theme and authentic badge */}
-      <div className="fixed bottom-4 end-4 sm:bottom-6 sm:end-6 z-40 flex items-center gap-2.5">
+      {/* Floating Trigger Container on bottom-right */}
+      <div className="fixed bottom-4 end-4 sm:bottom-6 sm:end-6 z-40 flex flex-col items-end">
+        {/* Diagonally Upward Message Bubble */}
         {!isOpen && (
-          <button
-            type="button"
-            onClick={() => setIsOpen(true)}
-            className="cursor-pointer group flex items-center gap-2 bg-[#241b14] text-[#f7f3ec] hover:bg-[#382b20] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-pill shadow-xl transition-all duration-200 active:scale-95 border border-[#d4af37]/40"
-            aria-label="Chat with Gauri"
-          >
-            <span className="text-[12px] sm:text-[13px] font-medium tracking-tight">
-              {lang === "hi" ? "नमस्ते, मैं गौरी हूँ। क्या सहायता करूँ?" : "Hey its Gauri, how can I help?"}
-            </span>
-          </button>
+          <div className="mb-2.5 me-2 animate-in fade-in slide-in-from-bottom-2 duration-300">
+            <button
+              type="button"
+              onClick={() => setIsOpen(true)}
+              className="cursor-pointer group flex items-center gap-2 bg-[#241b14] text-[#f7f3ec] hover:bg-[#382b20] px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl rounded-br-xs shadow-md transition-all duration-200 active:scale-95 border border-white/20 text-left"
+              aria-label="Chat with Gauri"
+            >
+              <span className="text-[12px] sm:text-[13px] font-medium tracking-tight">
+                {lang === "hi" ? "नमस्ते, मैं गौरी हूँ। क्या सहायता करूँ?" : "Hey its Gauri, how can I help?"}
+              </span>
+            </button>
+          </div>
         )}
 
+        {/* Brown Circle with crisp white border and white chat icon (zero glow) */}
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Open artisan conversation"
-          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] shadow-2xl active:scale-95 transition-all duration-200 border-2 border-[#d4af37]/50 focus-visible:outline-2 focus-visible:outline-[#967432] p-1.5 sm:p-2"
+          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] hover:bg-[#382b20] text-white border-2 border-white shadow-md active:scale-95 transition-all duration-150 focus-visible:outline-2 focus-visible:outline-white p-1.5 sm:p-2"
         >
           {isOpen ? (
-            <X className="w-6 h-6 text-[#f7f3ec]" />
+            <X className="w-6 h-6 text-white stroke-[2.5]" />
           ) : (
-            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-[#f7f3ec] fill-[#d4af37]/20" />
+            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-white/10 stroke-[2]" />
           )}
         </button>
       </div>
