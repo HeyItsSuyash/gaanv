@@ -46,7 +46,7 @@ export function CheckoutModal() {
 
           <div className="mb-6 border-b border-mist pb-4">
             <div className="relative h-9 w-28 mb-1">
-              <Image src="/logo-dark.png" alt="Logo" fill className="object-contain object-left" />
+              <Image src="/gaon-logo.png" alt="Logo" fill className="object-contain object-left" />
             </div>
             <h3 className="font-serif text-h3 text-ink">Secure Checkout</h3>
             <p className="text-body-sm text-stone mt-1">

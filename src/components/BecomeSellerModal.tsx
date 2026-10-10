@@ -38,7 +38,7 @@ export function BecomeSellerModal() {
 
           <div className="mb-6">
             <div className="relative h-9 w-28 mb-1">
-              <Image src="/logo-dark.png" alt="Logo" fill className="object-contain object-left" />
+              <Image src="/gaon-logo.png" alt="Logo" fill className="object-contain object-left" />
             </div>
             <h3 className="font-serif text-h2 text-ink">Sell on the Platform</h3>
             <p className="text-body-sm text-stone mt-1">

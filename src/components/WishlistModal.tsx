@@ -24,7 +24,7 @@ export function WishlistModal() {
           <div className="flex items-center justify-between mb-6 border-b border-mist pb-4">
             <div>
               <div className="relative h-8 w-24 mb-1">
-                <Image src="/logo-dark.png" alt="Logo" fill className="object-contain object-left" />
+                <Image src="/gaon-logo.png" alt="Logo" fill className="object-contain object-left" />
               </div>
               <h3 className="font-serif text-h3 text-ink">Saved Pieces ({savedProducts.length})</h3>
             </div>

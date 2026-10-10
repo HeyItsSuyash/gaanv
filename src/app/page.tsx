@@ -134,7 +134,7 @@ export default function Home() {
               />
 
               {/* Subtle Mandana art pattern on overlay */}
-              <div 
+              <div
                 aria-hidden="true"
                 className="absolute inset-0 bg-mandana-pattern opacity-10 mix-blend-overlay pointer-events-none"
               />
@@ -211,9 +211,8 @@ export default function Home() {
                     type="button"
                     onClick={() => setCurrentSlide(i)}
                     aria-label={`Go to slide ${i + 1}`}
-                    className={`block h-1.5 rounded-pill transition-all duration-300 ease-[var(--ease-signature)] ${
-                      i === currentSlide ? "bg-[#f7f3ec] w-8" : "bg-[#f7f3ec]/40 hover:bg-[#f7f3ec]/70 w-3"
-                    }`}
+                    className={`block h-1.5 rounded-pill transition-all duration-300 ease-[var(--ease-signature)] ${i === currentSlide ? "bg-[#f7f3ec] w-8" : "bg-[#f7f3ec]/40 hover:bg-[#f7f3ec]/70 w-3"
+                      }`}
                   />
                 </li>
               ))}
@@ -226,7 +225,6 @@ export default function Home() {
       <section className="bg-bone-d py-4 relative z-20">
         <div className="mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-madder"></span>
             <span className="font-mono text-xs uppercase tracking-wider text-ink font-semibold">
               Proudly Handcrafted in India • Vocal for Local
             </span>
@@ -263,13 +261,12 @@ export default function Home() {
             {SHG_GROUPS.map((group, idx) => (
               <div
                 key={group.id}
-                className={`group relative rounded-card bg-paper border border-mist overflow-hidden shadow-xl hover:border-brass/70 hover:shadow-2xl transition-all duration-300 flex flex-col ${
-                  idx === 0
+                className={`group relative rounded-card bg-paper border border-mist overflow-hidden shadow-xl hover:border-brass/70 hover:shadow-2xl transition-all duration-300 flex flex-col ${idx === 0
                     ? "md:-translate-y-4"
                     : idx === 1
-                    ? "md:translate-y-4"
-                    : "md:translate-y-12"
-                }`}
+                      ? "md:translate-y-4"
+                      : "md:translate-y-12"
+                  }`}
               >
                 <div className="relative h-64 w-full overflow-hidden bg-bone">
                   <Image
@@ -622,7 +619,7 @@ export default function Home() {
                 </span>
                 <span className="h-px flex-1 bg-[#3d2e22]"></span>
               </div>
-              
+
               <blockquote className="font-serif text-[18px] sm:text-[21px] md:text-[23px] leading-relaxed text-[#f7f3ec] font-light italic">
                 {lang === "hi"
                   ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"

@@ -74,7 +74,7 @@ export function Header() {
           >
             <div className="relative h-11 w-32 sm:h-12 sm:w-36">
               <Image
-                src="/logo-cream.png"
+                src="/gaon-logo.png"
                 alt="Gaanv by Mittilok"
                 fill
                 priority

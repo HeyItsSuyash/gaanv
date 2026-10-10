@@ -50,7 +50,7 @@ export function CartDrawer() {
             {cart.length === 0 ? (
               <div className="flex flex-col items-center justify-center h-full text-center py-12">
                 <div className="relative h-12 w-32 mb-2 opacity-50">
-                  <Image src="/logo-dark.png" alt="Logo" fill className="object-contain" />
+                  <Image src="/gaon-logo.png" alt="Logo" fill className="object-contain" />
                 </div>
                 <p className="font-serif text-h4 text-ink mb-1">Your bag is empty</p>
                 <p className="text-body-sm text-stone max-w-xs mb-6">

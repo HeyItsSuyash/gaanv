@@ -43,7 +43,7 @@ export function LoginModal() {
           {user ? (
             <div className="text-center py-4">
               <div className="relative h-10 w-28 mx-auto mb-2">
-                <Image src="/logo-dark.png" alt="Logo" fill className="object-contain" />
+                <Image src="/gaon-logo.png" alt="Logo" fill className="object-contain" />
               </div>
               <h3 className="font-serif text-h3 text-ink mb-2">Welcome Back</h3>
               <p className="text-body-sm text-stone mb-6">
@@ -61,7 +61,7 @@ export function LoginModal() {
             <div>
               <div className="text-center mb-6">
                 <div className="relative h-10 w-28 mx-auto mb-1">
-                  <Image src="/logo-dark.png" alt="Logo" fill className="object-contain" />
+                  <Image src="/gaon-logo.png" alt="Logo" fill className="object-contain" />
                 </div>
                 <h3 className="font-serif text-h3 text-ink">Sign In to Your Account</h3>
                 <p className="text-body-sm text-stone mt-1">

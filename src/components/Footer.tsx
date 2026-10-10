@@ -17,7 +17,7 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center mb-4">
               <div className="relative h-14 w-44 sm:h-16 sm:w-48">
                 <Image
-                  src="/logo-dark.png"
+                  src="/gaon-logo.png"
                   alt="Gaanv by Mittilok"
                   fill
                   className="object-contain object-left"
