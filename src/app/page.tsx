@@ -637,14 +637,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH (SEAMLESS FULL HEIGHT CONTAINER) */}
+      {/* 6. FOUNDER'S TESTIMONY: ROOTED IN UTTAR PRADESH (SEAMLESS FULL HEIGHT CONTAINER WITH WARLI PATTERNS) */}
       <section className="relative py-14 md:py-20 bg-[#241b14] text-[#f7f3ec] overflow-hidden">
-        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.08] pointer-events-none" />
+        {/* Warli art patterns behind the card across the section */}
+        <div className="absolute inset-0 bg-warli-pattern opacity-[0.14] pointer-events-none" />
+        <div className="absolute inset-0 bg-mandana-pattern opacity-[0.06] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
-          {/* Outer Quote Block Card with zero padding between image and quote text */}
-          <div className="rounded-card bg-[#1a130e] border border-[#3d2e22] shadow-2xl overflow-hidden flex flex-col md:flex-row items-stretch p-0">
+          {/* Outer Quote Block Card with zero padding between image and quote text and internal Warli texture */}
+          <div className="relative rounded-card bg-[#1a130e] border border-[#3d2e22] shadow-2xl overflow-hidden flex flex-col md:flex-row items-stretch p-0">
+            {/* Subtle Warli design inside the card container */}
+            <div className="absolute inset-0 bg-warli-pattern opacity-[0.07] pointer-events-none z-0" />
+
             {/* Founder Image: Full height of the quotes container, auto-scaled width without skewing, zero padding */}
-            <div className="relative w-full md:w-[320px] lg:w-[360px] min-h-[360px] md:min-h-full shrink-0 bg-[#120d09] p-0 m-0">
+            <div className="relative z-10 w-full md:w-[320px] lg:w-[360px] min-h-[360px] md:min-h-full shrink-0 bg-[#120d09] p-0 m-0">
               <Image
                 src="/founderceo.jpg"
                 alt="Gaurav Srivastav - Founder and CEO"
@@ -656,11 +661,11 @@ export default function Home() {
             </div>
 
             {/* Seamless Quote Content Column directly attached without gap */}
-            <div className="flex-1 flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 border-t md:border-t-0 md:border-s border-[#3d2e22]">
+            <div className="relative z-10 flex-1 flex flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12 border-t md:border-t-0 md:border-s border-[#3d2e22]">
               <div>
                 <div className="flex items-center gap-2 mb-4">
                   <span className="text-[#d4af37] font-mono text-xs uppercase tracking-widest font-semibold">
-                    {lang === "hi" ? "संस्थापक का संदेश • उत्तर प्रदेश की ज़मीन से" : "Founder's Testimony • From the Soil of Uttar Pradesh"}
+                    {lang === "hi" ? "उत्तर प्रदेश की ज़मीन से" : "From the Soil of Uttar Pradesh"}
                   </span>
                   <span className="h-px flex-1 bg-[#3d2e22]"></span>
                 </div>
@@ -681,10 +686,6 @@ export default function Home() {
                   <p className="text-[13px] sm:text-[14px] text-[#d4af37] font-sans tracking-wide mt-0.5">
                     Founder and CEO, Mittilok and Mittilok Gaon
                   </p>
-                </div>
-                <div className="inline-flex items-center gap-2 text-xs font-mono text-[#a89a8a] bg-[#241b14] px-3 py-1.5 rounded-pill border border-[#3d2e22] w-fit">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#d4af37]"></span>
-                  <span>Balrampur & Lucknow, UP</span>
                 </div>
               </div>
             </div>

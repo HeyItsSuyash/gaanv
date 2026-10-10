@@ -67,14 +67,6 @@ export function Footer() {
 
         {/* National Initiatives & Heritage Badges (Seamless without separate box) */}
         <div className="mt-12 pt-8 flex flex-col items-center justify-center text-center gap-5">
-          <div>
-            <span className="font-mono text-xs uppercase tracking-wider text-madder font-semibold block">
-              Vocal For Local • Atmanirbhar Bharat
-            </span>
-            <p className="font-serif text-[17px] text-ink mt-1 font-normal">
-              Supported by One District One Product (ODOP) & Make in India
-            </p>
-          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
             {/* Make in India */}
