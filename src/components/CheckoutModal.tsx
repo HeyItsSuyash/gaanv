@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
+import { CustomSelect } from "@/components/CustomSelect";
 
 export function CheckoutModal() {
   const { isCheckoutOpen, setIsCheckoutOpen, cart, cartTotal, clearCart } = useCart();
@@ -128,20 +129,20 @@ export function CheckoutModal() {
                 </div>
                 <div>
                   <label htmlFor="checkout-destination-country" className="block text-caption text-stone mb-1 font-medium">Country</label>
-                  <select
+                  <CustomSelect
                     id="checkout-destination-country"
                     value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="w-full rounded-input border border-mist bg-paper px-3 py-2 text-ink outline-none focus:border-madder font-sans text-body-sm"
-                  >
-                    <option value="IN">India</option>
-                    <option value="US">United States</option>
-                    <option value="GB">United Kingdom</option>
-                    <option value="AE">UAE</option>
-                    <option value="CA">Canada</option>
-                    <option value="AU">Australia</option>
-                    <option value="DE">Germany</option>
-                  </select>
+                    onChange={(val) => setFormData({ ...formData, country: val })}
+                    options={[
+                      { value: "IN", label: "India" },
+                      { value: "US", label: "United States" },
+                      { value: "GB", label: "United Kingdom" },
+                      { value: "AE", label: "UAE" },
+                      { value: "CA", label: "Canada" },
+                      { value: "AU", label: "Australia" },
+                      { value: "DE", label: "Germany" },
+                    ]}
+                  />
                 </div>
                 <div>
                   <label htmlFor="checkout-postal-zip-code" className="block text-caption text-stone mb-1 font-medium">PIN / Postal Code</label>

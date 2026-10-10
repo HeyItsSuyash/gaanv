@@ -3,10 +3,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useCart } from "@/context/CartContext";
+import { CustomSelect } from "@/components/CustomSelect";
 
 export function BecomeSellerModal() {
   const { isSellerModalOpen, setIsSellerModalOpen } = useCart();
   const [submitted, setSubmitted] = useState(false);
+  const [craft, setCraft] = useState("");
+  const [giTag, setGiTag] = useState("no");
 
   if (!isSellerModalOpen) return null;
 
@@ -77,31 +80,34 @@ export function BecomeSellerModal() {
                   <label htmlFor="seller-craft" className="block text-caption text-stone mb-1 font-medium">
                     Primary Craft Discipline
                   </label>
-                  <select
+                  <CustomSelect
                     id="seller-craft"
-                    required
-                    className="w-full rounded-input border border-mist bg-paper px-3 py-2.5 text-ink outline-none focus:border-madder font-sans text-body-sm"
-                  >
-                    <option value="">Select discipline</option>
-                    <option value="textiles">Handloom &amp; Textiles</option>
-                    <option value="ceramics">Pottery &amp; Ceramics</option>
-                    <option value="brass">Bell-Metal &amp; Brass</option>
-                    <option value="art">Folk Art &amp; Painting</option>
-                    <option value="wood">Woodcraft &amp; Carving</option>
-                  </select>
+                    value={craft}
+                    onChange={(val) => setCraft(val)}
+                    placeholder="Select discipline"
+                    options={[
+                      { value: "textiles", label: "Handloom & Textiles" },
+                      { value: "ceramics", label: "Pottery & Ceramics" },
+                      { value: "brass", label: "Bell-Metal & Brass" },
+                      { value: "art", label: "Folk Art & Painting" },
+                      { value: "wood", label: "Woodcraft & Carving" },
+                    ]}
+                  />
                 </div>
                 <div>
                   <label htmlFor="seller-gi" className="block text-caption text-stone mb-1 font-medium">
                     GI Tag Certificate?
                   </label>
-                  <select
+                  <CustomSelect
                     id="seller-gi"
-                    className="w-full rounded-input border border-mist bg-paper px-3 py-2.5 text-ink outline-none focus:border-madder font-sans text-body-sm"
-                  >
-                    <option value="no">No</option>
-                    <option value="yes">Yes (Govt Certified)</option>
-                    <option value="applied">Application Pending</option>
-                  </select>
+                    value={giTag}
+                    onChange={(val) => setGiTag(val)}
+                    options={[
+                      { value: "no", label: "No" },
+                      { value: "yes", label: "Yes (Govt Certified)" },
+                      { value: "applied", label: "Application Pending" },
+                    ]}
+                  />
                 </div>
               </div>
 

@@ -406,16 +406,13 @@ export default function Home() {
                   </button>
 
                   {/* Badges */}
-                  <div className="absolute start-2 top-2 flex flex-col gap-1">
-                    {(product.tags.includes("gi") || product.isBestseller) && (
+                  {product.tags.includes("gi") && (
+                    <div className="absolute start-2 top-2">
                       <span className="bg-[#12100d]/90 text-brass border border-brass/40 text-[10px] font-mono px-2 py-0.5 rounded-xs font-semibold">
                         GI Tag
                       </span>
-                    )}
-                    <span className="bg-madder/90 text-white text-[9px] font-sans px-1.5 py-0.5 rounded-xs font-medium">
-                      SHG Maker
-                    </span>
-                  </div>
+                    </div>
+                  )}
 
                   {/* Floating Wishlist Button */}
                   <button
@@ -459,7 +456,7 @@ export default function Home() {
                 {/* Details */}
                 <div className="flex flex-col flex-1 justify-between">
                   <div>
-                    <p className="font-mono text-[11px] uppercase tracking-wide text-stone">
+                    <p className="text-[12px] text-stone font-sans">
                       {product.location}
                     </p>
                     <h3 className="font-serif text-[16px] sm:text-[17px] text-ink font-normal mt-0.5 line-clamp-1 group-hover:text-brass transition-colors">

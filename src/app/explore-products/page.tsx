@@ -7,6 +7,7 @@ import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 import { initialProducts } from "@/data/products";
 import { initialCategories } from "@/data/categories";
+import { CustomSelect } from "@/components/CustomSelect";
 
 export default function ExploreProductsPage() {
   const { addToCart, toggleWishlist, isInWishlist, setQuickViewProduct } = useCart();
@@ -88,16 +89,18 @@ export default function ExploreProductsPage() {
             {/* Sort Dropdown */}
             <div className="w-full sm:w-auto flex items-center gap-2">
               <span className="text-xs text-stone whitespace-nowrap">Sort:</span>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="h-11 w-full sm:w-auto rounded-input bg-bone-d border border-mist px-3 text-ink text-xs focus:outline-none focus:border-brass"
-              >
-                <option value="featured">Featured</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="rating">Top Rated</option>
-              </select>
+              <div className="w-full sm:w-44">
+                <CustomSelect
+                  value={sortBy}
+                  onChange={(val) => setSortBy(val)}
+                  options={[
+                    { value: "featured", label: "Featured" },
+                    { value: "price-low", label: "Price: Low to High" },
+                    { value: "price-high", label: "Price: High to Low" },
+                    { value: "rating", label: "Top Rated" },
+                  ]}
+                />
+              </div>
             </div>
           </div>
 
@@ -163,16 +166,13 @@ export default function ExploreProductsPage() {
                     </button>
 
                     {/* Badges */}
-                    <div className="absolute start-2 top-2 flex flex-col gap-1">
-                      {(product.tags.includes("gi") || product.isBestseller) && (
+                    {product.tags.includes("gi") && (
+                      <div className="absolute start-2 top-2">
                         <span className="bg-[#12100d]/90 text-brass border border-brass/40 text-[10px] font-mono px-2 py-0.5 rounded-xs font-semibold">
                           GI Tag
                         </span>
-                      )}
-                      <span className="bg-madder/90 text-white text-[9px] font-sans px-1.5 py-0.5 rounded-xs font-medium">
-                        SHG Maker
-                      </span>
-                    </div>
+                      </div>
+                    )}
 
                     {/* Wishlist Button */}
                     <button
@@ -216,7 +216,7 @@ export default function ExploreProductsPage() {
                   {/* Details */}
                   <div className="flex flex-col flex-1 justify-between">
                     <div>
-                      <p className="font-mono text-[11px] uppercase tracking-wide text-stone">
+                      <p className="text-[12px] text-stone font-sans">
                         {product.location}
                       </p>
                       <h3 className="font-serif text-[16px] sm:text-[17px] text-ink font-normal mt-0.5 line-clamp-1 group-hover:text-brass transition-colors">
