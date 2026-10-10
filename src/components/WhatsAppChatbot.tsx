@@ -106,7 +106,7 @@ export function WhatsAppChatbot() {
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Open artisan conversation"
-          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] hover:bg-[#382b20] text-white border-2 border-white shadow-md active:scale-95 transition-all duration-150 focus-visible:outline-2 focus-visible:outline-white p-1.5 sm:p-2"
+          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] hover:bg-[#382b20] text-white shadow-md active:scale-95 transition-all duration-150 focus-visible:outline-2 focus-visible:outline-white p-1.5 sm:p-2"
         >
           {isOpen ? (
             <X className="w-6 h-6 text-white stroke-[2.5]" />
@@ -126,9 +126,8 @@ export function WhatsAppChatbot() {
 
       {/* Smooth Sliding Sidebar Drawer from right edge */}
       <aside
-        className={`fixed inset-y-0 end-0 z-50 w-full sm:w-[420px] max-w-full bg-[#fdfbf7] border-s border-[#e8dfd3] text-ink shadow-2xl flex flex-col font-sans transform transition-transform duration-300 ease-[var(--ease-signature)] ${
-          isOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
-        }`}
+        className={`fixed inset-y-0 end-0 z-50 w-full sm:w-[420px] max-w-full bg-[#fdfbf7] border-s border-[#e8dfd3] text-ink shadow-2xl flex flex-col font-sans transform transition-transform duration-300 ease-[var(--ease-signature)] ${isOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
+          }`}
         aria-label="Artisan Help Chat"
       >
         {/* Theme-consistent Earthen Brown Header */}
@@ -162,16 +161,14 @@ export function WhatsAppChatbot() {
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`flex flex-col animate-in fade-in slide-in-from-bottom-1 duration-200 ${
-                msg.sender === "user" ? "items-end" : "items-start"
-              }`}
+              className={`flex flex-col animate-in fade-in slide-in-from-bottom-1 duration-200 ${msg.sender === "user" ? "items-end" : "items-start"
+                }`}
             >
               <div
-                className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans ${
-                  msg.sender === "user"
+                className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans ${msg.sender === "user"
                     ? "bg-[#241b14] text-[#f7f3ec] rounded-tr-none border border-[#3d2e22]"
                     : "bg-white text-[#1a1510] border border-[#ddd4c4] rounded-tl-none"
-                }`}
+                  }`}
               >
                 {msg.text}
               </div>

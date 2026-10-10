@@ -203,16 +203,16 @@ export default function Home() {
             <p className="text-[#f7f3ec] mt-4 max-w-xl font-serif text-[17px] sm:text-[19px] md:text-[21px] leading-relaxed drop-shadow-sm font-light">
               {activeSlide?.subhead || ""}
             </p>
-            <div className="mt-7 sm:mt-9 flex flex-wrap gap-3.5">
+            <div className="mt-6 sm:mt-9 flex flex-row items-center gap-2.5 sm:gap-3.5 flex-nowrap w-full max-w-full overflow-x-visible">
               <Link
                 href={activeSlide?.ctaHref || "#just-landed"}
-                className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#f7f3ec] hover:bg-[#ffffff] text-[#241b14] h-12 sm:h-14 px-8 text-[15px] sm:text-[16px] shadow-lg"
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-button font-sans font-semibold transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-[#f7f3ec] hover:bg-[#ffffff] text-[#241b14] h-11 sm:h-14 px-4 sm:px-8 text-[13px] sm:text-[16px] shadow-lg flex-1 sm:flex-initial"
               >
                 {activeSlide?.ctaLabel || "Explore"}
               </Link>
               <a
                 href="#women-shg"
-                className="inline-flex items-center justify-center gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-transparent hover:bg-[#f7f3ec]/10 text-[#f7f3ec] border border-[#f7f3ec]/80 h-12 sm:h-14 px-7 text-[15px] shadow-sm backdrop-blur-[2px]"
+                className="inline-flex items-center justify-center gap-1.5 sm:gap-2 rounded-button font-sans font-medium transition-all duration-150 ease-[var(--ease-signature)] active:scale-95 whitespace-nowrap bg-transparent hover:bg-[#f7f3ec]/10 text-[#f7f3ec] border border-[#f7f3ec]/80 h-11 sm:h-14 px-3.5 sm:px-7 text-[13px] sm:text-[15px] shadow-sm backdrop-blur-[2px] flex-1 sm:flex-initial"
               >
                 {t("hero.cta_shg")}
               </a>
