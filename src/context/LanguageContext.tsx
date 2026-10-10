@@ -94,7 +94,7 @@ const translations: Record<Language, Record<string, string>> = {
   hi: {
     // Nav
     "nav.brand": "गाँव बाय मिट्टीलोक",
-    "nav.explore": "हाट देखें",
+    "nav.explore": "शिल्प देखें",
     "nav.women_shg": "महिला स्वयं सहायता समूह",
     "nav.gi_crafts": "जीआई धरोहर",
     "nav.team": "हमारी टीम",
@@ -112,7 +112,7 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.slide2_sub": "खुरजा पॉटरी, मोलेला टेराकोटा और गोरखपुर की लाल मिट्टी की कला सीधे गाँव के चौपाल से 75+ देशों तक।",
     "hero.slide3_title": "पुश्तैनी डोकरा और मोम-ढलाई कांस्य धातु कला।",
     "hero.slide3_sub": "बस्तर और मयूरभंज की जनजातीय महिला समूहों द्वारा संरक्षित भौगोलिक संकेतक (GI) प्रमाणित शिल्प।",
-    "hero.cta_explore": "गाँव की हाट देखें",
+    "hero.cta_explore": "गाँव के शिल्प देखें",
     "hero.cta_shg": "समूहों से मिलें",
     "hero.prev_slide": "पिछला",
     "hero.next_slide": "अगला",
