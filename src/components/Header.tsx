@@ -48,9 +48,9 @@ export function Header() {
       className={`sticky top-0 transition-colors duration-200 bg-[#241b14] border-b ${mobileMenuOpen ? "z-[100]" : "z-40"} ${isScrolled ? "border-[#1a130e] shadow-xl shadow-black/30" : "border-[#382b20]"
         }`}
     >
-      <nav className="mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8">
+      <nav className="relative mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8">
         {/* Left side: Mobile toggle & Brand Logo */}
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-3 sm:gap-4 z-10">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -98,11 +98,11 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Center Editorial Navigation (centered in navbar) */}
-        <div className="hidden md:flex items-center gap-7 text-[14px]">
+        {/* Center Editorial Navigation (perfectly centered on desktop) */}
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 text-[14px]">
           <Link
             href="/explore-products"
-            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium tracking-wide"
           >
             {t("nav.explore")}
             <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -110,7 +110,7 @@ export function Header() {
           <Link
             href="/#women-shg"
             onClick={(e) => handleNavAnchor(e, "women-shg")}
-            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium tracking-wide"
           >
             {t("nav.women_shg")}
             <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -118,14 +118,14 @@ export function Header() {
           <Link
             href="/#gi-treasures"
             onClick={(e) => handleNavAnchor(e, "gi-treasures")}
-            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium tracking-wide"
           >
             {t("nav.gi_crafts")}
             <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
           <Link
             href="/team"
-            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
+            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium tracking-wide"
           >
             {t("nav.team")}
             <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
@@ -133,7 +133,7 @@ export function Header() {
         </div>
 
         {/* Right side: Search, Language Icon (to the right of search), Account & Ghost Style "Sell with us" CTA */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 z-10">
           {/* Search Trigger */}
           <button
             type="button"

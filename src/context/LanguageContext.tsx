@@ -15,11 +15,11 @@ const translations: Record<Language, Record<string, string>> = {
   en: {
     // Nav
     "nav.brand": "gaanv by mittilok",
-    "nav.explore": "Explore Gaanv",
+    "nav.explore": "Explore",
     "nav.women_shg": "Women SHGs",
     "nav.gi_crafts": "GI Heritage",
-    "nav.team": "Our Team",
-    "nav.about": "Our Village Roots",
+    "nav.team": "Team",
+    "nav.about": "Roots",
     "nav.sell": "Sell with Us",
     "nav.search_placeholder": "Search handcrafted clay, dokra, handlooms...",
     "nav.saved": "Saved",
@@ -33,24 +33,24 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.slide2_sub": "Khurja pottery, Molela terracotta plaques, and Gorakhpur red clay crafts direct from village chaupals to 75+ nations.",
     "hero.slide3_title": "Heirloom Dokra & Lost-Wax Bell Metal.",
     "hero.slide3_sub": "Geographically Indicative (GI) certified non-ferrous casting practiced by indigenous tribal women collectives in Bastar and Mayurbhanj.",
-    "hero.cta_explore": "Explore the Gaon",
-    "hero.cta_shg": "Meet the SHGs",
+    "hero.cta_explore": "Explore Crafts",
+    "hero.cta_shg": "Meet the Makers",
     "hero.prev_slide": "Previous",
     "hero.next_slide": "Next",
 
     // Section 1: Just Landed
     "landed.tag": "Direct from the chaupal",
-    "landed.title": "Fresh Creations This Week",
-    "landed.subtitle": "Each piece is hand-finished by women SHG artisans with love, natural dye, and heritage skills.",
-    "landed.view_all": "View All Products",
+    "landed.title": "New Arrivals",
+    "landed.subtitle": "Hand-finished by rural women artisans with natural dyes and generational skills.",
+    "landed.view_all": "View All",
     "landed.gi_badge": "GI Certified",
     "landed.shg_badge": "Women SHG",
     "landed.add_to_bag": "Add to Bag",
 
     // Section 2: SHG Collective Highlight
     "shg.tag": "Empowering Rural Lives",
-    "shg.title": "Women Self-Help Groups Behind the Craft",
-    "shg.subtitle": "When you buy from Gaanv by Mittilok, 82% of every rupee flows directly to women's cooperative bank accounts.",
+    "shg.title": "Women Cooperatives",
+    "shg.subtitle": "82% of every purchase goes directly into the bank accounts of women artisan collectives.",
     "shg.card1_title": "Malyagiri Dokra Samiti",
     "shg.card1_place": "Dhenkanal, Odisha",
     "shg.card1_desc": "42 tribal women artisans reviving 4,000-year-old lost-wax metallurgy bell-metal figurines.",
@@ -63,8 +63,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Section 3: GI Treasures
     "gi.tag": "Geographical Indications",
-    "gi.title": "Certified Indian Village Heritage",
-    "gi.subtitle": "Rare crafts with legal protection, authentic GI tag certificates, and traceable artisan signatures.",
+    "gi.title": "GI Heritage Crafts",
+    "gi.subtitle": "Authentic crafts with legal protection, GI certificates, and verified maker provenance.",
 
     // Section 4: Gaon Patrika / Newsletter
     "journal.tag": "Gaon Patrika",
@@ -94,10 +94,10 @@ const translations: Record<Language, Record<string, string>> = {
   hi: {
     // Nav
     "nav.brand": "गाँव बाय मिट्टीलोक",
-    "nav.explore": "शिल्प देखें",
-    "nav.women_shg": "महिला स्वयं सहायता समूह",
-    "nav.gi_crafts": "जीआई धरोहर",
-    "nav.team": "हमारी टीम",
+    "nav.explore": "शिल्प",
+    "nav.women_shg": "महिला समूह",
+    "nav.gi_crafts": "जीआई शिल्प",
+    "nav.team": "टीम",
     "nav.about": "गाँव की जड़ें",
     "nav.sell": "हमारे साथ बेचें",
     "nav.search_placeholder": "हस्तनिर्मित मिट्टी, डोकरा, हथकरघा खोजें...",
@@ -112,24 +112,24 @@ const translations: Record<Language, Record<string, string>> = {
     "hero.slide2_sub": "खुरजा पॉटरी, मोलेला टेराकोटा और गोरखपुर की लाल मिट्टी की कला सीधे गाँव के चौपाल से 75+ देशों तक।",
     "hero.slide3_title": "पुश्तैनी डोकरा और मोम-ढलाई कांस्य धातु कला।",
     "hero.slide3_sub": "बस्तर और मयूरभंज की जनजातीय महिला समूहों द्वारा संरक्षित भौगोलिक संकेतक (GI) प्रमाणित शिल्प।",
-    "hero.cta_explore": "गाँव के शिल्प देखें",
+    "hero.cta_explore": "शिल्प देखें",
     "hero.cta_shg": "समूहों से मिलें",
     "hero.prev_slide": "पिछला",
     "hero.next_slide": "अगला",
 
     // Section 1: Just Landed
     "landed.tag": "सीधे चौपाल से",
-    "landed.title": "इस सप्ताह के नए हस्तशिल्प",
-    "landed.subtitle": "हर एक वस्तु महिला कारीगरों द्वारा प्यार, प्राकृतिक रंगों और पुश्तैनी हुनर से तैयार की गई है।",
-    "landed.view_all": "सभी उत्पाद देखें",
+    "landed.title": "नए हस्तशिल्प",
+    "landed.subtitle": "महिला कारीगरों द्वारा प्यार, प्राकृतिक रंगों और पुश्तैनी हुनर से तैयार।",
+    "landed.view_all": "सभी देखें",
     "landed.gi_badge": "जीआई प्रमाणित",
     "landed.shg_badge": "महिला समूह",
     "landed.add_to_bag": "थैले में जोड़ें",
 
     // Section 2: SHG Collective Highlight
     "shg.tag": "ग्रामीण जीवन का उत्थान",
-    "shg.title": "शिल्प के पीछे महिला स्वयं सहायता समूह",
-    "shg.subtitle": "जब आप गाँव बाय मिट्टीलोक से खरीदते हैं, तो 82% राशि सीधे ग्रामीण महिला कारीगरों के बैंक खाते में जाती है।",
+    "shg.title": "महिला स्वयं सहायता समूह",
+    "shg.subtitle": "खरीद का 82% हिस्सा सीधे ग्रामीण महिला कारीगरों के खाते में जाता है।",
     "shg.card1_title": "मलयगिरि डोकरा समिति",
     "shg.card1_place": "ढेंकनाल, ओडिशा",
     "shg.card1_desc": "42 जनजातीय महिला कारीगर जो 4,000 साल पुरानी लॉस्ट-वैक्स डोकरा धातु कला को पुनर्जीवित कर रही हैं।",
@@ -142,8 +142,8 @@ const translations: Record<Language, Record<string, string>> = {
 
     // Section 3: GI Treasures
     "gi.tag": "भौगोलिक संकेतक (GI)",
-    "gi.title": "प्रमाणित भारतीय गाँव की धरोहर",
-    "gi.subtitle": "कानूनी संरक्षण, असली जीआई टैग प्रमाणपत्र और कारीगरों के प्रामाणिक हस्ताक्षर वाले दुर्लभ शिल्प।",
+    "gi.title": "जीआई प्रमाणित धरोहर",
+    "gi.subtitle": "कानूनी संरक्षण और प्रामाणिक कारीगर पहचान वाले विशिष्ट भारतीय शिल्प।",
 
     // Section 4: Gaon Patrika / Newsletter
     "journal.tag": "गाँव पत्रिका",

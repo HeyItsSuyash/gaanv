@@ -130,8 +130,8 @@ html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4,
 
 .overlay-hero-gradient {
   background: 
-    linear-gradient(to right, rgba(10, 7, 5, 0.92) 0%, rgba(10, 7, 5, 0.78) 50%, rgba(10, 7, 5, 0.45) 100%),
-    linear-gradient(to top, rgba(10, 7, 5, 0.95) 0%, rgba(10, 7, 5, 0.60) 60%, rgba(10, 7, 5, 0.40) 100%);
+    linear-gradient(to right, rgba(10, 7, 5, 0.75) 0%, rgba(10, 7, 5, 0.50) 50%, rgba(10, 7, 5, 0.22) 100%),
+    linear-gradient(to top, rgba(10, 7, 5, 0.82) 0%, rgba(10, 7, 5, 0.38) 60%, rgba(10, 7, 5, 0.18) 100%);
 }
 
 /* Custom Scrollbar for Cream Aesthetic */
