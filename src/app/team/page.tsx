@@ -34,7 +34,7 @@ export default function TeamPage() {
   // Technical Mentor
   const mentors = [
     {
-      name: "Archana Nirvalla",
+      name: "Archana Narwal",
       role: lang === "hi" ? "तकनीकी सलाहकार एवं मेंटर" : "Technical Mentor",
       photo: "/archanamam.jpeg",
       points: [
@@ -58,7 +58,7 @@ export default function TeamPage() {
     {
       name: "Shailendra Mani Pandey",
       role: lang === "hi" ? "तकनीकी प्रमुख (Technical Head)" : "Technical Head",
-      photo: null,
+      photo: "/shailendramani.jpg",
       points: [
         lang === "hi" ? "सिस्टम इंफ्रास्ट्रक्चर एवं डेटा पाइपलाइन्स" : "Infrastructure systems & data pipeline design",
         lang === "hi" ? "लॉजिस्टिक्स व परिचालन तकनीकी समाधान" : "Operational tooling & logistical integrations",
