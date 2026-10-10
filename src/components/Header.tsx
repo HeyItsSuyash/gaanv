@@ -3,7 +3,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Languages } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -125,18 +124,15 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Language Toggle Icon (Positioned directly to the right of Search) */}
+          {/* Minimalist Language Toggle: 'A' for English, 'अ' for Hindi without circle or yellow subtext */}
           <button
             type="button"
             onClick={toggleLang}
             aria-label={`Switch language to ${lang === "en" ? "Hindi" : "English"}`}
             title={`Switch language (${lang === "en" ? "हिन्दी" : "English"})`}
-            className="relative text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder border border-[#524132]/60 bg-[#2e231a]/60 hover:bg-[#382b20]"
+            className="text-[#f7f3ec] hover:text-[#d4af37] px-2 py-1 transition-colors text-[17px] font-serif font-bold tracking-tight focus-visible:outline-madder select-none"
           >
-            <Languages className="w-4 h-4 text-[#e2d8c9] hover:text-[#d4af37]" />
-            <span className="absolute -bottom-1 -end-1 text-[9px] font-bold text-[#d4af37] bg-[#1a130e] px-1 rounded-pill border border-[#524132] leading-none py-0.5">
-              {lang === "hi" ? "HI" : "EN"}
-            </span>
+            {lang === "hi" ? "अ" : "A"}
           </button>
 
           {/* User Account */}

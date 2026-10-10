@@ -26,7 +26,7 @@ export function LoginModal() {
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto font-sans">
       <div
-        className="fixed inset-0 bg-ink/60 transition-opacity"
+        className="fixed inset-0 bg-black/65 backdrop-blur-sm transition-opacity"
         onClick={() => setIsLoginOpen(false)}
       />
 

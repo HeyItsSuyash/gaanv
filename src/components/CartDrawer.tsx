@@ -21,7 +21,7 @@ export function CartDrawer() {
     <div className="fixed inset-0 z-50 overflow-hidden font-sans">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-ink/60 transition-opacity"
+        className="fixed inset-0 bg-black/65 backdrop-blur-sm transition-opacity"
         onClick={() => setIsCartOpen(false)}
       />
 

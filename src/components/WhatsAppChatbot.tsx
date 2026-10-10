@@ -8,6 +8,7 @@ export function WhatsAppChatbot() {
   const { t, lang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Array<{ sender: "bot" | "user"; text: string; time: string }>>([]);
+  const [isTyping, setIsTyping] = useState(false);
   const [inputVal, setInputVal] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -24,17 +25,20 @@ export function WhatsAppChatbot() {
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isOpen]);
+  }, [messages, isTyping, isOpen]);
 
   const handleSend = (textToSend?: string) => {
     const text = (textToSend || inputVal).trim();
-    if (!text) return;
+    if (!text || isTyping) return;
 
     const newTime = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     const userMsg = { sender: "user" as const, text, time: newTime };
     setMessages((prev) => [...prev, userMsg]);
     if (!textToSend) setInputVal("");
 
+    setIsTyping(true);
+
+    // Slower, more realistic human response delay (1.1 - 1.4s)
     setTimeout(() => {
       let reply = "";
       const lower = text.toLowerCase();
@@ -64,7 +68,8 @@ export function WhatsAppChatbot() {
           time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
         },
       ]);
-    }, 450);
+      setIsTyping(false);
+    }, 1250);
   };
 
   const openWhatsAppDirect = () => {
@@ -111,17 +116,17 @@ export function WhatsAppChatbot() {
         </button>
       </div>
 
-      {/* Dimmed backdrop when sidebar is open */}
+      {/* Dimmed backdrop with blur when sidebar is open */}
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-50 bg-black/60 transition-opacity"
+          className="fixed inset-0 z-50 bg-black/65 backdrop-blur-sm transition-opacity"
         />
       )}
 
       {/* Smooth Sliding Sidebar Drawer from right edge */}
       <aside
-        className={`fixed inset-y-0 end-0 z-50 w-full sm:w-[420px] max-w-full bg-[#fdfbf7] border-s border-[#e8dfd3] text-ink shadow-2xl flex flex-col font-sans transform transition-transform duration-300 ease-out ${
+        className={`fixed inset-y-0 end-0 z-50 w-full sm:w-[420px] max-w-full bg-[#fdfbf7] border-s border-[#e8dfd3] text-ink shadow-2xl flex flex-col font-sans transform transition-transform duration-300 ease-[var(--ease-signature)] ${
           isOpen ? "translate-x-0" : "translate-x-full pointer-events-none"
         }`}
         aria-label="Artisan Help Chat"
@@ -152,12 +157,12 @@ export function WhatsAppChatbot() {
           </button>
         </div>
 
-        {/* Messages Stream with high contrast, legible text */}
+        {/* Messages Stream with high contrast, legible text & typing animation */}
         <div className="p-4 sm:p-5 flex-1 overflow-y-auto space-y-3 bg-[#f7f3ec]">
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`flex flex-col ${
+              className={`flex flex-col animate-in fade-in slide-in-from-bottom-1 duration-200 ${
                 msg.sender === "user" ? "items-end" : "items-start"
               }`}
             >
@@ -173,6 +178,21 @@ export function WhatsAppChatbot() {
               <span className="text-[11px] text-[#6e6456] mt-1 px-1 font-mono">{msg.time}</span>
             </div>
           ))}
+
+          {/* Typing animation bubble */}
+          {isTyping && (
+            <div className="flex flex-col items-start animate-in fade-in duration-150">
+              <div className="bg-white border border-[#ddd4c4] rounded-2xl rounded-tl-none px-4 py-3 shadow-sm flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce [animation-delay:-0.3s]"></span>
+                <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce [animation-delay:-0.15s]"></span>
+                <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce"></span>
+              </div>
+              <span className="text-[11px] text-[#6e6456] mt-1 px-1 font-mono">
+                {lang === "hi" ? "गौरी लिख रही हैं..." : "Gauri is typing..."}
+              </span>
+            </div>
+          )}
+
           <div ref={messagesEndRef} />
 
           {/* Quick Guidance Prompt Buttons */}
