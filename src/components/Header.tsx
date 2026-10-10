@@ -45,7 +45,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-colors duration-200 bg-[#241b14] border-b ${isScrolled ? "border-[#1a130e] shadow-xl shadow-black/30" : "border-[#382b20]"
+      className={`sticky top-0 transition-colors duration-200 bg-[#241b14] border-b ${mobileMenuOpen ? "z-[100]" : "z-40"} ${isScrolled ? "border-[#1a130e] shadow-xl shadow-black/30" : "border-[#382b20]"
         }`}
     >
       <nav className="mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8">
@@ -194,7 +194,7 @@ export function Header() {
 
       {/* Full Page Mobile Dropdown Menu with Rich Animations & Centered Links (Higher z-index than chatbot) */}
       <div
-        className={`fixed inset-0 z-[70] bg-[#241b14] text-[#f7f3ec] flex flex-col justify-between transition-all duration-300 md:hidden ${mobileMenuOpen
+        className={`fixed inset-0 z-[100] bg-[#241b14] text-[#f7f3ec] flex flex-col justify-between transition-all duration-300 md:hidden ${mobileMenuOpen
             ? "opacity-100 pointer-events-auto translate-y-0"
             : "opacity-0 pointer-events-none -translate-y-4"
           }`}
