@@ -56,20 +56,20 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Gaanv by Mittilok — Women Self Help Group Rural Marketplace",
+  title: "Gaanv by Mittilok | Women Self Help Group Rural Marketplace",
   description:
     "A dark, rich celebration of India's rural women self-help groups, generational terracotta potters, handlooms, and GI certified heritage crafts.",
   applicationName: "Gaanv by Mittilok",
   icons: {
     icon: [
-      { url: "/gaon-logo.png", type: "image/png" },
+      { url: "/gaon-logo-cropped.png", type: "image/png" },
       { url: "/favicon.png", type: "image/png" },
     ],
-    shortcut: "/gaon-logo.png",
-    apple: "/gaon-logo.png",
+    shortcut: "/gaon-logo-cropped.png",
+    apple: "/gaon-logo-cropped.png",
   },
   openGraph: {
-    title: "Gaanv by Mittilok — Rural Women SHG Crafts",
+    title: "Gaanv by Mittilok | Rural Women SHG Crafts",
     description: "Authentic Indian village handicrafts by women self help groups.",
     url: "https://gaanv.mittilok.in",
     siteName: "Gaanv by Mittilok",
