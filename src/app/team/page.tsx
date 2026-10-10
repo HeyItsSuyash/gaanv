@@ -49,7 +49,7 @@ export default function TeamPage() {
     {
       name: "Suyash Shukla",
       role: lang === "hi" ? "तकनीकी प्रमुख (Technical Head)" : "Technical Head",
-      photo: null,
+      photo: "/suyashshukla.jpg",
       points: [
         lang === "hi" ? "प्लेटफ़ॉर्म इंजीनियरिंग एवं कोर आर्किटेक्चर" : "Platform engineering & core web architecture",
         lang === "hi" ? "सुरक्षा, परफॉर्मेंस व डिजिटल अनुभव" : "System performance, security & user experience",
@@ -99,7 +99,7 @@ export default function TeamPage() {
               <div key={idx} className="flex flex-col items-center text-center group">
                 {/* Circular image with curved backdrop tag shape */}
                 <div className="relative mb-5">
-                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-[#ddd4c4]/60 border border-mist shadow-sm">
                     <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
                       {person.photo ? (
                         <Image
@@ -149,7 +149,7 @@ export default function TeamPage() {
             {mentors.map((person, idx) => (
               <div key={idx} className="flex flex-col items-center text-center group max-w-sm">
                 <div className="relative mb-5">
-                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-[#ddd4c4]/60 border border-mist shadow-sm">
                     <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
                       {person.photo ? (
                         <Image
@@ -157,7 +157,7 @@ export default function TeamPage() {
                           alt={person.name}
                           fill
                           unoptimized
-                          className="object-cover object-top"
+                          className="object-cover object-[center_20%]"
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center text-stone">
@@ -199,7 +199,7 @@ export default function TeamPage() {
             {techHeads.map((person, idx) => (
               <div key={idx} className="flex flex-col items-center text-center group">
                 <div className="relative mb-5">
-                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                  <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-[#ddd4c4]/60 border border-mist shadow-sm">
                     <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
                       {person.photo ? (
                         <Image

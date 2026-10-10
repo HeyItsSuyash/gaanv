@@ -696,7 +696,7 @@ export default function Home() {
               ].map((person, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center group">
                   <div className="relative mb-4">
-                    <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                    <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist shadow-sm">
                       <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
                         <Image
                           src={person.photo}
@@ -733,14 +733,14 @@ export default function Home() {
             <div className="flex justify-center">
               <div className="flex flex-col items-center text-center group max-w-sm">
                 <div className="relative mb-4">
-                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
+                  <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist shadow-sm">
                     <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
                       <Image
                         src="/archanamam.jpeg"
                         alt="Archana Nirvalla"
                         fill
                         unoptimized
-                        className="object-cover object-top"
+                        className="object-cover object-[center_20%]"
                       />
                     </div>
                   </div>
@@ -774,6 +774,7 @@ export default function Home() {
                 {
                   name: "Suyash Shukla",
                   role: lang === "hi" ? "तकनीकी प्रमुख (Technical Head)" : "Technical Head",
+                  photo: "/suyashshukla.jpg",
                   points: [
                     lang === "hi" ? "प्लेटफ़ॉर्म इंजीनियरिंग एवं कोर आर्किटेक्चर" : "Platform engineering & core web architecture",
                     lang === "hi" ? "सुरक्षा, परफॉर्मेंस व डिजिटल अनुभव" : "System performance, security & user experience",
@@ -782,6 +783,7 @@ export default function Home() {
                 {
                   name: "Shailendra Mani Pandey",
                   role: lang === "hi" ? "तकनीकी प्रमुख (Technical Head)" : "Technical Head",
+                  photo: null,
                   points: [
                     lang === "hi" ? "सिस्टम इंफ्रास्ट्रक्चर एवं डेटा पाइपलाइन्स" : "Infrastructure systems & data pipeline design",
                     lang === "hi" ? "लॉजिस्टिक्स व परिचालन तकनीकी समाधान" : "Operational tooling & logistical integrations",
@@ -790,9 +792,21 @@ export default function Home() {
               ].map((person, idx) => (
                 <div key={idx} className="flex flex-col items-center text-center group">
                   <div className="relative mb-4">
-                    <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist transition-transform duration-300 group-hover:scale-105 shadow-sm">
-                      <div className="w-full h-full rounded-full bg-bone-d flex items-center justify-center text-stone">
-                        <User className="w-14 h-14 text-stone/60" />
+                    <div className="w-36 h-36 sm:w-40 sm:h-40 rounded-full p-1 bg-[#ddd4c4]/60 border border-mist shadow-sm">
+                      <div className="relative w-full h-full rounded-full overflow-hidden bg-bone-d">
+                        {person.photo ? (
+                          <Image
+                            src={person.photo}
+                            alt={person.name}
+                            fill
+                            unoptimized
+                            className="object-cover object-top"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center text-stone">
+                            <User className="w-14 h-14 text-stone/60" />
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
