@@ -101,7 +101,7 @@ export function WhatsAppChatbot() {
           </div>
         )}
 
-        {/* Brown Circle with crisp white border and white chat icon (zero glow) */}
+        {/* Brown Circle with crisp white border and mirrored chat icon */}
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
@@ -111,7 +111,7 @@ export function WhatsAppChatbot() {
           {isOpen ? (
             <X className="w-6 h-6 text-white stroke-[2.5]" />
           ) : (
-            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-white/10 stroke-[2]" />
+            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-[#241b14] stroke-[2] scale-x-[-1]" />
           )}
         </button>
       </div>

@@ -666,7 +666,7 @@ export default function Home() {
                 <blockquote className="font-serif text-[18px] sm:text-[21px] md:text-[23px] leading-relaxed text-[#f7f3ec] font-light italic">
                   {lang === "hi"
                     ? "“जब मैंने बलरामपुर के थारू गाँवों और खुर्जा के कुम्हार मुहल्लों की यात्रा की, तो देखा कि सदियों पुरानी कारीगरी बिचौलियों के चंगुल में दम तोड़ रही थी। 'गाँव बाय मिट्टीलोक' को हमने उत्तर प्रदेश से इसलिए विकसित किया ताकि हमारी माटी की पहचान को किसी विदेशी मंच या भारी कमीशन की मोहताजी न रहे। यहाँ हर रुपया सीधे कारीगर दीदी के बैंक खाते में जाता है।”"
-                    : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle — direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
+                    : "“Walking through the Tharu tribal settlements in Balrampur and the wood-fired kiln gullies of Khurja, one stark truth became clear: the real keepers of India's aesthetic soul were surviving on pennies while intermediaries pocketed 400% markups. We engineered Gaanv by Mittilok right here from Uttar Pradesh with a non-negotiable principle: direct escrow payments, verified GI certificates, and 100% dignity for every rural sister.”"}
                 </blockquote>
               </div>
 

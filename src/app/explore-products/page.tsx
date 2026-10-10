@@ -69,9 +69,6 @@ export default function ExploreProductsPage() {
         </div>
       </section>
 
-      {/* Folk Border Divider */}
-      <div className="folk-border-divider" aria-hidden="true" />
-
       {/* Main Content Area */}
       <main className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-8 md:px-8 md:py-12">
         {/* Controls / Filter Bar */}

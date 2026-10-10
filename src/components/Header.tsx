@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -18,6 +19,8 @@ export function Header() {
   const { lang, toggleLang, t } = useLanguage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +29,19 @@ export function Header() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleNavAnchor = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      setMobileMenuOpen(false);
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      setMobileMenuOpen(false);
+    }
+  };
 
   return (
     <header
@@ -82,6 +98,7 @@ export function Header() {
           </Link>
           <Link
             href="/#women-shg"
+            onClick={(e) => handleNavAnchor(e, "women-shg")}
             className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.women_shg")}
@@ -89,6 +106,7 @@ export function Header() {
           </Link>
           <Link
             href="/#gi-treasures"
+            onClick={(e) => handleNavAnchor(e, "gi-treasures")}
             className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
           >
             {t("nav.gi_crafts")}
@@ -222,7 +240,7 @@ export function Header() {
 
           <Link
             href="/#women-shg"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => handleNavAnchor(e, "women-shg")}
             className="font-serif text-[26px] sm:text-[30px] font-normal text-[#f7f3ec] hover:text-[#d4af37] transition-all hover:scale-105 active:scale-95 tracking-wide"
           >
             {t("nav.women_shg")}
@@ -230,7 +248,7 @@ export function Header() {
 
           <Link
             href="/#gi-treasures"
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={(e) => handleNavAnchor(e, "gi-treasures")}
             className="font-serif text-[26px] sm:text-[30px] font-normal text-[#f7f3ec] hover:text-[#d4af37] transition-all hover:scale-105 active:scale-95 tracking-wide"
           >
             {t("nav.gi_crafts")}

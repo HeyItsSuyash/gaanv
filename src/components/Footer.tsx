@@ -107,12 +107,12 @@ export function Footer() {
         <div className="mt-10 pt-6 border-t border-mist/40 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone">
           <p>{t("footer.rights")}</p>
 
-          {/* Social Media Links: Instagram, LinkedIn, Facebook (Font Awesome SVG icon) */}
+          {/* Social Media Links: Instagram, LinkedIn, Facebook */}
           <div className="flex items-center gap-5 text-ink hover:text-ink">
             <a
-              href="https://www.instagram.com"
+              href="https://www.instagram.com/mittilok_/"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label="Instagram"
               className="text-stone hover:text-madder transition-colors"
             >
@@ -134,9 +134,9 @@ export function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/search/results/all/?keywords=Mittilok"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
               className="text-stone hover:text-indigo transition-colors"
             >
@@ -158,9 +158,9 @@ export function Footer() {
             </a>
 
             <a
-              href="https://www.facebook.com"
+              href="https://www.facebook.com/mittilok"
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               aria-label="Facebook"
               className="text-stone hover:text-indigo-d transition-colors"
             >
