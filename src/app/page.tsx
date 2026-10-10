@@ -259,31 +259,34 @@ export default function Home() {
             </p>
           </header>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-            {SHG_GROUPS.map((group) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-4 md:pt-6">
+            {SHG_GROUPS.map((group, idx) => (
               <div
                 key={group.id}
-                className="group relative rounded-card bg-paper border border-mist overflow-hidden shadow-xl hover:border-brass/60 transition-all duration-300 flex flex-col"
+                className={`group relative rounded-card bg-paper border border-mist overflow-hidden shadow-xl hover:border-brass/70 hover:shadow-2xl transition-all duration-300 flex flex-col ${
+                  idx === 0
+                    ? "md:-translate-y-4"
+                    : idx === 1
+                    ? "md:translate-y-4"
+                    : "md:translate-y-12"
+                }`}
               >
-                <div className="relative h-60 w-full overflow-hidden bg-bone">
+                <div className="relative h-64 w-full overflow-hidden bg-bone">
                   <Image
                     src={group.image}
                     alt={group.title}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-paper via-transparent to-transparent opacity-80" />
-                  <span className="absolute top-3 end-3 bg-bone/90 border border-mist/70 text-brass text-[11px] font-mono font-medium px-2.5 py-1 rounded-pill">
-                    {group.impact}
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-paper via-paper/20 to-transparent" />
                 </div>
 
-                <div className="p-6 flex-1 flex flex-col justify-between">
+                <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between -mt-6 relative z-10">
                   <div>
-                    <h3 className="font-serif text-[22px] text-ink font-normal group-hover:text-brass transition-colors">
+                    <h3 className="font-serif text-[22px] sm:text-[24px] text-ink font-normal group-hover:text-brass transition-colors">
                       {group.title}
                     </h3>
-                    <p className="text-[14px] text-ink-soft/90 mt-2.5 leading-relaxed">
+                    <p className="text-[14px] text-ink-soft/90 mt-2.5 leading-relaxed font-serif">
                       {group.desc}
                     </p>
                   </div>
@@ -303,9 +306,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Decorative Folk Border Divider */}
-      <div className="folk-border-divider" aria-hidden="true" />
 
       {/* 3. JUST LANDED / FRESH CRAFTS THIS WEEK */}
       <section id="just-landed" className="relative mx-auto max-w-[1280px] px-5 sm:px-6 py-16 md:px-8 md:py-24 overflow-hidden">

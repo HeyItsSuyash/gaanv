@@ -186,12 +186,14 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem("mittilok_lang") as Language;
     if (saved === "hi" || saved === "en") {
       setLang(saved);
+      document.documentElement.lang = saved;
     }
   }, []);
 
   const handleSetLang = (newLang: Language) => {
     setLang(newLang);
     localStorage.setItem("mittilok_lang", newLang);
+    document.documentElement.lang = newLang;
   };
 
   const toggleLang = () => {

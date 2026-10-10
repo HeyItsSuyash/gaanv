@@ -5,7 +5,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 5,
 };
-import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Inter, Fraunces, JetBrains_Mono, Rozha_One, Yatra_One } from "next/font/google";
 import "./globals.css";
 import { CartProvider } from "@/context/CartContext";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -32,6 +32,20 @@ const fraunces = Fraunces({
   variable: "--font-fraunces",
   display: "swap",
   axes: ["opsz", "SOFT", "WONK"],
+});
+
+const rozhaOne = Rozha_One({
+  subsets: ["devanagari", "latin"],
+  weight: "400",
+  variable: "--font-rozha",
+  display: "swap",
+});
+
+const yatraOne = Yatra_One({
+  subsets: ["devanagari", "latin"],
+  weight: "400",
+  variable: "--font-yatra",
+  display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -70,7 +84,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${fraunces.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${fraunces.variable} ${rozhaOne.variable} ${yatraOne.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="bg-bone text-ink font-sans flex min-h-full flex-col overflow-x-clip relative">
         {/* Subtle Warli Art Pattern Overlay across the entire site background */}

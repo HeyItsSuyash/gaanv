@@ -54,16 +54,27 @@ html {
 }
 
 body {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-fraunces), var(--font-rozha), Georgia, serif;
   background-color: var(--color-bone);
   color: var(--color-ink);
   -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-fraunces), Georgia, serif;
+  font-family: var(--font-fraunces), var(--font-rozha), Georgia, serif;
   letter-spacing: -0.5px;
   font-weight: 400;
+}
+
+/* Devanagari font rendering when language is Hindi */
+html[lang="hi"], :lang(hi), .lang-hi {
+  font-family: var(--font-rozha), var(--font-yatra), "Noto Serif Devanagari", Georgia, serif !important;
+}
+
+html[lang="hi"] h1, html[lang="hi"] h2, html[lang="hi"] h3, html[lang="hi"] h4,
+:lang(hi) h1, :lang(hi) h2, :lang(hi) h3, :lang(hi) h4 {
+  font-family: var(--font-rozha), var(--font-yatra), "Noto Serif Devanagari", serif !important;
+  letter-spacing: 0px;
 }
 
 :focus-visible {

@@ -33,9 +33,9 @@ export function Header() {
         isScrolled ? "border-[#1a130e] shadow-xl shadow-black/30" : "border-[#382b20]"
       }`}
     >
-      <nav className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-4 sm:px-6 md:px-8">
-        {/* Mobile menu toggle & Logo */}
-        <div className="flex items-center gap-3">
+      <nav className="mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8">
+        {/* Left side: Language Switcher (leftmost button), Mobile toggle & Brand Logo */}
+        <div className="flex items-center gap-3 sm:gap-4">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -54,11 +54,23 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Official Gaav Brand Logo (Clean, shifted left, enlarged) */}
+          {/* Hindi / English Language Switcher Toggle (Leftmost button) */}
+          <button
+            type="button"
+            onClick={toggleLang}
+            aria-label="Toggle language between English and Hindi"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-pill border border-[#524132] bg-[#2e231a] hover:bg-[#382b20] text-xs font-medium text-[#f7f3ec] transition-all active:scale-95 shadow-sm"
+          >
+            <span className={lang === "hi" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>हिन्दी</span>
+            <span className="text-[#524132]">/</span>
+            <span className={lang === "en" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>EN</span>
+          </button>
+
+          {/* Official Gaav Brand Logo */}
           <Link
             href="/"
             aria-label="Home"
-            className="inline-flex items-center focus-visible:outline-madder py-1 -ms-1 sm:-ms-2"
+            className="inline-flex items-center focus-visible:outline-madder py-1"
           >
             <div className="relative h-11 w-32 sm:h-12 sm:w-36">
               <Image
@@ -72,8 +84,8 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Center Editorial Navigation on Brown Navbar */}
-        <div className="hidden md:flex items-center gap-6 text-[14px]">
+        {/* Center Editorial Navigation (centered in navbar) */}
+        <div className="hidden md:flex items-center gap-7 text-[14px]">
           <Link
             href="/explore-products"
             className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
@@ -102,41 +114,21 @@ export function Header() {
             {t("nav.team")}
             <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
-          <button
-            type="button"
-            onClick={() => setIsSellerModalOpen(true)}
-            className="group relative py-1 text-[#e2d8c9] hover:text-[#ffffff] transition-colors font-medium"
-          >
-            {t("nav.sell")}
-            <span className="absolute bottom-0 inset-x-0 h-[2px] bg-[#d4af37] origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100" />
-          </button>
         </div>
 
-        {/* Right Action Icons & Language Toggle */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
-          {/* Hindi / English Language Switcher Toggle */}
-          <button
-            type="button"
-            onClick={toggleLang}
-            aria-label="Toggle language between English and Hindi"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-pill border border-[#524132] bg-[#2e231a] hover:bg-[#382b20] text-xs font-medium text-[#f7f3ec] transition-all active:scale-95 shadow-sm"
-          >
-            <span className={lang === "hi" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>हिन्दी</span>
-            <span className="text-[#524132]">/</span>
-            <span className={lang === "en" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>EN</span>
-          </button>
-
+        {/* Right side: Search, Account & Ghost Style "Sell with us" CTA */}
+        <div className="flex items-center gap-2 sm:gap-3">
           {/* Search Trigger */}
           <button
             type="button"
             onClick={() => setIsSearchOpen(true)}
-            className="text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
+            className="text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
             aria-label="Search rural crafts"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
+              width="19"
+              height="19"
               fill="currentColor"
               viewBox="0 0 256 256"
             >
@@ -148,13 +140,13 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsLoginOpen(true)}
-            className="text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
+            className="text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
             aria-label="Account"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
+              width="19"
+              height="19"
               fill="currentColor"
               viewBox="0 0 256 256"
             >
@@ -162,27 +154,13 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Shopping Bag Button */}
+          {/* Ghost Style "Sell with us" CTA Button to the right */}
           <button
             type="button"
-            onClick={() => setIsCartOpen(true)}
-            className="relative text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder"
-            aria-label="View shopping bag"
+            onClick={() => setIsSellerModalOpen(true)}
+            className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-pill border border-[#d4af37]/80 text-[#d4af37] hover:bg-[#d4af37] hover:text-[#241b14] text-xs font-semibold tracking-wide transition-all duration-200 active:scale-95 shadow-sm"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              viewBox="0 0 256 256"
-            >
-              <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM176,88a48,48,0,0,1-96,0,8,8,0,0,1,16,0,32,32,0,0,0,64,0,8,8,0,0,1,16,0Z"></path>
-            </svg>
-            {cartCount > 0 && (
-              <span className="absolute top-1 end-1 inline-flex h-4 w-4 items-center justify-center rounded-full bg-[#9b3d2b] text-[10px] font-bold text-white">
-                {cartCount}
-              </span>
-            )}
+            {t("nav.sell")}
           </button>
         </div>
       </nav>
