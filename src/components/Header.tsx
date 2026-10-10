@@ -69,11 +69,11 @@ export function Header() {
             </svg>
           </button>
 
-          {/* Official Gaav Brand Logo */}
+          {/* Official Gaav Brand Logo + Mittilok Emblem */}
           <Link
             href="/"
             aria-label="Home"
-            className="inline-flex items-center focus-visible:outline-madder py-1"
+            className="inline-flex items-center gap-2.5 sm:gap-3 focus-visible:outline-madder py-1"
           >
             <div className="relative h-11 w-32 sm:h-12 sm:w-36">
               <Image
@@ -82,6 +82,16 @@ export function Header() {
                 fill
                 priority
                 className="object-contain object-left"
+              />
+            </div>
+            <div className="h-6 w-[1px] bg-[#d4af37]/30 hidden xs:block" />
+            <div className="relative h-9 w-9 sm:h-10 sm:w-10 flex-shrink-0">
+              <Image
+                src="/logo-cream.png"
+                alt="Mittilok"
+                fill
+                priority
+                className="object-contain"
               />
             </div>
           </Link>
@@ -197,15 +207,25 @@ export function Header() {
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
-            className="inline-flex items-center"
+            className="inline-flex items-center gap-2"
           >
-            <div className="relative h-10 w-32">
+            <div className="relative h-10 w-28 sm:w-32">
               <Image
                 src="/gaon-logo.png"
                 alt="Gaanv by Mittilok"
                 fill
                 priority
                 className="object-contain object-left"
+              />
+            </div>
+            <div className="h-5 w-[1px] bg-[#d4af37]/30" />
+            <div className="relative h-8 w-8 flex-shrink-0">
+              <Image
+                src="/logo-cream.png"
+                alt="Mittilok"
+                fill
+                priority
+                className="object-contain"
               />
             </div>
           </Link>
