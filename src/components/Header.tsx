@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Languages } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -34,7 +35,7 @@ export function Header() {
       }`}
     >
       <nav className="mx-auto flex h-16 w-full items-center justify-between px-4 sm:px-6 md:px-8">
-        {/* Left side: Language Switcher (leftmost button), Mobile toggle & Brand Logo */}
+        {/* Left side: Mobile toggle & Brand Logo */}
         <div className="flex items-center gap-3 sm:gap-4">
           <button
             type="button"
@@ -52,18 +53,6 @@ export function Header() {
             >
               <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,1,0-16H40a8,8,0,0,1,0,16ZM216,184H40a8,8,0,0,1,0,16H216a8,8,0,0,1,0-16Z"></path>
             </svg>
-          </button>
-
-          {/* Hindi / English Language Switcher Toggle (Leftmost button) */}
-          <button
-            type="button"
-            onClick={toggleLang}
-            aria-label="Toggle language between English and Hindi"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-pill border border-[#524132] bg-[#2e231a] hover:bg-[#382b20] text-xs font-medium text-[#f7f3ec] transition-all active:scale-95 shadow-sm"
-          >
-            <span className={lang === "hi" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>हिन्दी</span>
-            <span className="text-[#524132]">/</span>
-            <span className={lang === "en" ? "font-bold text-[#d4af37]" : "text-[#a89a88]"}>EN</span>
           </button>
 
           {/* Official Gaav Brand Logo */}
@@ -116,7 +105,7 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Right side: Search, Account & Ghost Style "Sell with us" CTA */}
+        {/* Right side: Search, Language Icon (to the right of search), Account & Ghost Style "Sell with us" CTA */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Search Trigger */}
           <button
@@ -134,6 +123,20 @@ export function Header() {
             >
               <path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path>
             </svg>
+          </button>
+
+          {/* Language Toggle Icon (Positioned directly to the right of Search) */}
+          <button
+            type="button"
+            onClick={toggleLang}
+            aria-label={`Switch language to ${lang === "en" ? "Hindi" : "English"}`}
+            title={`Switch language (${lang === "en" ? "हिन्दी" : "English"})`}
+            className="relative text-[#f7f3ec] hover:text-[#d4af37] inline-flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-pill transition-colors focus-visible:outline-madder border border-[#524132]/60 bg-[#2e231a]/60 hover:bg-[#382b20]"
+          >
+            <Languages className="w-4 h-4 text-[#e2d8c9] hover:text-[#d4af37]" />
+            <span className="absolute -bottom-1 -end-1 text-[9px] font-bold text-[#d4af37] bg-[#1a130e] px-1 rounded-pill border border-[#524132] leading-none py-0.5">
+              {lang === "hi" ? "HI" : "EN"}
+            </span>
           </button>
 
           {/* User Account */}

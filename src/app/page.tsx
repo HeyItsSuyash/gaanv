@@ -11,7 +11,6 @@ import { initialCategories } from "@/data/categories";
 export default function Home() {
   const { addToCart, toggleWishlist, isInWishlist, setQuickViewProduct } = useCart();
   const { t, lang } = useLanguage();
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   const HERO_SLIDES = [
     {
@@ -70,20 +69,68 @@ export default function Home() {
     },
   ];
 
-  // Automatic slideshow rotation every 3 seconds
+  // Circular infinite carousel setup: clone first and last slide
+  const [slideIndex, setSlideIndex] = useState(1); // 1 = first real slide
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // Extended slides with clones: [slide3_clone, slide1, slide2, slide3, slide1_clone]
+  const extendedSlides = [
+    { ...HERO_SLIDES[HERO_SLIDES.length - 1], id: "clone-last" },
+    ...HERO_SLIDES,
+    { ...HERO_SLIDES[0], id: "clone-first" },
+  ];
+
+  // Map slideIndex to real slide index (0, 1, 2)
+  const currentSlide =
+    slideIndex === 0
+      ? HERO_SLIDES.length - 1
+      : slideIndex === extendedSlides.length - 1
+        ? 0
+        : slideIndex - 1;
+
+  // Handle seamless circular loop jump when reaching clones
+  const handleTransitionEnd = () => {
+    if (slideIndex === extendedSlides.length - 1) {
+      setIsTransitioning(false);
+      setSlideIndex(1);
+    } else if (slideIndex === 0) {
+      setIsTransitioning(false);
+      setSlideIndex(HERO_SLIDES.length);
+    }
+  };
+
+  // Re-enable smooth transition whenever slideIndex changes
+  useEffect(() => {
+    if (!isTransitioning) {
+      const timer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isTransitioning]);
+
+  // Automatic slideshow rotation forward every 3 seconds in a continuous circular loop (1->2->3->1->2->3...)
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % 3);
+      setIsTransitioning(true);
+      setSlideIndex((prev) => prev + 1);
     }, 3000);
     return () => clearInterval(timer);
   }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+    setIsTransitioning(true);
+    setSlideIndex((prev) => prev + 1);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length);
+    setIsTransitioning(true);
+    setSlideIndex((prev) => prev - 1);
+  };
+
+  const goToSlide = (targetIndex: number) => {
+    setIsTransitioning(true);
+    setSlideIndex(targetIndex + 1);
   };
 
   const [newsletterEmail, setNewsletterEmail] = useState("");
@@ -108,21 +155,23 @@ export default function Home() {
         className="relative overflow-hidden bg-bone-d z-10 h-[calc(100vh-4rem)] min-h-[580px] w-full"
         aria-label="Women SHG Rural Artistry Carousel"
       >
-        {/* Horizontal sliding track */}
+        {/* Horizontal sliding track with circular looping */}
         <div
-          className="flex h-full w-full transition-transform duration-700 ease-[var(--ease-signature)]"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+          onTransitionEnd={handleTransitionEnd}
+          className={`flex h-full w-full ${isTransitioning ? "transition-transform duration-700 ease-[var(--ease-signature)]" : ""
+            }`}
+          style={{ transform: `translateX(-${slideIndex * 100}%)` }}
         >
-          {HERO_SLIDES.map((slide, idx) => (
+          {extendedSlides.map((slide, idx) => (
             <div
-              key={slide.id}
+              key={`${slide.id}-${idx}`}
               className="relative h-full w-full shrink-0 flex-none overflow-hidden"
             >
               <Image
                 src={slide.mediaUrl}
                 alt={slide.alt}
                 fill
-                priority={idx === 0}
+                priority={idx === 1}
                 className="object-cover object-center"
                 sizes="100vw"
               />
@@ -209,7 +258,7 @@ export default function Home() {
                 <li key={i}>
                   <button
                     type="button"
-                    onClick={() => setCurrentSlide(i)}
+                    onClick={() => goToSlide(i)}
                     aria-label={`Go to slide ${i + 1}`}
                     className={`block h-1.5 rounded-pill transition-all duration-300 ease-[var(--ease-signature)] ${i === currentSlide ? "bg-[#f7f3ec] w-8" : "bg-[#f7f3ec]/40 hover:bg-[#f7f3ec]/70 w-3"
                       }`}
@@ -226,7 +275,7 @@ export default function Home() {
         <div className="mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8 flex flex-wrap items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs uppercase tracking-wider text-ink font-semibold">
-              Proudly Handcrafted in India • Vocal for Local
+              Proudly Handcrafted in India
             </span>
           </div>
 
@@ -262,10 +311,10 @@ export default function Home() {
               <div
                 key={group.id}
                 className={`group relative rounded-card bg-paper border border-mist overflow-hidden shadow-xl hover:border-brass/70 hover:shadow-2xl transition-all duration-300 flex flex-col ${idx === 0
-                    ? "md:-translate-y-4"
-                    : idx === 1
-                      ? "md:translate-y-4"
-                      : "md:translate-y-12"
+                  ? "md:-translate-y-4"
+                  : idx === 1
+                    ? "md:translate-y-4"
+                    : "md:translate-y-12"
                   }`}
               >
                 <div className="relative h-64 w-full overflow-hidden bg-bone">
@@ -657,9 +706,7 @@ export default function Home() {
         </div>
 
         <div className="relative z-10 mx-auto max-w-[800px] px-5 sm:px-6 text-center">
-          <span className="font-mono text-xs uppercase tracking-widest text-madder font-semibold block mb-2">
-            गाँव पत्रिका • Village Chronicle
-          </span>
+
           <h2 className="font-serif text-[32px] sm:text-[40px] text-ink font-normal leading-tight">
             {t("journal.title")}
           </h2>
