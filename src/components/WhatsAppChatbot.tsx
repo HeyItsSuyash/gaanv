@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { MessageCircle, X, Send } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -38,7 +39,8 @@ export function WhatsAppChatbot() {
 
     setIsTyping(true);
 
-    // Slower, more realistic human response delay (1.1 - 1.4s)
+    // Natural human reading & response delay (1.4s - 1.8s)
+    const naturalDelay = Math.floor(Math.random() * 400) + 1400;
     setTimeout(() => {
       let reply = "";
       const lower = text.toLowerCase();
@@ -69,7 +71,7 @@ export function WhatsAppChatbot() {
         },
       ]);
       setIsTyping(false);
-    }, 1250);
+    }, naturalDelay);
   };
 
   const openWhatsAppDirect = () => {
@@ -101,17 +103,25 @@ export function WhatsAppChatbot() {
           </div>
         )}
 
-        {/* Brown Circle with crisp white border and mirrored chat icon */}
+        {/* Circular Avatar Trigger */}
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Open artisan conversation"
-          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] hover:bg-[#382b20] text-white shadow-md active:scale-95 transition-all duration-150 focus-visible:outline-2 focus-visible:outline-white p-1.5 sm:p-2"
+          className="relative group flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#241b14] hover:bg-[#382b20] border-2 border-white/90 shadow-lg active:scale-95 transition-all duration-150 overflow-hidden cursor-pointer"
         >
           {isOpen ? (
             <X className="w-6 h-6 text-white stroke-[2.5]" />
           ) : (
-            <MessageCircle className="w-6 h-6 sm:w-7 sm:h-7 text-white fill-[#241b14] stroke-[2] scale-x-[-1]" />
+            <div className="relative w-full h-full">
+              <Image
+                src="/chatavatar.png"
+                alt="Gauri Chat Avatar"
+                fill
+                unoptimized
+                className="object-cover object-center"
+              />
+            </div>
           )}
         </button>
       </div>
@@ -130,18 +140,27 @@ export function WhatsAppChatbot() {
           }`}
         aria-label="Artisan Help Chat"
       >
-        {/* Theme-consistent Earthen Brown Header */}
+        {/* Theme-consistent Earthen Brown Header with Gauri Avatar */}
         <div className="p-4 bg-[#241b14] text-[#f7f3ec] border-b border-[#3d2e22] flex items-center justify-between shadow-md shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#382b20] border border-[#d4af37]/40 flex items-center justify-center shrink-0">
-              <MessageCircle className="w-5 h-5 text-[#d4af37] fill-[#241b14] scale-x-[-1]" />
+            <div className="relative w-10 h-10 rounded-full border-2 border-[#d4af37]/60 overflow-hidden bg-[#382b20] shrink-0">
+              <Image
+                src="/chatavatar.png"
+                alt="Gauri Avatar"
+                fill
+                unoptimized
+                className="object-cover object-center"
+              />
             </div>
             <div>
               <h3 className="font-serif font-medium text-[16px] text-[#f7f3ec] leading-tight">
                 {lang === "hi" ? "गौरी • गाँव सहायता" : "Gauri • Artisan Help Desk"}
               </h3>
-              <p className="text-[12px] text-[#d4af37] mt-0.5 font-sans">
-                {lang === "hi" ? "कारीगर सहायता मंच" : "Gaanv Artisan Support"}
+              <p className="text-[12px] text-[#d4af37] mt-0.5 font-sans flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                {isTyping
+                  ? lang === "hi" ? "टाइप कर रही हैं..." : "Typing response..."
+                  : lang === "hi" ? "सक्रिय सहायता" : "Online • Replies in seconds"}
               </p>
             </div>
           </div>
@@ -156,37 +175,63 @@ export function WhatsAppChatbot() {
           </button>
         </div>
 
-        {/* Messages Stream with high contrast, legible text & typing animation */}
+        {/* Messages Stream with Gauri Profile Avatar beside incoming messages */}
         <div className="p-4 sm:p-5 flex-1 min-h-0 overflow-y-auto space-y-3 bg-[#f7f3ec]">
           {messages.map((msg, i) => (
             <div
               key={i}
-              className={`flex flex-col animate-in fade-in slide-in-from-bottom-1 duration-200 ${msg.sender === "user" ? "items-end" : "items-start"
-                }`}
+              className={`flex animate-in fade-in slide-in-from-bottom-1 duration-200 ${
+                msg.sender === "user" ? "justify-end" : "justify-start items-start gap-2.5"
+              }`}
             >
-              <div
-                className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans ${msg.sender === "user"
-                    ? "bg-[#241b14] text-[#f7f3ec] rounded-tr-none border border-[#3d2e22]"
-                    : "bg-white text-[#1a1510] border border-[#ddd4c4] rounded-tl-none"
+              {msg.sender === "bot" && (
+                <div className="relative w-7 h-7 rounded-full overflow-hidden border border-[#ddd4c4] bg-[#241b14] shrink-0 mt-0.5 shadow-xs">
+                  <Image
+                    src="/chatavatar.png"
+                    alt="Gauri"
+                    fill
+                    unoptimized
+                    className="object-cover object-center"
+                  />
+                </div>
+              )}
+              <div className={`flex flex-col ${msg.sender === "user" ? "items-end" : "items-start"}`}>
+                <div
+                  className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-[14px] sm:text-[15px] leading-relaxed shadow-sm font-sans ${
+                    msg.sender === "user"
+                      ? "bg-[#241b14] text-[#f7f3ec] rounded-tr-none border border-[#3d2e22]"
+                      : "bg-white text-[#1a1510] border border-[#ddd4c4] rounded-tl-none"
                   }`}
-              >
-                {msg.text}
+                >
+                  {msg.text}
+                </div>
+                <span className="text-[11px] text-[#6e6456] mt-1 px-1 font-mono">{msg.time}</span>
               </div>
-              <span className="text-[11px] text-[#6e6456] mt-1 px-1 font-mono">{msg.time}</span>
             </div>
           ))}
 
-          {/* Typing animation bubble */}
+          {/* Typing animation with Gauri Avatar */}
           {isTyping && (
-            <div className="flex flex-col items-start animate-in fade-in duration-150">
-              <div className="bg-white border border-[#ddd4c4] rounded-2xl rounded-tl-none px-4 py-3 shadow-sm flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce [animation-delay:-0.3s]"></span>
-                <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce [animation-delay:-0.15s]"></span>
-                <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce"></span>
+            <div className="flex items-start gap-2.5 animate-in fade-in duration-150">
+              <div className="relative w-7 h-7 rounded-full overflow-hidden border border-[#ddd4c4] bg-[#241b14] shrink-0 mt-0.5 shadow-xs">
+                <Image
+                  src="/chatavatar.png"
+                  alt="Gauri"
+                  fill
+                  unoptimized
+                  className="object-cover object-center"
+                />
               </div>
-              <span className="text-[11px] text-[#6e6456] mt-1 px-1 font-mono">
-                {lang === "hi" ? "गौरी लिख रही हैं..." : "Gauri is typing..."}
-              </span>
+              <div className="flex flex-col items-start">
+                <div className="bg-white border border-[#ddd4c4] rounded-2xl rounded-tl-none px-4 py-3 shadow-sm flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce [animation-delay:-0.3s]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce [animation-delay:-0.15s]"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#967432] animate-bounce"></span>
+                </div>
+                <span className="text-[11px] text-[#6e6456] mt-1 px-1 font-mono">
+                  {lang === "hi" ? "गौरी लिख रही हैं..." : "Gauri is typing..."}
+                </span>
+              </div>
             </div>
           )}
 
@@ -257,3 +302,4 @@ export function WhatsAppChatbot() {
     </>
   );
 }
+
