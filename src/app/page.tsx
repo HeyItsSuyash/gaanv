@@ -533,17 +533,17 @@ export default function Home() {
       </section>
 
       {/* 5. INDIGENOUS THARU TRIBAL ARTISANS OF UTTAR PRADESH SPOTLIGHT */}
-      <section id="up-tribes" className="relative py-16 md:py-24 bg-bone overflow-hidden border-b border-mist/40">
+      <section id="up-tribes" className="relative pt-16 md:pt-24 pb-12 md:pb-16 bg-bone overflow-hidden border-b border-mist/40">
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.08] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Center / Left Editorial Mission Text: UP Govt Focus & Tribal Upliftment */}
             <div className="lg:col-span-7 flex flex-col justify-center">
               <span className="inline-block text-[12px] font-mono uppercase tracking-widest text-brass font-bold mb-3">
                 {lang === "hi" ? "जनजातीय उत्थान मिशन • उत्तर प्रदेश" : "Tribal Upliftment Mission • Uttar Pradesh"}
               </span>
 
-              <h2 className="font-serif text-[28px] sm:text-[36px] lg:text-[42px] text-ink leading-[1.2] font-normal">
+              <h2 className="font-serif text-[28px] sm:text-[36px] lg:text-[44px] text-ink leading-[1.18] font-normal">
                 {lang === "hi"
                   ? "थारू जनजाति से आरम्भ: उत्तर प्रदेश सरकार के प्राथमिकता क्षेत्र से जमीनी बदलाव"
                   : "Beginning with the Tharu Tribe: Uplifting the Priority Focus of Uttar Pradesh"}
@@ -581,6 +581,7 @@ export default function Home() {
                 </div>
               </div>
 
+              {/* Action Buttons & Badge */}
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   href="/explore-products"
@@ -594,25 +595,30 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: United in Tradition and Joy Image */}
-            <div className="lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[500px] aspect-[4/3.5] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#d4af37]/40 bg-[#1a130e] group">
+            {/* Right: Tharu Tribal Portrait in Traditional Attire (Prominent & Much Bigger) */}
+            <div className="lg:col-span-5 flex flex-col items-center justify-end relative self-end">
+              {/* Subtle back decorative glow/pattern card frame */}
+              <div className="absolute -inset-2 bg-gradient-to-t from-[#241b14]/5 via-transparent to-transparent rounded-3xl -z-10" />
+
+              {/* High-res large portrait container */}
+              <div className="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[500px] h-[480px] sm:h-[560px] lg:h-[620px] flex items-end justify-center filter drop-shadow-2xl">
                 <Image
-                  src="/United in Tradition and Joy.png"
-                  alt="Tharu Tribal Women - United in Tradition and Joy"
+                  src="/tharu-girl-namaste.png"
+                  alt="Tharu Tribal Girl in Traditional Cultural Attire Welcoming with Namaste"
                   fill
                   priority
-                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  className="object-contain object-bottom transition-transform duration-700 hover:scale-[1.02]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                <div className="absolute bottom-3 left-4 right-4 text-white">
-                  <p className="text-xs font-mono text-[#d4af37] tracking-wider uppercase">
-                    Balrampur & Suhelwa Corridor
-                  </p>
-                  <p className="font-serif text-sm text-[#f7f3ec]">
-                    {lang === "hi" ? "परंपरा और उल्लास में एकजुट थारू महिलाएँ" : "United in Tradition and Joy"}
-                  </p>
-                </div>
+              </div>
+
+              {/* Caption pill below */}
+              <div className="mt-3 px-4 py-2 bg-[#241b14] text-[#f7f3ec] rounded-pill border border-[#d4af37]/50 shadow-md text-center max-w-xs">
+                <p className="text-[11px] font-mono text-[#d4af37] uppercase tracking-wider">
+                  Balrampur • Terai Indigenous Heritage
+                </p>
+                <p className="font-serif text-[13px] leading-tight mt-0.5">
+                  {lang === "hi" ? "थारू संस्कृति एवं पारंपरिक वेशभूषा" : "Living Cultural Heritage of the Tharu"}
+                </p>
               </div>
             </div>
           </div>
