@@ -529,20 +529,59 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Emotional Cultural Banner: United in Tradition and Joy */}
+          <div className="mt-12 rounded-2xl overflow-hidden bg-[#241b14] border border-[#d4af37]/40 shadow-2xl relative">
+            <div className="grid grid-cols-1 md:grid-cols-12 items-center">
+              <div className="md:col-span-7 p-6 sm:p-8 lg:p-10 text-[#f7f3ec] z-10">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-[#d4af37] font-semibold">
+                  {lang === "hi" ? "परंपरा, आत्मीयता व उल्लास" : "Living Heritage & Collective Joy"}
+                </span>
+                <h3 className="font-serif text-[24px] sm:text-[30px] lg:text-[34px] leading-tight text-[#f7f3ec] mt-2 font-normal">
+                  {lang === "hi"
+                    ? "पारंपरिक धरोहर से जुड़ी मुस्कान: हमारी सबसे बड़ी पूँजी"
+                    : "United in Tradition and Joy: The Heartbeat of Indian Craft"}
+                </h3>
+                <p className="mt-3 text-[14px] sm:text-[15px] text-[#e2d8c9] leading-relaxed max-w-xl">
+                  {lang === "hi"
+                    ? "भौगोलिक संकेतक (GI) केवल एक प्रमाण पत्र नहीं, बल्कि उन पीढ़ियों की साधना और सामूहिक उल्लास का प्रतीक है जो अपनी मिट्टी, संस्कृति और प्रकृति से एकरूप होकर हर कृति में प्राण फूँकती हैं।"
+                    : "A Geographical Indication (GI) is more than legal protection—it is the living celebration of community bonds, laughter, and generational resilience passed down through centuries of shared artisan life."}
+                </p>
+                <div className="mt-6 flex flex-wrap items-center gap-4">
+                  <Link
+                    href="/explore-products"
+                    className="inline-flex items-center justify-center rounded-pill border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37] hover:text-[#241b14] text-[13px] font-semibold px-5 py-2.5 transition-colors"
+                  >
+                    {lang === "hi" ? "जीआई संग्रह देखें" : "Explore GI Collection"}
+                  </Link>
+                  <span className="text-xs text-[#a89a88] font-mono">
+                    {lang === "hi" ? "28 राज्यों के शिल्पी" : "Handcrafted across 28 States"}
+                  </span>
+                </div>
+              </div>
+
+              <div className="md:col-span-5 relative h-[260px] sm:h-[320px] md:h-full min-h-[280px] w-full overflow-hidden">
+                <Image
+                  src="/United in Tradition and Joy.png"
+                  alt="United in Tradition and Joy - Rural Artisans"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#241b14] via-transparent to-transparent opacity-60 md:opacity-80" />
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 5. INDIGENOUS THARU TRIBAL ARTISANS OF UTTAR PRADESH SPOTLIGHT */}
-      <section id="up-tribes" className="relative pt-16 md:pt-24 pb-12 md:pb-16 bg-bone overflow-hidden border-b border-mist/40">
+      <section id="up-tribes" className="relative pt-16 md:pt-24 pb-0 bg-bone overflow-hidden border-b border-mist/40">
         <div className="absolute inset-0 bg-warli-pattern opacity-[0.08] pointer-events-none" />
         <div className="relative mx-auto max-w-[1280px] px-5 sm:px-6 md:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end">
             {/* Center / Left Editorial Mission Text: UP Govt Focus & Tribal Upliftment */}
-            <div className="lg:col-span-7 flex flex-col justify-center">
-              <span className="inline-block text-[12px] font-mono uppercase tracking-widest text-brass font-bold mb-3">
-                {lang === "hi" ? "जनजातीय उत्थान मिशन • उत्तर प्रदेश" : "Tribal Upliftment Mission • Uttar Pradesh"}
-              </span>
-
+            <div className="lg:col-span-7 flex flex-col justify-center pb-12 md:pb-16">
               <h2 className="font-serif text-[28px] sm:text-[36px] lg:text-[44px] text-ink leading-[1.18] font-normal">
                 {lang === "hi"
                   ? "थारू जनजाति से आरम्भ: उत्तर प्रदेश सरकार के प्राथमिकता क्षेत्र से जमीनी बदलाव"
@@ -581,13 +620,13 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Action Buttons & Badge */}
+              {/* Action Buttons & Badge: Ghost Style Button without arrow */}
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <Link
                   href="/explore-products"
-                  className="inline-flex items-center justify-center rounded-pill bg-[#241b14] hover:bg-[#382b20] text-[#f7f3ec] border border-[#d4af37]/60 text-[14px] font-medium px-6 py-3 transition-all shadow-md hover:shadow-lg"
+                  className="inline-flex items-center justify-center rounded-pill border border-[#241b14] text-[#241b14] hover:bg-[#241b14] hover:text-[#f7f3ec] text-[14px] font-medium px-6 py-2.5 transition-colors"
                 >
-                  {lang === "hi" ? "थारू जनजातीय उत्पाद देखें →" : "Explore Tharu Crafts →"}
+                  {lang === "hi" ? "थारू जनजातीय उत्पाद देखें" : "Explore Tharu Crafts"}
                 </Link>
                 <span className="text-xs text-stone font-mono">
                   {lang === "hi" ? "180+ थारू शिल्पी परिवार जुड़े" : "180+ Artisan Households Impacted"}
@@ -595,30 +634,17 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right: Tharu Tribal Portrait in Traditional Attire (Prominent & Much Bigger) */}
+            {/* Right: Tharu Tribal Portrait in Traditional Attire (Down to the bottom border) */}
             <div className="lg:col-span-5 flex flex-col items-center justify-end relative self-end">
-              {/* Subtle back decorative glow/pattern card frame */}
-              <div className="absolute -inset-2 bg-gradient-to-t from-[#241b14]/5 via-transparent to-transparent rounded-3xl -z-10" />
-
-              {/* High-res large portrait container */}
-              <div className="relative w-full max-w-[420px] sm:max-w-[460px] lg:max-w-[500px] h-[480px] sm:h-[560px] lg:h-[620px] flex items-end justify-center filter drop-shadow-2xl">
+              {/* High-res large portrait container flush with the bottom border */}
+              <div className="relative w-full max-w-[440px] sm:max-w-[480px] lg:max-w-[520px] h-[480px] sm:h-[580px] lg:h-[640px] flex items-end justify-center">
                 <Image
                   src="/tharu-girl-namaste.png"
                   alt="Tharu Tribal Girl in Traditional Cultural Attire Welcoming with Namaste"
                   fill
                   priority
-                  className="object-contain object-bottom transition-transform duration-700 hover:scale-[1.02]"
+                  className="object-contain object-bottom"
                 />
-              </div>
-
-              {/* Caption pill below */}
-              <div className="mt-3 px-4 py-2 bg-[#241b14] text-[#f7f3ec] rounded-pill border border-[#d4af37]/50 shadow-md text-center max-w-xs">
-                <p className="text-[11px] font-mono text-[#d4af37] uppercase tracking-wider">
-                  Balrampur • Terai Indigenous Heritage
-                </p>
-                <p className="font-serif text-[13px] leading-tight mt-0.5">
-                  {lang === "hi" ? "थारू संस्कृति एवं पारंपरिक वेशभूषा" : "Living Cultural Heritage of the Tharu"}
-                </p>
               </div>
             </div>
           </div>
